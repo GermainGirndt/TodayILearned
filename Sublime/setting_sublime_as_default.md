@@ -8,10 +8,8 @@
 
     subl /usr/share/applications/defaults.list
 
-Search for all instances of the standard `gedit` (probably with a longer name) and replace them with `sublime_text`.
+Search for all instances of the standard **`gedit`** (probably with a longer name) and replace them with **`sublime_text`**
 
-
----
 ### Else:
 
 **Create `sublime-text.desktop`:**
