@@ -2,4 +2,8 @@
 # Useful Installs for Ubuntu
 
 ### Monitor Processes
-``sudo apt htop`` 
+``sudo apt install htop`` 
+
+
+### Print Directories Tree
+``sudo apt install tree` 
