@@ -6,4 +6,12 @@
 
 
 ### Print Directories Tree
-``sudo apt install tree` 
+``sudo apt install tree ``
+
+
+### OBS - Open Broadcaster Software
+```
+sudo apt install ffmpeg
+sudo apt install obs-studio
+```
+
