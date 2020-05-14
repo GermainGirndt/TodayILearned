@@ -113,7 +113,15 @@ class User(models.Model):
     first_name = models.CharField(max_length=128)
     last_name = models.CharField(max_length=128)
     email = models.EmailField(max_length=264, unique=True)
+
 ```
+
+* **urls.py** -> Add view to be created
+
+```
+path('users/', views.users, name='users')
+```
+
 
 * **views.py** -> Import created models to the views; Add model view;
 
@@ -123,11 +131,52 @@ from . import models.User
 def users(request):
 	user_list = User.objects.order_by('first_name')
 	user_dict = {'users': user_list}
-	return render(request, )
+	return render(request, 'first_app/users.html, context='user_dict')
 ```
 
-#### Root
+#### Main
+
+* **admin.py** -> Import Model and Register it;
+
+```
+from first_app.models import User
+
+admin.site.register(User)
+```
+
+#### Terminal
+
+
+* **Terminal** -> Make migrations to create the model in the DB;
+
+```
+python manage.py migrate
+python manage.py makemigrations
+```
+
+* **Terminal** -> Create a super user
 ```
 python manage.py createsuperuser
+```
 
+#### Template
+
+
+* **users.html** -> Print the models (obs: endfor! endif!)
+
+
+```
+{% if users %}
+<ol>
+	{% for person in users %}
+	<li class="row">User info</li>
+	<ul>
+		<li col s1>First Name: {{ person.first_name }}</li>
+		<li col s1>Last Name: {{ person.last_name }}</li>
+		<li col s1>Email: {{ person.email }}</li>
+		<br>
+	</ul>
+	{% endfor %}
+</ol>
+{% endif %}
 ```
