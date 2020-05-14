@@ -15,3 +15,8 @@ sudo apt install ffmpeg
 sudo apt install obs-studio
 ```
 
+
+### DavinciResolve - Video Editor
+```
+https://www.blackmagicdesign.com/products/davinciresolve/
+```
