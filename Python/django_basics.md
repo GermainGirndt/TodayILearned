@@ -94,3 +94,40 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 ```
+
+
+---
+
+## 4. Models
+
+
+
+#### App
+
+* **models.py** -> Create new models
+
+```
+from django.db import models
+
+class User(models.Model):
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
+    email = models.EmailField(max_length=264, unique=True)
+```
+
+* **views.py** -> Import created models to the views; Add model view;
+
+```
+from . import models.User
+
+def users(request):
+	user_list = User.objects.order_by('first_name')
+	user_dict = {'users': user_list}
+	return render(request, )
+```
+
+#### Root
+```
+python manage.py createsuperuser
+
+```
