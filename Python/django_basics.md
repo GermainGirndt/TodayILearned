@@ -1,14 +1,16 @@
 # Django Basics
 
-## Getting Started
+---
+## 1. Getting Started
 
 ```
 django-admin startproject PROJECTNAME
 cd PROJECTNAME
-django-admin startapp APPNAME
+django-admin startapp APPNAME (also python manage.py startapp APPNAME)
 ```
 
-## Template views
+---
+## 2.Template views
 
 ### Main
 * **settings.py** -> Insert the new app
@@ -58,3 +60,37 @@ def index(request):
 
 #### Main (Again)
 * **settings.py** -> Insert the new template
+
+
+---
+
+## 3. Static files
+
+
+#### App/Templates
+
+* **html** -> Add the static image code.
+
+```
+{% load static %}
+.
+.
+.
+
+<img src="{% static "my_app/example.jpg" %}" alt="My image">
+```
+
+#### Main
+
+* **settings.py** -> Insert the static directory
+
+```
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+.
+.
+.
+
+STATICFILES_DIRS = [
+    STATIC_DIR,
+]
+```
