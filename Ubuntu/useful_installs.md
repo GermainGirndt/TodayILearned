@@ -16,6 +16,16 @@ sudo apt install obs-studio
 ```
 
 
+### Pycharm
+```
+sudo snap install pycharm-community --classic
+```
+
+### Kdenlive - Video Editor
+```
+https://kdenlive.org/
+```
+
 ### DavinciResolve - Video Editor
 ```
 https://www.blackmagicdesign.com/products/davinciresolve/
