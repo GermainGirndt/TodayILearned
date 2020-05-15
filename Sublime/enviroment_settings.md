@@ -9,7 +9,20 @@ Based on Corey Schafer's videos
 2. SublimeLinter (and not SublimeLint!) + individual packages
 3. Anaconda
 
-#### Personal Settings - Anaconda
+
+##### HTML-Linter Package
+
+Terminal:
+```
+sudo apt install tidy
+```
+
+Sublime:
+```
+SublimeLinter-html-tidy
+```
+
+##### Personal Settings - Anaconda Package
 
 ```
 {
