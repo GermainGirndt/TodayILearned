@@ -30,3 +30,9 @@ https://kdenlive.org/
 ```
 https://www.blackmagicdesign.com/products/davinciresolve/
 ```
+
+### Peek - Screen GIT Recorder
+
+sudo add-apt-repository ppa:peek-developers/stable
+sudo apt update
+sudo apt install peek
