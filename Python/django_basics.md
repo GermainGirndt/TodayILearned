@@ -316,3 +316,91 @@ form.save(commit==True)
 
 #### Templates
 * **model_form.html** -> Create a form page
+
+
+---
+
+## 7. Template Tagging
+
+#### App
+
+* **urls.py** -> Insert the app name
+
+```
+app_name = 'APPNAME'
+
+```
+
+#### Templates
+
+* **relative_url_templates.py** -> Reference the app name
+
+**Before (referencing template itself):**
+```
+    <a href="app_name/webpage.html"> The app page</a>
+```
+**After (referencing url.py file):**
+```
+    <a href="{% url 'app_name:url_pattern_name' %}"> The app page</a>
+```
+
+## 8. Template Inheritance (Template Extending)
+
+#### Templates
+
+* **base.html** -> Create base file to be inherited. Mark the varibles with blocks.
+
+* **index.html** -> Extend to the base html. Insert what's new in the blocks.
+
+```
+{% extends "base_generic.html" %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+
+{% for story in story_list %}
+<h2>
+  <a href="{{ story.get_absolute_url }}">
+    {{ story.headline|upper }}
+  </a>
+</h2>
+<p>{{ story.tease|truncatewords:"100" }}</p>
+{% endfor %}
+{% endblock %}
+ 
+```
+
+
+## 9. Using filters
+
+#### Templates
+* **index.html** -> use |
+
+```
+{{ story.headline|upper }}
+
+{{ clients_number|add:"99" }}
+```
+
+## 10. Custom filters
+
+#### App
+* **templatetags** -> Create folder
+
+#### App/templatetags
+* **__init__.py** -> Create file
+* **my_extras.py** -> Create file, create function and register it using the register decorator:
+```
+from django import template
+
+register = template.Library()
+
+@register.filter(name='cut')
+def cut(value,arg):
+
+    #Cuts out all values of 'arg' from the string
+    return value.replace(arg,'')
+```
+
