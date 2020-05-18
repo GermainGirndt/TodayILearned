@@ -23,7 +23,17 @@ sudo snap install pycharm-community --classic
 
 ### Kdenlive - Video Editor
 ```
-https://kdenlive.org/
+sudo add-repository ppa:kdenlive/kdenlive-stable
+sudo apt-get update
+sudo apt-get install kdenlive
+```
+
+### Kdenlive - Extensions
+##### Breeze
+```
+sudo apt-get install kdenlive breeze fei0r-plugin
+Settings -> Theme -> Breeze
+Settings -> Force breeze icons
 ```
 
 ### DavinciResolve - Video Editor
