@@ -24,8 +24,8 @@ sudo snap install pycharm-community --classic
 ### Kdenlive - Video Editor
 ```
 sudo add-repository ppa:kdenlive/kdenlive-stable
-sudo apt-get update
-sudo apt-get install kdenlive
+sudo apt update
+sudo apt install kdenlive
 ```
 
 ### Kdenlive - Extensions
@@ -40,8 +40,8 @@ Settings -> Force breeze icons
 ### Handbreaker
 ```
 sudo add-apt-repository ppa:stebbins/handbrake-releases
-sudo apt-get update
-sudo apt-get install handbrake-cli handbrake-gtk
+sudo apt update
+sudo apt install handbrake-cli handbrake-gtk
 
 ```
 
