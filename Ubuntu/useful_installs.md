@@ -36,6 +36,15 @@ Settings -> Theme -> Breeze
 Settings -> Force breeze icons
 ```
 
+
+### Handbreaker
+```
+sudo add-apt-repository ppa:stebbins/handbrake-releases
+sudo apt-get update
+sudo apt-get install handbrake-cli handbrake-gtk
+
+```
+
 ### DavinciResolve - Video Editor
 ```
 https://www.blackmagicdesign.com/products/davinciresolve/
