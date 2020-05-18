@@ -31,7 +31,7 @@ sudo apt-get install kdenlive
 ### Kdenlive - Extensions
 ##### Breeze
 ```
-sudo apt-get install kdenlive breeze fei0r-plugin
+sudo apt-get install kdenlive breeze frei0r-plugins
 Settings -> Theme -> Breeze
 Settings -> Force breeze icons
 ```
