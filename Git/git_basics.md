@@ -52,6 +52,17 @@ git branch -d name (just deletes on the locacl repository)
 git push origin :name
 ```
 
+## Show Tracked Files
+```
+git ls-files
+```
+
+## Set the current branch's pointer
+(consequently create a new history from a this point)
+```
+git checkout filename
+```
+
 
 ### Marks:
 ```
@@ -65,6 +76,7 @@ git tag -a tagname -m "Message" (obs: v. 1.0)
 ### Notes
 * **origin** = default name for remote repository
 * **pull** = fetch + merge (remote)
+* **HEAD** = last commit on the current branch 
 
 ### By conflict
 * cat file_conflicted (see diferences)
