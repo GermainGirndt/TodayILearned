@@ -154,7 +154,7 @@ Requires pk to be passed in
 * **urls.py** -> call the view class, passing in the PK to the SchoolDetailView class
 
 ```
-url(r'^(?P<pk>[-\w]+)/$', views.SchoolDetailView.as_view(), name='detail')  # grab the primary key
+url(r'^(?P<pk>[-\w]+)/$', views.SchoolDetailView.as_view(), name='detail')
 ```
 **or**
 ```
@@ -174,3 +174,5 @@ class SchoolDetailView(DetailView):
     model = models.School
     template_name = 'basic_app/school_detail.html'
 ```
+
+## CRUD
