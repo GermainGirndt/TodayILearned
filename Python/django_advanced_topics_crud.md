@@ -105,7 +105,7 @@ path('update/<int:pk>/', views.SchoolUpdateView.as_view(), name='update'),
 
 #### App
 
-* **views.py** -> 
+* **views.py**
 ```
 class SchoolDeleteView(DeleteView):
     model = models.School
@@ -119,7 +119,7 @@ path('delete/<int:pk>/', views.SchoolDeleteView.as_view(), name='delete'),
 ```
 
 #### Templates
-* **basic_app/school_confirm_delete.html** -> 
+* **basic_app/school_confirm_delete.html**
 ```
 {% extends 'basic_app/basic_app_base.html'%}
 
@@ -134,3 +134,4 @@ path('delete/<int:pk>/', views.SchoolDeleteView.as_view(), name='delete'),
 </form>
 {% endblock %}
 ```
+
