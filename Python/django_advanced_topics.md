@@ -66,11 +66,12 @@ class IndexView(TemplateView):
 
 
 ## ListView
-Renders automatically a template page named MODEL_list.html
-Pass in a list as context containing all model instances
+Renders automatically a template page named **MODEL_list.html**   
+Pass in a **list as context** containing all model instances
 
 #### Templates
-* **school_list.html** -> receives the list 'schools' s context; adds a link to the DetailView (see next section)
+* **school_list.html** -> receives the list 'schools' s context;   
+adds a link to the DetailView (see next section)
 
 ```
 {% extends "basic_app/basic_app_base.html" %}
@@ -116,15 +117,15 @@ class SchoolListView(ListView):
 
 ```
 ## DetailView
-Requires a PK to be passed in
-Renders a page with the PK path, detailing a model instance
-Requires pk to be passed in
+**Requires a PK** to be passed in   
+Renders a page with the PK path that **details attributes of a model instance**    
 
 
 
 
 #### Templates
-* **school_detail.html** -> receives the instance schools[pk] and renames it as school_detail for use
+* **school_detail.html** -> receives the instance schools[pk];   
+renames it as school_detail for use
 
 ```
 {% extends 'basic_app/basic_app_base.html' %}
@@ -151,7 +152,7 @@ Requires pk to be passed in
 
 #### App
 
-* **urls.py** -> call the view class, passing in the PK to the SchoolDetailView class
+* **urls.py** -> passes in the PK to the SchoolDetailView class
 
 ```
 url(r'^(?P<pk>\d+)/$', views.SchoolDetailView.as_view(), name='detail')
