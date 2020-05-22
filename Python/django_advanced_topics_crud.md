@@ -1,7 +1,8 @@
 # Django - Advanced Topics - CRUD
-* probably not that advanced at all for experienced python developers
+probably not that advanced at all for experienced python developers
 
-## CRUD - Imports - views.py
+## General Imports
+* **views.py**
 ```
 from django.shortcuts import render
 from django.views.generic import (View, TemplateView,
@@ -11,19 +12,20 @@ from django.views.generic import (View, TemplateView,
 from basic_app import models
 ```
 
-## Create
+## Create Instance
 
 #### App
 
-* **views.py** -> Create view for model instance creation. When created, calls the model's get_absolute_url method.
+* **views.py** -> Create a class for new model instances.  
+By completion, calls the model's get_absolute_url method.
 
 ```
 class SchoolCreateView(CreateView):
-    fields = ('name', 'principal', 'location')
     # tuple for not editing
+    fields = ('name', 'principal', 'location')
     model = models.School
 ```
-* **models.py** -> Import reverse; Add get_absolute_url method for redirecting to school detail view after school creation using the automatically generated PK)
+* **models.py** -> using the automacally generated PK, the 'get_absolute_url' method redirects automatically to school detail view after instance creation
 ```
 from django.urls import reverse
 .
@@ -67,28 +69,28 @@ path('create/', views.SchoolCreateView.as_view(), name='create')
 {% endblock %}
 ```
 
-## Update
+## Update Instance
 
 #### App
 
-* **views.py** -> Create UpdateViewClass;
+* **views.py** -> SchoolUpdateView class calls the school_form.html page (same as the creation view),   
+but just shows the forms given in the 'fields' variable 
 
 ```
 class SchoolUpdateView(UpdateView):
-    fields = ('name', 'principal')  # note: we don't want the location to be updated
+    fields = ('name', 'principal')  # note: we don't want the location form to be updated
     model = models.School
-    #the class calls the school_form.html page (same as the creation view) but just exihibits the above fields
-
 
 ```
 
-* **urls.py** -> add new urlpattern
+* **urls.py** -> new urlpattern using the PK
 ```
 path('update/<int:pk>/', views.SchoolUpdateView.as_view(), name='update'),
 ```
 
 #### Templates
-* **basic_app/school_detail.html** -> Adds a button that redirects to the basic_update url and pass in the primary key from the school beeing showed; 
+* **basic_app/school_detail.html** -> adds a button that redirects to the basic_update url;   
+pass in to the destination page the primary key from the school currently beeing showed; 
 
 ```
 <div class="container">
@@ -101,7 +103,7 @@ path('update/<int:pk>/', views.SchoolUpdateView.as_view(), name='update'),
 
 ```
 
-## Delete
+## Delete Instance
 
 #### App
 
