@@ -1,4 +1,4 @@
-# Django - Advanced Topics - CRUD
+# Django - Advanced Topics 2 - CRUD
 probably not that advanced at all for experienced python developers
 
 ## General Imports

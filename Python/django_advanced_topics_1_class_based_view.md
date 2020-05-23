@@ -1,4 +1,4 @@
-# Django - Advanced Topics
+# Django - Advanced Topics 1 - Class Based View
 * probably not that advanced at all for experienced python developers
 
 ## Class-Based View
