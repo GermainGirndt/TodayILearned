@@ -14,7 +14,7 @@ Based on Corey Schafer's videos
 
 ##### HTML-Linter Package
 
-for f in *django*; do git mv -v -- "$f" django ; done
+
 
 Terminal:
 ```
