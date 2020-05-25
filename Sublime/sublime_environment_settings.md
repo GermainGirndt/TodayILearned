@@ -8,6 +8,7 @@ Based on Corey Schafer's videos
 1. Sublime Code Intel (code completion)
 2. SublimeLinter (and not SublimeLint!) + individual packages
 3. Anaconda
+4. Terminal (https://packagecontrol.io/packages/Terminal)
 
 
 ##### HTML-Linter Package
@@ -62,3 +63,4 @@ sudo cp -n -R python3 python
     "selector": "source.python"
 }
 ```
+
