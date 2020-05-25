@@ -64,3 +64,24 @@ sudo cp -n -R python3 python
 }
 ```
 
+
+#### Terminus - Personal theme settings
+
+```
+{
+    "theme": "default",
+    "user_theme_colors":
+    {
+        "00": "#000000",
+        "background": "#000000",
+        "block_caret": "light_white",
+        "caret": "light_white",
+        "selection": "#000000"
+    },
+    "view_settings":
+    {
+        "font_size": 10
+    }
+}
+
+```
