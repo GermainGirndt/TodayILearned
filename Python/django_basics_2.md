@@ -25,3 +25,23 @@ def register(request):
 ```
 
 
+## 2. Cryspy - forms - Form layout 
+
+#### Main
+* **settings.py** -> Set bootstrap4
+```
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+```
+
+#### Templates
+* **formtemplate.py** -> Add tag
+```
+{% load crispy_forms_tags %}
+.
+.
+.
+<!-- Remember to add form legends: -->
+{{ form|crispy }}
+```
+
+* **
