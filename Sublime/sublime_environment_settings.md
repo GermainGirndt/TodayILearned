@@ -10,8 +10,11 @@ Based on Corey Schafer's videos
 3. Anaconda
 4. Terminus - Integrated Terminal Window (https://packagecontrol.io/packages/Terminus)
 5. Terminal Shortcut (ctrl+alt+T) (https://packagecontrol.io/packages/Terminal)
+6. Djaneiro (django) - https://packagecontrol.io/packages/Djaneiro
 
 ##### HTML-Linter Package
+
+for f in *django*; do git mv -v -- "$f" django ; done
 
 Terminal:
 ```
