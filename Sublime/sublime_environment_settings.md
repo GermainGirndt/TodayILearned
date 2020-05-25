@@ -8,8 +8,8 @@ Based on Corey Schafer's videos
 1. Sublime Code Intel (code completion)
 2. SublimeLinter (and not SublimeLint!) + individual packages
 3. Anaconda
-4. Terminal (https://packagecontrol.io/packages/Terminal)
-
+4. Terminus - Integrated Terminal Window (https://packagecontrol.io/packages/Terminus)
+5. Terminal Shortcut (ctrl+alt+T) (https://packagecontrol.io/packages/Terminal)
 
 ##### HTML-Linter Package
 
