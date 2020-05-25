@@ -1,6 +1,22 @@
 # Django Basics - 2
 
 ---
+## 0. Installing packages (bootstrap)
+
+#### Terminal
+
+```
+pip install django-bootstrap4
+```
+
+#### Main
+* **settings.py**
+```
+INSTALLED_APPS = [
+	'bootstrap4'
+]
+```
+
 ## 1. Success message after user register
 
 #### Main
