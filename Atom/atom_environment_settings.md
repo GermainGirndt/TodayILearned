@@ -1,4 +1,3 @@
-
 # Environment Settings for Atom
 
 
@@ -14,6 +13,11 @@ https://flight-manual.atom.io/
 * **Integrated Terminal**
 ```
 https://github.com/platformio/platformio-atom-ide-terminal
+
+```
+**or**
+```
+terminal plus
 
 ```
 
