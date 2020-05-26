@@ -36,6 +36,14 @@ Settings -> Theme -> Breeze
 Settings -> Force breeze icons
 ```
 
+### OpenShot - Video Editor
+```
+https://www.openshot.org/ppa/
+
+sudo add-apt-repository ppa:openshot.developers/ppa
+sudo apt-get update
+sudo apt-get install openshot-qt
+```
 
 ### Handbreaker
 ```
