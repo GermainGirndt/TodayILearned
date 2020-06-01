@@ -85,3 +85,15 @@ sudo apt install peek
 ```
 sudo apt install pulseeffects
 ```
+
+
+#### Okular - PDF Viewer
+```
+sudo apt-get install okular
+```
+
+
+#### PDF Shuffler - PDF Editor
+```
+sudo apt-get install pdfshuffler 
+```
