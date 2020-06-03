@@ -34,30 +34,7 @@ npm install typescript
 npm install ts-node-dev
 ```
 
-#### Code
-
-```
-import express from 'express';
-
-const app = express();
-
-app.get('/users', (request, response) => {
-    console.log('Listagem de usuários');
-
-    // response.send('Hello World');
-
-
-    response.json([
-        'Diego',
-        'Cleiton',
-        'Robson',
-        'Daniel',
-        'Marcus'
-    ]);
-});
-
-app.listen(3333);
-```
+#### Adding a Script
 
 * **package.json** -> add script for terminal shortcut
 ```
@@ -65,14 +42,61 @@ app.listen(3333);
 ```
 
 
+#### Code Example (Make queries with Insomnia.Rest)
 
-## Notes
 ```
-request - request data (eg. user data, e-mail, password)
-response - response in browser
-RESTful -> adjetivo. Se cumprir com as características, a API é RESTful
-SPA - Simple Page Application -> when thange between pages doesn't require the complete wellpage load
-REACT -> biblioteca p/ interfaces
-REACT (main package) -> Other packages (receive the main): REACT JS  + REACT Native
-REACT -> uma API, múltiplos clienetes (Mobile, Computer)
+import express from 'express';
+const app = express();
+// enables the json compability
+app.use(express.json());
+
+const users = [
+    'Diego',
+    'Cleiton',
+    'Robson',
+    'Daniel',
+    'Marcus'
+]
+
+
+app.get('/users', (request, response) => {
+	// defines a variable that receives the search query (...?search=...)
+    const search  = String(request.query.search);
+    console.log(search);
+
+    // if search exists, filter by search parameter; if not, return user list
+    const filteredUsers = search ? users.filter(user => user.includes(search)) : users;
+
+    // Another option: simply send a hello world response
+    // response.send('Hello World');
+    
+    return response.json(filteredUsers)
+});
+
+
+app.get('/users/:id', (request, response) => {
+    // retrives the id parameter from the path;
+    const id = Number(request.params.id);
+    // defines the corresponding user
+    const user = users[id];
+    return response.json(user);
+});
+
+
+app.post('/users', (request, response) => {
+    const data = request.body;
+
+    console.log(data);
+    
+    const user = {
+        name: 'Diego',
+        email: 'diego@rocketseat.com.br',
+    };
+
+    return response.json(user)
+});
+
+//listen to the port 3333
+app.listen(3333);
+
 ```
