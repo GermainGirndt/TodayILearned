@@ -52,7 +52,124 @@ MEDIA_URL = '/media/'
 
 
 ---
-## 2. Creating a new User Model
+
+## 3.1 Creating the User auth - the easy way
+
+
+* **models.py**
+
+```
+from django.db import models
+from django.contrib import auth
+
+class User(auth.models.User, auth.models.PermissionsMixin):
+    def __str__(self):
+        return "@{self.username}"
+```
+
+* **forms.py**
+
+```
+from accounts import models
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
+
+class UserCreateForm(UserCreationForm):
+
+    class Meta():
+        fields = ('username', 'email', 'password1', 'password2')
+        model = get_user_model()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Adding label
+        self.fields['username'].label = "Display Name"
+        self.fields['email'].label = "Email Address"
+
+```
+
+* **views.py**
+```
+from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from accounts import forms
+
+
+# Create your views here.
+class SignUp(CreateView):
+    # Not instantiate the class!! Class()
+    form_class = forms.UserCreateForm
+    success_url = reverse_lazy('login')
+    template_name = "accounts/signup.html"
+
+```
+
+
+* **urls.py**
+
+```
+from django.contrib import admin
+from django.urls import path, include
+from accounts import views
+# auth views for log in and log out
+from django.contrib.auth import views as auth_views
+
+
+app_name = 'accounts'
+
+urlpatterns = [
+    # Just for login we have to connect to the template; logout has already its own
+    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name=''), name='logout'),
+    path('signup/', views.SignUp.as_view(), name='signup')
+]
+```
+
+
+* **templates -> login.html**
+
+```
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class ="container">
+    <h1>Log In</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class='btn btn-primary' name="Log In">
+    </form>     
+{% endblock content %}
+
+```
+
+* **templates -> signup.html**
+```
+{% extends "base.html" %}
+<!-- Loading Boostrap for the form (cannot load in base.html-->
+{% load bootstrap4 %}
+
+{% block content %}
+<div class ="container">
+    <h1>Sign Up</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" class='btn btn-primary' name="Sign Up">
+    </form> 
+{% endblock content %}
+```
+
+
+---
+
+
+## 3.2 Creating the User auth - the easy way
+
+
+## 3.2.1. Creating a new User Model
 
 * **Install Pillow lib for using images**
 
@@ -123,7 +240,7 @@ admin.site.register(UserProfileInfo)
 
 * **Makemigrations/Migrate**
 
-## 3. Setting the templates
+## 3.2.2 Setting the templates
 
 #### Templates
 
@@ -192,7 +309,7 @@ admin.site.register(UserProfileInfo)
 {% endblock %}
 ```
 
-## 4. Setting up the views
+## 3.2.3 Setting up the views
 
 ## App
 
@@ -251,7 +368,7 @@ def register(request):
 * ** urls.py** -> add app_name and correctly redirect to the views
 
 
-## 5. Setting up the login views
+## 3.2.4 Setting up the login views
 
 #### Main
 * **settings.py** -> add login_url
@@ -349,3 +466,4 @@ path('login/', views.user_login, name='login')
 
 
 ```
+
