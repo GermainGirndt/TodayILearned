@@ -1,5 +1,6 @@
 ## Concepts
 
+node != Browser's JavaScript (there's no commands like window/console)
 npm -> Node Paket Manager
 express -> Node.js-Framework for Web Apps (eg. for defining paths)
 
@@ -99,4 +100,54 @@ app.post('/users', (request, response) => {
 //listen to the port 3333
 app.listen(3333);
 
+```
+
+
+
+#### Calling node with arguments
+* **eg. (node test.js 5 7)**
+```
+// get node process data
+console.log(process)
+
+// get namespace/arguments with whom it has been called
+console.log(process.argv)
+
+// get the two last arguments
+let args = process.argv.slice(-2);
+console.log(args[0] + args[1]);
+// prints 5 + 7
+```
+
+
+#### Exporting Modules
+
+* **module_to_export.js**
+```
+
+let calc = {
+
+    mult: (x,y) => {
+
+        return x * y
+    },
+
+    summing: (x, y) => {
+        return x + y
+    }
+}
+
+module.exports = calc;
+```
+
+* **importing_module.js** (Run this)
+
+```
+let calc = require("./module_to_export");
+console.log(calc);
+
+console.log(calc.summing);
+
+console.log(calc.summing(5, 8));
+// prints 5 + 8
 ```
