@@ -3,7 +3,9 @@
 
 ## Getting started
 ```
-npx create-react-app web --template=typescript
+npx create-react-app my-app --template=typescript
+cd my-app
+npm start
 ```
 
 
