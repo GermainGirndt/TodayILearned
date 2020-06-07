@@ -6,6 +6,13 @@
 npx create-react-app my-app --template=typescript
 cd my-app
 npm start
+npm install react-icons
+npm install react-router-dom
+npm install @types/react-router-dom -D
+
+
+# for maps
+npm install @types/react-leaflet -D
 ```
 
 
