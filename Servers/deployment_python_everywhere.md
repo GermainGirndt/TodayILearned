@@ -18,6 +18,11 @@ mkvirtualenv --python=python3.7 myproj
 pip install -u django=3.0.6
 ```
 
+### Switch between venv
+```
+workon myproj
+```
+
 ### Check install
 ```
 which django-admin.py
