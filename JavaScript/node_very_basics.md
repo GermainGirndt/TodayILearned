@@ -45,7 +45,11 @@ npm install ts-node-dev
 
 #### Code Example (Make queries with Insomnia.Rest)
 
+
 ```
+// run code with npx ts-node src/server.ts
+
+
 import express from 'express';
 const app = express();
 // enables the json compability
