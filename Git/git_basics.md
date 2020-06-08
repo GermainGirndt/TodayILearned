@@ -15,6 +15,19 @@ git add -A
 git commit -m "MESSAGE"
 
 git push -u origin master
+
+
+```
+
+
+# Renaming Branches
+
+```
+# rename current branch
+git branch -m NEWNAME
+# rename specific branch
+git branch -m OLD_NAME NEW_NAME 
+
 ```
 
 # Removing Remote
