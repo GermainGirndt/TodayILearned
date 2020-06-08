@@ -17,6 +17,11 @@ git commit -m "MESSAGE"
 git push -u origin master
 ```
 
+# Removing Remote
+```
+git remote rm origin
+```
+
 ### Show last commit detailed
 ```
 git show
