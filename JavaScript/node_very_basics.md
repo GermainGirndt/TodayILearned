@@ -37,7 +37,7 @@ npm install ts-node-dev
 
 #### Adding a Script
 
-* **package.json** -> add script for terminal shortcut (yarn dev)
+* **package.json** -> add script for terminal shortcut (yarn dev | npm run dev)
 ```
 "dev": "ts-node-dev src/server.ts"
 ```
