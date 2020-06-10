@@ -34,7 +34,7 @@ setTimeout(exibeAlgo, 10000);
         pares(32, 321);
 ```
 
-* **for LET ... of ...**
+* **for LET ... of ...** -> like python
 ```
             for (let skill of skills) {
                 if (skill == "Javascript") console.log(true)
@@ -46,6 +46,20 @@ setTimeout(exibeAlgo, 10000);
 
 ```
 
+* **for LET ... in ...** -> IN -> INDEXES
+```
+
+very_confuse = [99, 154, 444]
+
+for (let x in very_confuse) console.log(x)
+
+// prints 
+/  0
+// 1
+// 2
+
+
+```
 * **join with javascript is exactly the contrary of python**
 
 ```
