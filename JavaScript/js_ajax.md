@@ -22,7 +22,7 @@ xhr.onreadystatechange = funct ion () {
 ```
 
 
-## Second REquest - With Promises
+## Second Request - With Promises
 
 ```
 var minhaPromise = function() {
@@ -78,4 +78,26 @@ axios.get('https://api.github.com/users/GermainPereira')
     .catch(function(error){
         console.warn(error);
     });
+```
+
+
+## Third Request - Function that returns a promise, that will be executed within 2 secs
+
+```
+
+function checaIdade(idade) {
+    return new Promise (function (resolve, reject) {
+        setTimeout(
+            idade >= 18 ? () => resolve() : () => reject(), 2000
+        );  
+    });
+}
+
+checaIdade(20)
+ .then(function() {
+ console.log("Maior que 18");
+ })
+ .catch(function() {
+ console.log("Menor que 18");
+ });
 ```
