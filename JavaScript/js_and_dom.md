@@ -55,7 +55,7 @@ btnElement.onclick = function() {
 ```
 
 
-### Script - Writing a link element
+### Script - Creating a link element
 ```
     // <a href="http://rocketseat.com.br">Acessar site da RocketSeat</a>
     
@@ -182,4 +182,18 @@ btnElement.onclick = function() {
     }
 
     </s
+```
+
+## Example 6 - Before x After
+
+* **Before**
+```
+newDiv.setAttribute('onclick','setRandomColor(this)')
+```
+* **After**
+```
+
+newDiv.onClick('setRandomColor(this)')
+
+
 ```
