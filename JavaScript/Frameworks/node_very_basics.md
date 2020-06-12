@@ -3,12 +3,15 @@
 node != Browser's JavaScript (there's no commands like window/console)
 npm -> Node Paket Manager
 express -> Node.js-Framework for Web Apps (eg. for defining paths)
+nodemon -> watches the changes
 
+-D = --savedev
 ## Getting Started
 
 ```
 npm -y
 npm install express
+npm install -D nodemon 
 ```
 
 #### With D (Development -> doesn't go to the production environment)

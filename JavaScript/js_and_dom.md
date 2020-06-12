@@ -1,8 +1,6 @@
 # JS and DOM
 
 
-
-
 ## Example 1 - Query Selector
 
 

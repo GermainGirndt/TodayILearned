@@ -20,3 +20,8 @@ https://chrome.google.com/webstore/detail/octotree/bkhaagjahfmjljalopjnoealnfndn
 ```
 https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi
 ```
+
+## Momentum
+```
+https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca?hl=de
+```

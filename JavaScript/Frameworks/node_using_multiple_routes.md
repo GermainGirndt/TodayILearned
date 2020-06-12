@@ -1,5 +1,5 @@
 # Using multiple routes
-For using multiple routes, you should keep all the routes in a separate file.
+* For dealing with multiple routes, you should organize your code by keep all the routes in a separate file.
 
 ## Server file
 ```

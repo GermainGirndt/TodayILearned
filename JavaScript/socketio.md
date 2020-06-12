@@ -1,4 +1,4 @@
-# Socket io
+# Socket IO
 
 
 ### Terminal
@@ -10,13 +10,9 @@ import io from 'socket.io';
 import http from 'http';
 ```
 
-### main code
+### Main Code - Class X
 
 ```
-
-class X
-
-
 	constructor() {
 		this.socket()
 		// dictionary for future queries by user_id
