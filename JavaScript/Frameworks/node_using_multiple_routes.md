@@ -4,7 +4,8 @@
 ## Server file
 ```
 import express from 'express';
-// ./ because it's in the same directory as the server
+
+// './' stands for same directory as the server
 import routes from './routes';
 
 const app = express();
