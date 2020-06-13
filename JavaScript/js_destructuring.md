@@ -85,3 +85,60 @@ console.log(name);
 console.log(rest);
 
 ```
+
+#### Rest
+
+
+```
+function returnParams(...params){
+    return params;
+}
+
+console.log(returnParams(1, 3, 4, 33));
+
+// returns [1, 3, 4, 33]
+```
+
+#### SPREAD
+
+* **unpacking elements**
+```
+const arr1= [1, 2, 3];
+const arr2 = [4, 5, 6]
+
+const arr3 = [ ...arr1, ...arr2];
+// unpacks to [ 1, 2, 3, 4, 5, 6]
+```
+
+* **Creating a new oject with redefined attributes**
+
+```
+const usuario1 = {
+    nome: 'Diego',
+    idade: 23,
+    empresa: 'Rocketseat'
+}
+
+// Redefines a new object
+const usuario2 = {...usuario1, nome: 'Gabriel'};
+```
+
+
+#### Short Syntax
+
+
+```
+const nome = 'Diego';
+const idade = 23;
+
+const usuario = {
+    // nome: nome
+    nome,
+    // idade: idade
+    idade,
+    empresa: 'Rocketseat'
+};
+
+
+console.log(usuario)
+```

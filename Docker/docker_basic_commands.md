@@ -17,7 +17,10 @@ sudo docker run --name mongodb -p 27017:27017 -d mongo
 ### Show
 
 ```
+## only actives
 sudo docker ps
+## all
+sudo docker ps -a
 ```
 
 ### Test by trying to access the port
@@ -33,3 +36,13 @@ It looks like you are trying to access MongoDB over HTTP on the native driver po
 
 #### Install Robo T3 for testing MongoDB
 
+```
+google.com
+```
+
+
+### Restart docker after reeboting
+
+```
+sudo docker start CONTAINERNAME
+```

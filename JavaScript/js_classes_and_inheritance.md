@@ -34,3 +34,34 @@ class TodoList extends List {
     }
 
 ```
+
+
+#### Example 2
+
+```
+
+class Usuario {
+    constructor(email, password) {
+        this.email = email;
+        this.password = password;
+        this.admin = false
+
+    }
+
+    isAdmin() { return this.admin}
+}
+
+
+class Admin extends Usuario {
+    constructor(email, password) {
+        super(email, password);
+        super.admin = true;
+    }
+}
+
+const User1 = new Usuario('email@teste.com', 'senha123')
+const Admin1 = new Admin('email@teste.com', 'senha123')
+
+console.log(User1.isAdmin())
+console.log(Admin1.isAdmin())
+```
