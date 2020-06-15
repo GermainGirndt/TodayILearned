@@ -59,8 +59,8 @@ showName(user)
 * JS destructures the arguments automatically
 
 ```
-function showName({name}) {
-    console.log(name)
+function showName({name, idade}) {
+    console.log(name, idade)
 }
 
 showName(user)
