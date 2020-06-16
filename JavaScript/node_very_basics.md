@@ -5,6 +5,14 @@ npm -> Node Paket Manager
 express -> Node.js-Framework for Web Apps (eg. for defining paths)
 nodemon -> watches the changes
 
+node = class stack -> eternal event-loop with multi-threading
+
+node is originally single-thread, but utilizes the libuv (in C++), that allows you to utilize another threads
+
+Non-blocking I/O (input/output) -> websocket
+
+
+
 -D = --savedev
 ## Getting Started
 

@@ -1,4 +1,7 @@
-## Node - Simple API
+
+## Node - Express - API
+
+* Express - Microframework with own functionalities, multiservices and almost no mandatory architecture
 
 ## ROOT
 <details>
