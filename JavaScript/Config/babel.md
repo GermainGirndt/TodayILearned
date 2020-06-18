@@ -22,3 +22,12 @@ module.exports = {
 # enable running babel direct on terminal
 yarn add @babel/cli 
 yarn babel src/index.js --out-file public/bundle.js
+
+# For handling assync requests:
+```
+yarn add @babel/plugin-transform-runtime -D
+```
+
+```
+plugins: ["@babel/plugin-transform-runtime"],
+```
