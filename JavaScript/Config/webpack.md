@@ -73,12 +73,12 @@ module.exports = {
 };
 ```
 
-## Build and execute (transpile)
+### Build and execute (transpile)
 ```
 yarn webpack --mode development
 ```
 
-## Webpack Dev Server for countinuos file changes watch and reload
+### Webpack Dev Server for countinuos file changes watch and reload
 
 * **Install**
 ```
@@ -93,7 +93,7 @@ yarn add webpack-dev-server -D
   },
 ```
 
-## Build and execute with file watch
+### Build and execute with file watch
 ```
 yarn webpack-dev-server --mode development
 ```
