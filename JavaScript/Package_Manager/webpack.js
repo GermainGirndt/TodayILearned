@@ -1,13 +1,9 @@
 # JavaScript - Webpack
 
-Webpack - Service for having many files in the app (js, json, images)   
+Webpack - Service for having many files in the app with other extensions (js, json, images)   
 And all still be converted in the bundle.js   
-yarn add webpack webpack-cli   
 
-
-## Add modules
-* **Remember to change dependencies to devDependencies (package.json)** 
-
+### Install 
 ```
 
 yarn add webpack webpack-cli -D
@@ -15,7 +11,8 @@ yarn add babel-loader -D
 
 ```
 
-## Create config file
+
+### Create config file
 
 * **webpack.config.js**
 
@@ -42,7 +39,40 @@ module.exports = {
 };
 ```
 
-## New script
+
+
+
+### For css
+
+* Terminal
 ```
-    "dev": "webpack --mode=development -w"
+yarn add style-loader css-loader file-loader
+```
+
+* webpack configs:
+```
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+      },
+      {
+        test: /.*\.(gif|png|jpe?g|)$/i,
+        use: {
+          loader: "file-loader",
+        },
+      },
+
+```
+
+
+
+### Scripts
+
+```
+  "scripts": {
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+
 ```
