@@ -1,3 +1,53 @@
+## React Behind the Scenes
+
+* **Initial standard app jsx code**
+```
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+         <h1>Hi, I'm a rreact app</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+```
+
+
+* **Equivalent to**
+```
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+
+// React.createElement takes at least 3 elements:
+//  1 - Element to render,
+//  2 - Javascript object (element properties),
+//  3 - Children nested inside the rendered element (see 1)
+
+class App extends Component {
+  render() {
+    return React.createElement(
+      "div",
+      { className: "App" },
+      React.createElement("h1", null, "Does this work now?")
+    );
+  }
+}
+
+export default App;
+
+
+```
+
 
 ## Using Component and Passing in Props and Child
 * **app.js**
