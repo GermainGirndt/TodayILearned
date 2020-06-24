@@ -12,6 +12,8 @@ node is originally single-thread, but utilizes the libuv (in C++), that allows y
 Non-blocking I/O (input/output) -> websocket
 
 
+repository = persistence <-> repository <-> rote
+
 
 -D = --savedev
 ## Getting Started

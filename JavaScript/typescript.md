@@ -94,3 +94,33 @@ export default function createUser({ name, email, password }: CreateUserData) {
 }
 
 ```
+
+
+### Example Project 2
+
+```
+
+// typescript type
+interface Appointment {
+    id: string;
+    provider: string;
+    date: Date;
+}
+
+// defined typescript type with ': Appointment[]'
+const appointments: Appointment[] = [];
+
+// route gets '/appointments' from index.ts
+appointmentsRouter.post('/', (request, response) => {
+    const appointment = {
+        id: uuid(),
+        provider,
+        date: parsedDate,
+    };
+
+    appointments.push(appointment);
+
+    return response.json({ appointment });
+});
+
+```
