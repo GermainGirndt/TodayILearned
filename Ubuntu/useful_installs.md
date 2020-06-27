@@ -97,3 +97,12 @@ sudo apt-get install okular
 ```
 sudo apt-get install pdfshuffler 
 ```
+
+
+#### Printing key press on the screen
+
+```
+
+sudo add-apt-repository ppa:atareao/atareao
+sudo apt install screenkeyfk
+```
