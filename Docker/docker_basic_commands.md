@@ -8,7 +8,7 @@ sudo docker pull mongo
 
 ## Run
 name is the designation which we're going to use for the pulled mongo
-p stands for redirecting the ports (virtual machine:my machine)
+p stands for redirecting the ports (my machine:virtual machine)
 d stands for which image we're going to use (the downloaded container)
 ```
 sudo docker run --name mongodb -p 27017:27017 -d mongo
@@ -40,9 +40,32 @@ It looks like you are trying to access MongoDB over HTTP on the native driver po
 google.com
 ```
 
+#### Install Postgrees
+
+```
+sudo docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+
+```
 
 ### Restart docker after reeboting
 
 ```
 sudo docker start CONTAINERNAME
+```
+
+
+```
+sudo docker start CONTAINERID
+```
+
+### Check if all ports are occupied
+
+```
+ss -tulw
+```
+
+# Check if a given port is occupied (42)
+
+```
+sudo lsof -i:42
 ```
