@@ -45,3 +45,89 @@ usersRouter.patch(
 
 
 ```
+
+## Final Image Upload/Update Route
+
+```
+// patch for a updating few informations
+
+usersRouter.patch(
+    '/avatar',
+    ensureAuthenticated,
+    upload.single('avatar'),
+    async (request, response) => {
+        // logs file's metadata
+        try {
+            const updateUserAvatar = new UpdateUserAvatarService();
+            const user = await updateUserAvatar.execute({
+                user_id: request.user.id,
+                avatarFilename: request.file.filename,
+            });
+
+            return response.json(user);
+        } catch (err) {
+            return response.status(400).json({ error: err.message });
+        }
+    },
+);
+export default usersRouter;
+
+```
+
+## Final Image Upload/Update Service
+
+```
+
+import { getRepository } from 'typeorm';
+import User from '../models/User';
+import path from 'path';
+
+// Node file system
+import fs from 'fs';
+
+import uploadConfig from '../config/upload';
+
+interface Request {
+    user_id: string;
+    avatarFilename: string;
+}
+
+class UpdateUserAvatarService {
+    public async execute({ user_id, avatarFilename }: Request): Promise<User> {
+        const usersRepository = getRepository(User);
+
+        const user = await usersRepository.findOne(user_id);
+
+        if (!user) {
+            throw new Error('Only authenticated users can change avatar.');
+        }
+
+        if (user.avatar) {
+            // Delete previous avatar
+
+            const userAvatarFilePath = path.join(
+                uploadConfig.directory,
+                user.avatar,
+            );
+            const UserAvatarFileExists = await fs.promises.stat(
+                userAvatarFilePath,
+            );
+
+            if (UserAvatarFileExists) {
+                await fs.promises.unlink(userAvatarFilePath);
+            }
+        }
+
+        user.avatar = avatarFilename;
+
+        await usersRepository.save(user);
+
+        delete user.password;
+
+        return user;
+    }
+}
+
+export default UpdateUserAvatarService;
+
+```
