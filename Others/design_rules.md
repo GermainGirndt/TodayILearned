@@ -26,3 +26,9 @@
 ## Element Sizes
 * **Icons** - 16 or 20px
 * **Buttons** - 40 or 50px -> For Desktop
+
+## Fully round
+* **border-radius** - 50%
+
+## No underline by links
+* **text-decoration** - none
