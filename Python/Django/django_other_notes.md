@@ -40,12 +40,12 @@ class CreatePoA(generic.edit.CreateView):
         self.object.save()
         return super().form_valid(form)
 
-    def add_placeholder(self, form_class=None):
+    def get_form(self, form_class=None):
         if form_class is None:
             form_class = self.get_form_class()
-
         form = super(CreatePoA, self).get_form(form_class)
-        form.fields['name'].widget = forms.TextInput(attrs={'placeholder': 'John Snow'})
+        form.fields['forename'].label = 'Your Name:'
+        form.fields['forename'].widget = forms.TextInput(attrs={'placeholder': 'John Snow'})
         return form
 ```
 
