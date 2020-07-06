@@ -32,3 +32,4 @@
 * :flower_playing_cards: card
 * :bow: credits references
 * :clock2: round, clock, timer, hours
+* :rocket: rocket, fast, velocity, direct install, fast install, deploy
