@@ -9,8 +9,7 @@ Based on Corey Schafer's videos
 2. SublimeLinter (and not SublimeLint!) + individual packages
 3. Anaconda
 4. Terminus - Integrated Terminal Window (https://packagecontrol.io/packages/Terminus)
-5. Terminal Shortcut (ctrl+alt+T) (https://packagecontrol.io/packages/Terminal)
-6. Djaneiro (django) - https://packagecontrol.io/packages/Djaneiro
+5. Djaneiro (django) - https://packagecontrol.io/packages/Djaneiro
 
 ##### HTML-Linter Package
 
