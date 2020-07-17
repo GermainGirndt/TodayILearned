@@ -1,4 +1,7 @@
-# ormconfig.json
+# Using ORM
+
+
+### ormconfig.json
 
 ```
 {
@@ -15,16 +18,23 @@
 
 ```
 
+### Add database modules
+
+```
+yarn add pg --save
+```
+
 # package.json - scripts
 
 ```
-        "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+"typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
 ```
 
-# Terminal - Migrations
+# Create Migrations - Terminal - Examples
 
 ```
- yarn typeorm migration:create -n CreateAppointments
+yarn typeorm migration:create -n CreateAppointments
+yarn typeorm migration:create -n CreateUsers
 
 ```
 
@@ -82,7 +92,7 @@ export default class CreateAppointments1593092191606
 
 ```
 
-## Run Migration - Terminal
+## Run Migrations - Terminal
 
 ```
 yarn typeorm migration:run
@@ -93,21 +103,7 @@ yarn typeorm migration:run
 
 ```
 yarn typeorm migration:show
-yarn typeorm migration:rever
+yarn typeorm migration:revert
  
 ```
 
-
-
----
-
-## ORM - Create Users
-
-```
-yarn typeorm migration:create -n CreateUsers
-```
-
-## In the Mirgration
-```
-
-```
