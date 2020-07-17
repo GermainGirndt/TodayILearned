@@ -79,17 +79,6 @@ export default class CreateAppointments1593092191606
     }
 }
 
-/**
- *
- * Project Timeline (Migrations' Example)
- *
- * 1. Week: Agendamentos
- * 2. Week: User
- * 3. Week: New developer enters the team
- * 4. Week: Purchse
- *
- */
-
 ```
 
 ## Run Migrations - Terminal
