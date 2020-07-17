@@ -37,7 +37,7 @@ It looks like you are trying to access MongoDB over HTTP on the native driver po
 #### Install Robo T3 for testing MongoDB
 
 ```
-google.com
+Search on google.com
 ```
 
 #### Install Postgrees
@@ -47,15 +47,43 @@ sudo docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432
 
 ```
 
-### Restart docker after reeboting
+### Restart container after reeboting
 
 ```
 sudo docker start CONTAINERNAME
 ```
-
+**or**
 
 ```
 sudo docker start CONTAINERID
+```
+
+### Stop Container
+
+```
+docker stop CONTAINERSID
+```
+or 
+
+```
+docker stop CONTAINERSNAME
+```
+### Remove Docker Container
+
+```
+docker container rm CONTAINERID
+```
+
+### Remove all stopped containers
+
+```
+docker container prune
+```
+
+### Checking installed images
+
+```
+sudo docker images
 ```
 
 ### Check if all ports are occupied
