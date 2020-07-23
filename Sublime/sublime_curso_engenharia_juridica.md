@@ -1,6 +1,6 @@
 # Sublime Text
 
-## Instalar Sublime
+## Instalando o Sublime
 
 **1. Acesse [esse link](https://www.sublimetext.com/3)**   
 **2. Abra a barra de comandos** (CTRL + SHIFT + P ou clique em Tools (Ferramentas)-> Command Pallete)   
@@ -11,17 +11,20 @@
   * Digite/Selecione Package Control: Install Package
   * Digite Terminus   
 
-**5. Abra o Terminus utilizando o Sublime**
-	* **Opção 1** - Acesse a barra de comandos (passo 2) e execute "Terminus: Toggle Panel"
+**5. Abra o Terminus utilizando o Sublime e:**
+* **Opção 1**
+	* Acesse a barra de comandos (passo 2) e execute ```Terminus: Toggle Panel```
 
-	* **Opção 2** - **Adicione o novo atalho**
+* **Opção 2**
+	* Adicione o novo atalho:
+
 ```
 [
 	{ "keys": ["ctrl+'"], "command": "toggle_terminus_panel" }
 ]
 ```
 
-    * E pressione ao mesmo tempo **ctrl + '** (ao lado esquerdo do teclado, acima do Tab e ao lado do número 1)   
+   * E pressione ao mesmo tempo **ctrl + '** (ao lado esquerdo do teclado, acima do Tab e ao lado do número 1)   
 
 
 ![keyboard](https://github.com/GermainPereira/TodayILearned/blob/master/Others/Static/keyboard-ctrl_'.png?raw=true)
