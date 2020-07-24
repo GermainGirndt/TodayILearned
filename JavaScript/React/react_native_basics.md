@@ -13,4 +13,18 @@ ios com físico ip máquina
 android - emulador: adb reverse tcp:3935 tcp:3935 (redirect localhost -> emulator to computer)
 android - emulator (android studio): ip 10.0.2.2
 android - emulator (genymotion): ip 10.0.3.2
-android + físico - machine ip
+android + físico - machine ip (settings -> Debbuging -> Debug server and port for device || redirect adb port? )
+
+
+REMOVING ALL ADB REVERSES
+adb reverse --remove-all
+
+REMOVING SPECIFIC ADB REVERSE
+adb forward --remove tcp:8081
+
+
+IP
+
+ip addr show | grep 192
+
+
