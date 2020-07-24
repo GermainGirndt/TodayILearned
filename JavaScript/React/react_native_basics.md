@@ -28,3 +28,12 @@ IP
 ip addr show | grep 192
 
 
+for logging messages in the console:
+
+
+react-native log-ios        # For iOS
+react-native log-android    # For Android
+
+
+
+
