@@ -33,3 +33,8 @@
 * :bow: credits references
 * :clock2: round, clock, timer, hours
 * :rocket: rocket, fast, velocity, direct install, fast install, deploy
+* :ballot_box_with_check: check, appointment, booked
+* :heart_eyes: great, good, incredible, love
+* :newspaper: messages, letter, write
+
+
