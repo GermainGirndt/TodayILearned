@@ -9,7 +9,7 @@
 
 ### Icons
 * :notebook: diary, notes
-* :pencil: pencil with piece of paper, write, notes, tasks
+* :pencil: pencil with piece of paper, write, notes, tasks, write
 * :eight_spoked_asterisk: Origins
 * :mag_right: preview, magnifier, search, find, lens
 * :question: red question mark, search, find
@@ -36,5 +36,4 @@
 * :ballot_box_with_check: check, appointment, booked
 * :heart_eyes: great, good, incredible, love
 * :newspaper: messages, letter, write
-
-
+* :bank: bank, databank
