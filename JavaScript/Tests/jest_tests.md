@@ -59,3 +59,18 @@ preset: 'ts-jest'
 ```
 yarn test
 ```
+
+
+### Test Coverage
+
+* **jest.config.js**
+
+```
+
+collectCoverage: true,
+collectCoverageFrom: ['<rootDir>/src/modules/**/services/*.ts'],
+coverageDirectory: 'coverage',
+coverageReporters: ['text-sumary', 'lcov'],
+
+```
+
