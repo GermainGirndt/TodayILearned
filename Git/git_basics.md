@@ -59,7 +59,7 @@ git add -u
 ```
 
 ### Delete Branch
-* **Delete just label**
+* **Delete just label locally**
 ```
 git -d branchname 
 
@@ -68,6 +68,11 @@ git -d branchname
 ```
 git branch -d name (just deletes on the locacl repository)
 git push origin :name
+```
+or
+```
+git branch -d name (just deletes on the locacl repository)
+git push <remote_name> --delete <branch_name>
 ```
 
 ## Show Tracked Files
