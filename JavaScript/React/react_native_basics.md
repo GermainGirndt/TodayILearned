@@ -36,4 +36,17 @@ react-native log-android    # For Android
 
 
 
+* **error - Unable to load script from assets index.android.bundle**
 
+Add to package.json:
+```
+"android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
+
+```
+
+* **error - ENOENT: no such file or directory, open 'android/app/src/main/assets/index.android.bundle**
+
+Simply create 'assets' folder in
+```
+android/app/src/main/assets
+```
