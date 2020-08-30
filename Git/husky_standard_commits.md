@@ -46,6 +46,20 @@ git commit -m "Initial commit"
 git commit -m "feat: add initial setup"
 ```
 
+### More installs
+
+- **For commit packs**
+
+```
 yarn add commitizen -D
 
 yarn commitizen init cz-conventional-changelog --yarn --dev --exact
+```
+
+- **Add to package.json**
+
+```
+scripts: {
+  "commit": "git-cz"
+}
+```
