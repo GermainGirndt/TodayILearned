@@ -20,7 +20,7 @@ const handleScrollToRef = (ref) =>
 
 ```
 <div ref={formRef}>
-  <input type=text/>
+  <input type="text"/>
 </div>            
 ```
 
