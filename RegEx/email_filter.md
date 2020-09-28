@@ -3,5 +3,5 @@
 ### Code
 
 ```
-^((?!(@|\.)(gmail|hotmail|yahoo|aol|uol|terra|outlook|ig|superig|msn|gmx|yandex|protonmail|zohomail|icloud)).)*$
+^((?!(@|\.)(gmail|hotmail|yahoo|aol|uol|terra|outlook|ig|superig|msn|gmx|yandex|protonmail|zohomail|icloud)\.).)*$
 ```
