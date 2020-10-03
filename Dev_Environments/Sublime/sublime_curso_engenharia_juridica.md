@@ -18,7 +18,7 @@
 * **Opção 2 - Acessando pela atalho**
 	* Acesse a barra de comandos (passo 2)
 	* Abra as preferências de atalho digitando `Preferences: Terminus Key Bindings`
-	* Adicione o novo atalho nas key bindings de usuário (janela da direita):
+	* Adicione o novo atalho nas key bindings <ins>de usuário</ins> (janela da direita):
 ```
 [
 	{ "keys": ["ctrl+'"], "command": "toggle_terminus_panel" }
