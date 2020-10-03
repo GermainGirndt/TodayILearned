@@ -11,13 +11,14 @@
   * Digite/Selecione Package Control: Install Package
   * Digite Terminus   
 
-**5. Abra o Terminus utilizando o Sublime e:**
-* **Opção 1**
+**5. Abra o Terminus integrado no Sublime por meio de uma das seguintes opções:**
+* **Opção 1 - Acessando pela barra de comandos**
 	* Acesse a barra de comandos (passo 2) e execute ```Terminus: Toggle Panel```
 
-* **Opção 2**
-	* Adicione o novo atalho:
-
+* **Opção 2 - Acessando pela atalho**
+	* Acesse a barra de comandos (passo 2)
+	* Abra as preferências de atalho digitando `Preferences: Terminus Key Bindings`
+	* Adicione o novo atalho nas key bindings de usuário (janela da direita):
 ```
 [
 	{ "keys": ["ctrl+'"], "command": "toggle_terminus_panel" }
