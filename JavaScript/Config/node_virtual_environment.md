@@ -21,7 +21,7 @@ nodeenv --list
 
 * **install your node version**
 ```
-nodeenv node=version_from_the_list new_environments_name
+nodeenv --node=version_from_the_list new_environments_name
 ```
 
 * **activate your new venv**
