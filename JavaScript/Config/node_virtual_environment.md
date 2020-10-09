@@ -29,3 +29,7 @@ nodeenv --node=version_from_the_list new_environments_name
 . new_environments_name/bin/activate
 ```
 
+* **deactivate your venv**
+```
+deactivate_node
+```
