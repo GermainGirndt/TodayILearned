@@ -30,6 +30,15 @@
 
 ![keyboard](https://github.com/GermainPereira/TodayILearned/blob/master/Others/Static/keyboard-ctrl_'.png?raw=true)
 
+## O Terminus mesmo assim não funcionou?
+
+Alguns alunos usuário de Windows vêm relatado uma **mensagem de erro** ao salvar as configurações do Terminus.
+
+Nesse caso, recomenda-se a **reinstalação do sublime e dos respectivos pacotes**, [excluindo completamente os dados de aplicativo](https://stackoverflow.com/questions/56391480/how-can-i-uninstall-sublime-text-3-from-windows-10).
+
+Caso o problema ainda assim persista, recomenda-se **abrir o Terminus pela barra de comandos** (ver item 5 - opção 1)
+
+
 # Outras Referências
 
 ## Instalando o Terminus
