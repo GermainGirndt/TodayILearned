@@ -32,6 +32,7 @@
 
 ## O Terminus mesmo assim não funcionou?
 
+![error_sublime](https://github.com/GermainPereira/padir-logica-de-programacao/blob/master/3a-turma/sublime-terminus-error.jpg?raw=true)
 Alguns alunos usuário de Windows vêm relatado uma **mensagem de erro** ao salvar as configurações do Terminus.
 
 Nesse caso, recomenda-se a **reinstalação do sublime e dos respectivos pacotes**, [excluindo completamente os dados de aplicativo](https://stackoverflow.com/questions/56391480/how-can-i-uninstall-sublime-text-3-from-windows-10).
