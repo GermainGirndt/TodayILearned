@@ -20,3 +20,9 @@ pm2 list
 ```
 pm2 startup systemd
 ```
+
+### Unset always restart
+
+```
+pm2 startup systemd
+```
