@@ -1,3 +1,4 @@
+```
 const json = {
     "components": [
         {
@@ -913,3 +914,5 @@ function findComponent ( componentArg ) {
 
 const content = findComponent(json)
 console.log(content);
+
+```
