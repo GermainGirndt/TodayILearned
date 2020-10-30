@@ -861,55 +861,35 @@ function findComponent ( componentArg ) {
   // iterates over other keys and calls the function recursivelly
   // extracts 'component' key and return it
   if (typeof componentArg === 'object' && componentArg !== null) {
-
     if (componentArg["component"]) {
       componentsList = [...componentsList, componentArg["component"]]
     }   
 
     for (key in componentArg) {
-
       const moreComponents = findComponent(componentArg[key])
-
       if (moreComponents) {
         componentsList = [...componentsList, ...moreComponents]
       }
     }
-    
     if (componentsList) {
       return componentsList
     }
-
   }
-
-
+  
   // if array
   // iterates over elemenets
   // calls the function recursivelly
   if (Array.isArray(componentArg)) {
-
-
     for (arrayElement of componentArg) {
-
       const moreComponents = findComponent(arrayElement)
-
       if (moreComponents) {
-
         componentsList = [...componentsList, ...moreComponents]
-
       }
-
       if (componentsList) {
       return componentsList
      }
     }
-
-
-
   }
-
-
-
-  
 }
 
 const content = findComponent(json)
