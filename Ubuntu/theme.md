@@ -1,5 +1,5 @@
 ## Theme
-
+* Change font and themes (application and icons)  at Tweak Tool 
 ### Tweak Tool
 
 ```
@@ -25,5 +25,7 @@ cp -r flat-remix/Flat-Remix* ~/.icons/ && cp -r flat-remix-gtk/Flat-Remix-GTK* ~
 
 ### Font
 ```
-sudo apt install fonts-hack-ttf
+sudo apt install fonts-hack-ttf -y
 ```
+
+
