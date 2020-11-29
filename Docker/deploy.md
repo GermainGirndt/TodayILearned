@@ -1,3 +1,3 @@
 # Docker Deploy
 
-docker update --restart=unless-stopped
+`docker update --restart=unless-stopped`
