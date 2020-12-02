@@ -1,5 +1,18 @@
 # Terminal Automation
 
+## Rename ONLY file content in directories recursively
+
+```
+find . -type f -exec sed -i 's/contentToBeReplaced/newContent/g' {} \;
+``` 
+
+## Rename ONLY file AND directory names recursively
+
+```
+find directoryToRenameRecursively/ -exec rename 's/team/workflow/g' '{}' \;
+```
+
+
 
 ## Move multiple files in current folder
 
