@@ -14,7 +14,7 @@ git log --oneline --graph --decorate --all
 
 *git hist1*
 ```
-git config --global alias.hist "log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
+git config --global alias.hist "log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --graph"
 ```
 *git hist2*
 ```
