@@ -1,4 +1,4 @@
-# Terminal Automatization
+# Terminal Automation
 
 
 ## Move multiple files in current folder
