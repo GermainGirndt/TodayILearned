@@ -54,6 +54,7 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "material-icon-theme.activeIconPack": "nest",
 
-  "debug.node.autoAttach": "on"
+  "debug.node.autoAttach": "on",
+  "workbench.editor.enablePreview": false
 }
 ```
