@@ -6,7 +6,6 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
 
-  "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": false,
   "editor.fontSize": 20,
   "window.zoomLevel": -2,
