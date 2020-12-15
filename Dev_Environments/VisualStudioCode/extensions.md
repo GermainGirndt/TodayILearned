@@ -18,3 +18,4 @@
 * Angular Language Service
 * Angular Snippets (Version 11)
 * Docker
+* Git Lens
