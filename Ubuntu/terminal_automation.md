@@ -27,3 +27,12 @@ for f in *django*; do echo git mv -v -- "$f" django ; done
 ```
 for f in *django*; do git mv -v -- "$f" django ; done
 ```
+
+## Kill Process On Port
+
+#### Write it into `~./bashrc`
+```
+alias killport='
+kill_process () {     sudo kill -9 $(sudo lsof -t -i:$1); }
+kill_process '
+```
