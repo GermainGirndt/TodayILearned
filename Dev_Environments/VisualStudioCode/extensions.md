@@ -1,20 +1,25 @@
 # Visual Studio Code - Extensions
 
+## General
 * Live Server
 * Bracket Pair Colorizer
 * Color Highlight
-* Material Icon Theme
+* Material Icon Theme (and activate theme)
 * EditorConfig
 * Prettier Code Formatter
-* React Native Tools
-* ES7 React
 * ES Lint (yarn add eslint@6.8.0 -D)
-* VS Code Styled Components (syntax highlightning)
-* Create React JS and React Native Component (right-click component)
-* Angular 10 Snippets - Typescript...
-* Angular Essentials (Version 11)
-* Angular Files
-* Angular Language Service
-* Angular Snippets (Version 11)
 * Docker
 * Git Lens
+
+
+## Framework-specific
+#### React
+* React Native Tools
+* ES7 React
+* VS Code Styled Components (syntax highlightning)
+* Create React JS and React Native Component (right-click component)
+
+#### Angular
+* Angular Essentials (Version 11)
+* Angular 10 Snippets - Typescript...
+* Angular Files
