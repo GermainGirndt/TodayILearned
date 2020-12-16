@@ -4,7 +4,6 @@
 * Bracket Pair Colorizer
 * Color Highlight
 * Material Icon Theme
-* Omni (Dark Theme)
 * EditorConfig
 * Prettier Code Formatter
 * React Native Tools
