@@ -2,7 +2,7 @@
 
 ```
 {
-  "workbench.colorTheme": "Omni",
+  "terminal.integrated.shell.linux": "/usr/bin/bash",
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
 
