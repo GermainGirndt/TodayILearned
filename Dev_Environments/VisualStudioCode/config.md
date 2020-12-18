@@ -3,15 +3,23 @@
 ```
 {
   "terminal.integrated.shell.linux": "/usr/bin/bash",
+  "window.zoomLevel": -2,
+  "debug.node.autoAttach": "on",
+
+  "folders": [],
+  "settings": {},
+  "liveServer.settings.port": 3333,
+
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
 
   "editor.fontLigatures": false,
   "editor.fontSize": 20,
-  "window.zoomLevel": -2,
-  "workbench.iconTheme": "material-icon-theme",
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
 
+  "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.folders.associations": {
     "infra": "app",
     "entities": "class",
@@ -25,16 +33,14 @@
     "dtos": "typescript",
     "fakes": "mock"
   },
-
   "material-icon-theme.files.associations": {
     "ormconfig.json": "database",
     "tsconfig.json": "tune"
   },
+  "material-icon-theme.activeIconPack": "nest",
+  "liveServer.settings.donotShowInfoMsg": true,
 
-  "folders": [],
-  "settings": {},
-  "editor.formatOnSave": true,
-  "liveServer.settings.port": 3333,
+  "workbench.editor.enablePreview": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
@@ -46,14 +52,10 @@
   "files.associations": {
     "*.js": "javascriptreact"
   },
-  "typescript.updateImportsOnFileMove.enabled": "never",
-  "javascript.updateImportsOnFileMove.enabled": "never",
 
   "typescript.tsserver.log": "verbose",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "material-icon-theme.activeIconPack": "nest",
-
-  "debug.node.autoAttach": "on",
-  "workbench.editor.enablePreview": false
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }
+
 ```
