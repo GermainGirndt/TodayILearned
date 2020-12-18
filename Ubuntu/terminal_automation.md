@@ -32,8 +32,10 @@ for f in *django*; do git mv -v -- "$f" django ; done
 
 #### Write it into `~./bashrc`
 ```
-alias killport='
-kill_process () {     sudo kill -9 $(sudo lsof -t -i:$1); }
+alias kill-port='
+kill_process () {     
+    sudo kill -9 $(sudo lsof -t -i:$1); 
+}
 kill_process '
 ```
 
