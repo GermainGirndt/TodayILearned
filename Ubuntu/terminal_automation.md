@@ -36,3 +36,31 @@ alias killport='
 kill_process () {     sudo kill -9 $(sudo lsof -t -i:$1); }
 kill_process '
 ```
+
+## Confirm (Y/N) Automatically
+
+```
+confirm() {
+
+    # call with a prompt string or use a default
+
+    read -r -p "${1:-Are you sure? [y/N]} " response
+
+    case "$response" in
+
+        [yY][eE][sS]|[yY])
+
+            true
+
+            ;;
+
+        *)
+
+            false
+
+            ;;
+
+    esac
+
+}
+```
