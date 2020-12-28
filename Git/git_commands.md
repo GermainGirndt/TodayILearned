@@ -27,5 +27,15 @@ git config --global alias.hist2 "log --pretty=format:'%C(yellow)[%ad]%C(reset) %
 git config --global --list (check the aliases)
 ```
 
+### Setting default editor
 
+```
+git config --global core.editor
+```
 
+### Configuring user
+```
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "email@example.com"
+
+```
