@@ -17,6 +17,7 @@
   "editor.fontSize": 20,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[php]": { "editor.defaultFormatter": "bmewburn.vscode-intelephense-client" },
   "editor.formatOnSave": true,
 
   "workbench.iconTheme": "material-icon-theme",
