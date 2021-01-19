@@ -23,3 +23,8 @@
 * Angular Essentials (Version 11)
 * Angular 10 Snippets - Typescript...
 * Angular Files
+
+#### PHP
+* PHP Intelliphense (elephant icon)
+* PHP Intellisense
+* PHP Debug
