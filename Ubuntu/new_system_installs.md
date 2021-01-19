@@ -1,12 +1,14 @@
 
+# New System Installs
 
-
-# New Ubuntu system installs
-
-## System
+## Ubuntu
 
 #### Useful Installs
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/useful_installs.md
+
+
+#### Ubuntu Aliases
+https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/aliases.md
 
 
 #### Ubuntu Themes
@@ -17,17 +19,10 @@ https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/theme.md
 Settings -> appearance -> hide docker (left bar)
 
 #### Build Essential
-sudo apt-get install build-essential
-
-#### Git Commands and Aliases
-https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
-
-sudo apt install nodejs
-sudo apt install npm
+`sudo apt-get install build-essential`
     
-npm install -g @angular/cli 
+## Infra and Testing
 
-    
 #### Http packages and Docker
 ``` 
 sudo apt-get install \
@@ -50,40 +45,45 @@ Test with:
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/run_without_sudo.md
 
 
-VSCode
-`sudo snap install --classic code`
+#### DBeaver
 
-VSCode - Extensions, Config and Custom Shortcuts 
-https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/extensions.md
-https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/config.md
-https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/vscode_custom_shortcuts.md
-
-sudo snap install dbeaver-ce
-
-sudo apt install mysql-server
-
+`sudo snap install dbeaver-ce`
+#### MySQL
+```
 sudo apt install mysql-server
 sudo mysql_secure_installation
+```
 
+#### Insomnia
 
-
-
-
-
-# Add to sources
+```
 echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
     | sudo tee -a /etc/apt/sources.list.d/insomnia.list
 
-# Add public key used to verify code signature
 wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
     | sudo apt-key add -
 
-# Refresh repository sources and install Insomnia
 sudo apt-get update
 sudo apt-get install insomnia
+```
 
+## Git and development environments
 
+#### Git Commands and Aliases
+https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
 
-https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/aliases.md
+#### Package Managers and Frameworks
+```
+sudo apt install nodejs
+sudo apt install npm 
+npm install -g @angular/cli 
+```
 
+#### VSCode
+`sudo snap install --classic code`
+
+* **VSCode - Extensions, Config and Custom Shortcuts**
+https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/extensions.md
+https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/config.md
+https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/vscode_custom_shortcuts.md
 
