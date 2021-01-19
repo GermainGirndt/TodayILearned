@@ -82,7 +82,7 @@ npm install -g @angular/cli
 #### VSCode
 `sudo snap install --classic code`
 
-* **VSCode - Extensions, Config and Custom Shortcuts**
+**VSCode - Extensions, Config and Custom Shortcuts**
 https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/extensions.md
 https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/config.md
 https://github.com/GermainPereira/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/vscode_custom_shortcuts.md
