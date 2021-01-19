@@ -3,7 +3,18 @@
 #### Setting aliases
 
 ```
-subl ~/.bashrc
+gedit ~/.bashrc
+```
+
+#### Settings Terminal - Just current branch Message and Color Prompt
+
+```
+if [ "$color_prompt" = yes ]; then
+    PS1="\[\e[0;36m\]\w\[\e[0m\] \[\e[0;34m\]\$(__git_ps1 '(%s) ')\[\e[0m\]\$ "
+else
+    PS1="\[\e[0;36m\]\w\[\e[0m\] \[\e[0;34m\]\$(__git_ps1 '(%s) ')\[\e[0m\]\$ "
+fi
+unset color_prompt force_color_prompt
 ```
 
 #### Useful aliases
