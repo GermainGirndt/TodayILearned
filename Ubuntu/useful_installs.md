@@ -74,7 +74,7 @@ sudo apt install peek
 
 #### Pavucontrol - Stereomix Recordings
 ```
-1. Install pavucontrol from Ubuntu Software Center.   
+1. Install pavucontrol from Ubuntu Software Center. sudo apt install pavucontrol   
 2. Open PulseAudio Volume Control (Search For PulseAudio Volume Control in Dash).   
 3. Select Recording Tab.   
 4. Select "Monitor from *" on the app tab you wanna redirect the Stereo Mix (eg. Skype or Discord)
