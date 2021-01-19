@@ -72,6 +72,10 @@ sudo apt-get install insomnia
 #### Git Commands and Aliases
 https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
 
+#### Programming languages
+* **PHP:**
+https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
+
 #### Package Managers and Frameworks
 ```
 sudo apt install nodejs
