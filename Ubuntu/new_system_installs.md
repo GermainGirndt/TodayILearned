@@ -81,6 +81,10 @@ https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
 sudo apt install nodejs
 sudo apt install npm 
 npm install -g @angular/cli 
+
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+bash ./Anaconda3-2020.07-Linux-x86_64.sh
+conda update --all --yes
 ```
 
 #### VSCode
