@@ -34,4 +34,6 @@ kill_process () {
 }
 kill_process '
 
+alias 'get-publicip'='curl https://ipinfo.io/ip && echo'
+
 ```
