@@ -34,6 +34,13 @@ kill_process () {
 }
 kill_process '
 
-alias 'get-publicip'='curl https://ipinfo.io/ip && echo'
+alias get-ip='
+iplocal=$(hostname -I | grep -oP "([^\s]+)" | head -1)
+
+ipexternal=$(curl --silent http://checkip.amazonaws.com)
+
+echo "local    IP  =>  ${iplocal}"
+echo "external IP  =>  ${ipexternal}"
+'
 
 ```
