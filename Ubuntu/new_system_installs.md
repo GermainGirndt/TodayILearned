@@ -69,6 +69,11 @@ sudo apt-get install insomnia
 
 ## Git and development environments
 
+#### Git Configs
+`git config --global core.editor "vim"`
+`git config --global user.name "FIRST_NAME LAST_NAME"`
+`git config --global user.email "MY_NAME@example.com"`
+
 #### Git Commands and Aliases
 https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
 
