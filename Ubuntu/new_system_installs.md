@@ -28,6 +28,19 @@ Settings -> ...
 #### Build Essential
 `sudo apt-get install build-essential`
     
+#### Git
+`sudo apt install git`
+
+#### SSH/RSA
+```
+ssh-keygen -t rsa -b 2048 -C "germain.pereira@netlex.com.br"
+```
+
+Copy the key using:
+```
+sudo apt install xclip
+xclip -sel clip < ~/.ssh/id_ed25519.pub
+```
 ## Infra and Testing
 
 #### Http packages and Docker
