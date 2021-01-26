@@ -31,6 +31,11 @@ Settings -> ...
 #### Git
 `sudo apt install git`
 
+#### VSCODE
+`
+sudo snap install code
+`
+
 #### SSH/RSA
 ```
 ssh-keygen -t rsa -b 2048 -C "germain.pereira@netlex.com.br"
@@ -90,9 +95,9 @@ sudo apt-get install insomnia
 ## Git and development environments
 
 #### Git Configs
-`git config --global core.editor "vim"`
-`git config --global user.name "FIRST_NAME LAST_NAME"`
-`git config --global user.email "MY_NAME@example.com"`
+`git config --global core.editor "vim"` 
+`git config --global user.name "FIRST_NAME LAST_NAME"` 
+`git config --global user.email "MY_NAME@example.com"` 
 
 #### Git Commands and Aliases
 https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
