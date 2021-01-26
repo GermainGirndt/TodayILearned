@@ -100,9 +100,11 @@ sudo apt-get install insomnia
 ## Git and development environments
 
 #### Git Configs
-`git config --global core.editor "vim"` 
-`git config --global user.name "FIRST_NAME LAST_NAME"` 
-`git config --global user.email "MY_NAME@example.com"` 
+```
+git config --global core.editor "vim"
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "MY_NAME@example.com"
+```
 
 #### Git Commands and Aliases
 https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
@@ -113,8 +115,8 @@ https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
 
 #### Package Managers and Frameworks
 ```
-sudo apt install nodejs
-sudo apt install npm 
+sudo apt install -y nodejs
+sudo apt install -y npm 
 npm install -g @angular/cli 
 
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
