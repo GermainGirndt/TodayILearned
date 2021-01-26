@@ -14,9 +14,16 @@ https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/aliases.md
 #### Ubuntu Themes
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/theme.md
 
-
+#### Google Chrome
+```
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+```
 #### Hide left-menu docker
 Settings -> appearance -> hide docker (left bar)
+
+#### Custom Keyboard Inputs
+Settings -> ...
 
 #### Build Essential
 `sudo apt-get install build-essential`
