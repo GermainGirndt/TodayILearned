@@ -59,12 +59,17 @@ sudo apt-get install \
     
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 sudo apt update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
 apt-cache policy docker-ce
 sudo apt install docker
 ```
-
+* **Verify**
+`
+sudo docker run hello-world
+`
 
 #### Run command without sudo (docker for instance)
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/run_without_sudo.md
