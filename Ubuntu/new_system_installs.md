@@ -45,7 +45,7 @@ Settings -> ...
 
 #### VSCODE
 
-`sudo snap install code -classic`
+`sudo snap install code --classic`
 
 #### SSH/RSA
 
