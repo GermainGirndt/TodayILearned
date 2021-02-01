@@ -147,7 +147,11 @@ https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
 ```
 sudo apt install -y nodejs
 sudo apt install -y npm
-npm install -g @angular/cli
+sudo npm install -g @angular/cli
+sudo npm install yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
 
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
 bash ./Anaconda3-2020.07-Linux-x86_64.sh

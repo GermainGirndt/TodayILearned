@@ -46,6 +46,11 @@
     li {
       margin-left: 1rem;
     }
+
+    .test:hover {
+      color: red;
+      transition-duration: 3s;
+    }
   </style>
 </head>
 
@@ -61,15 +66,17 @@
 
         <li>
           <h3>article and session</h3>
-groups content 
+          groups content
         </li>
 
         <li>
 
-          <h3>area</h3>
-          The area tag just defines space in which the user can click, there is no visual representation of it so you can't really use CSS to style it. 
+          <h3 class="test">area</h3>
+          The area tag just defines space in which the user can click, there is no visual representation of it so you
+          can't really use CSS to style it.
           Used within map element. Self-closing tag. Can be M-> 1.
-          The HTML <area> element defines an area inside an image map that has predefined clickable areas. An image map allows geometric areas on an image to be associated with hypertext link.
+          The HTML <area> element defines an area inside an image map that has predefined clickable areas. An image map
+          allows geometric areas on an image to be associated with hypertext link.
           https://developer.mozilla.org/en-US/docs/Web/HTML/Element/area
         </li>
         <li>
@@ -127,10 +134,23 @@ groups content
     <section>
       <h2>HTML Attributes</h2>
 
-      <ul>
-        <li>position:</li>
-        <li></li>
-        <li></li>
+
+      <li>position:</li>
+      <li>
+
+        <fieldset>
+
+          <form >
+            <legend>legend</legend>
+            <label for="url">url</label>
+            <input type="url">
+            <input type="submit" action="/" method="post" value="Submit" pattern="http://.+">
+          </form>
+
+        </fieldset>
+
+      </li>
+      <li></li>
       </ul>
     </section>
   </article>
@@ -282,19 +302,44 @@ groups content
         <ul>
 
           <li>
-          <h3>DHMTL</h3>
-          Dynamic HTML = HTML + JS
+            <h3>DHMTL</h3>
+            Dynamic HTML = HTML + JS
           </li>
 
 
           <li>
             <h3>CanvasGradient</h3>
-            The CanvasGradient interface represents an opaque object describing a gradient. It is returned by the methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient().
+            The CanvasGradient interface represents an opaque object describing a gradient. It is returned by the
+            methods CanvasRenderingContext2D.createLinearGradient() or CanvasRenderingContext2D.createRadialGradient().
 
             CanvasGradient.addColorStop()
-            Adds a new stop, defined by an offset and a color, to the gradient. If the offset is not between 0 and 1, inclusive, an INDEX_SIZE_ERR is raised; if the color can't be parsed as a CSS <color>, a SYNTAX_ERR is raised.
-            
-            </li>
+            Adds a new stop, defined by an offset and a color, to the gradient. If the offset is not between 0 and 1,
+            inclusive, an INDEX_SIZE_ERR is raised; if the color can't be parsed as a CSS <color>, a SYNTAX_ERR is
+              raised.
+
+          </li>
+
+
+          <li>
+            <h3>Navigator</h3>
+
+            The Navigator interface represents the state and the identity of the user agent. It allows scripts to query
+            it and to register themselves to carry on some activities.
+
+            Connection check
+
+            (window.)navigator.online //true
+          </li>
+
+
+          <li>
+            <h3>parser</h3>
+
+            let int = parseInt(stringValue, basisNumber);
+
+            basisNumber can be any number from 2 to 36
+
+          </li>
         </ul>
 
 
@@ -315,6 +360,9 @@ groups content
           </li>
 
 
+          <li><h3>onkeydown</h3>
+          can be specially used for form validation, for preventing the user from even see the wrong character
+        </li>
 
           <li>
 
