@@ -22,8 +22,8 @@ sudo snap install pycharm-community --classic
 
 #### OBS - Open Broadcaster Software
 ```
-sudo apt install ffmpeg
-sudo apt install obs-studio
+sudo apt install -y ffmpeg
+sudo apt install -y obs-studio
 ```
 
 #### Kdenlive - Video Editor
