@@ -1,10 +1,15 @@
 # New System Installs
 
+```
+sudo apt update
+``` 
 ## Ubuntu
 
 #### Increase number of file watchers
 
 ```
+sudo apt install watchman
+
 echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && watchman shutdown-server && sudo sysctl -p
 ```
 
