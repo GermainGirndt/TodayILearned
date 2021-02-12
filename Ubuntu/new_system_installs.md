@@ -25,6 +25,14 @@ https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/aliases.md
 
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/theme.md
 
+#### Virtualbox
+
+```
+sudo apt-get install virtualbox
+sudo apt-get install virtualbox—ext–pack
+```
+
+
 #### Google Chrome
 
 ```
