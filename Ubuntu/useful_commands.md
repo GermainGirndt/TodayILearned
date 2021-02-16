@@ -34,3 +34,8 @@ and **NOT**
 ```
 yourscript.sh
 ```
+
+* **get ip from dns*
+```
+nslookup google.com
+```
