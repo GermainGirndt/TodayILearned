@@ -29,7 +29,8 @@ services:
 
 `docker-compose exec nginx apk add bash`
 
-* **Enter the container using bash**
+* **Enter the container using bash**    
+
 `docker-compose exec nginx bash`
 
 * **Install vim**
@@ -64,7 +65,7 @@ server {
 
 ## Change the node's content
 
-* **Change to the desired html:** `vim /usr/share/nginx/html/index.html`
+`vim /usr/share/nginx/html/index.html`
 
 ## Follow logs
 
