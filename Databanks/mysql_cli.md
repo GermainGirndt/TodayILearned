@@ -20,3 +20,5 @@
 ### Check bind-address
 `mysqld --verbose --help | grep bind-address`
 
+### Copy file from Container
+`docker cp CONTAINERNAME:PATH_TO_FILE DESTINATION_PATH`
