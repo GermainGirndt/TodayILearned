@@ -12,7 +12,35 @@ https://elixir-lang.org/install.html
 `mix archive.install hex phx_new 1.5.7`
 
 ## Project Start (Generic)
-mix phx.new PROJECT_NAME
+`mix phx.new PROJECT_NAME`
 
 ## Project Start (API)
-mix phx.new PROJECT_NAME--no-webpack --no-html
+`mix phx.new PROJECT_NAME--no-webpack --no-html`
+
+## DB
+`mix ecto.setup`
+
+## Install credo - syntatical analyzer
+
+In `mix.exs` add following dependency:
+`{:credo, "~> 1.5", only: [:dev, :test], runtime: false}`
+
+Install - Terminal
+`mix deps.get`
+
+Config
+`mix credo gen.config`
+
+Change:
+`{Credo.Check.Readability.ModuleDoc, []},`
+To:
+`{Credo.Check.Readability.ModuleDoc, false},`
+
+(For now, we don't want any documentation
+
+
+### Execute server
+`mix phx.server`
+
+Access
+`http://localhost:4000/dashboard/home`
