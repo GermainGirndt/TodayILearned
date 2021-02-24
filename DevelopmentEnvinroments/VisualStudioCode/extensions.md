@@ -28,3 +28,7 @@
 * PHP Intelliphense (elephant icon)
 * PHP Intellisense
 * PHP Debug
+
+#### Elixir
+* ElixirLinter
+* Elixir LS (unset wrapped-dialyzer and suggest specs;
