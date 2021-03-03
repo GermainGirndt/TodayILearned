@@ -21,6 +21,16 @@ git config --global alias.hist "log --pretty=format:'%C(yellow)%h %Cred%ad %Cblu
 git config --global alias.hist2 "log --pretty=format:'%C(yellow)[%ad]%C(reset) %C(green)[%h]%C(reset) | %C(red)%s %C(bold red){{%an}}%C(reset) %C(blue)%d%C(reset)' --graph --date=short"
 ```
 
+*git mmaster/mdev/mprod*
+
+```
+git config --global alias.mmaster "log --merges --first-parent master --pretty=format:'%h %<(10,trunc)%aN %C(white)%<(15)%ar%Creset %C(red bold)%<(15)%D%Creset %s'"
+
+git config --global alias.mdev "log --merges --first-parent dev --pretty=format:'%h %<(10,trunc)%aN %C(white)%<(15)%ar%Creset %C(red bold)%<(15)%D%Creset %s'"
+
+git config --global alias.mprod "log --merges --first-parent prod --pretty=format:'%h %<(10,trunc)%aN %C(white)%<(15)%ar%Creset %C(red bold)%<(15)%D%Creset %s'"
+```
+
 ### Checking defined aliases
 
 ```
