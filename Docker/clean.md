@@ -1,8 +1,8 @@
-Excluded not used containers
+### Exclude not used containers
 
 `docker system prune`
 
-Delete all containers, volumes and images using the following commands:
+### Delete all containers, volumes and images using the following commands:
 
 ```
 docker rm -f $(docker ps -a -q)
