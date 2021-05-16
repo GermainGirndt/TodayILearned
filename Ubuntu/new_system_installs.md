@@ -179,7 +179,7 @@ conda update --all --yes
 
 `sudo snap install --classic code`
 
-**VSCode - Extensions, Config and Custom Shortcuts**
-https://github.com/GermainGirndt/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/extensions.md  
-https://github.com/GermainGirndt/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/config.md  
-https://github.com/GermainGirndt/TodayILearned/blob/master/Dev_Environments/VisualStudioCode/vscode_custom_shortcuts.md  
+**VSCode - Extensions, Config and Custom Shortcuts**  
+https://github.com/GermainGirndt/TodayILearned/blob/master/DevelopmentEnvinroments/VisualStudioCode/extensions.md  
+https://github.com/GermainGirndt/TodayILearned/blob/master/DevelopmentEnvinroments/VisualStudioCode/config.md  
+https://github.com/GermainGirndt/TodayILearned/blob/master/DevelopmentEnvinroments/VisualStudioCode/vscode_custom_shortcuts.md  
