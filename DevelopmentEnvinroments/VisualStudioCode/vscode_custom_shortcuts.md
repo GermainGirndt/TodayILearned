@@ -17,6 +17,16 @@
     "key": "ctrl+shift+6",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+z",
+    "command": "merge-conflict.previous",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+alt+x",
+    "command": "merge-conflict.next",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]
 
