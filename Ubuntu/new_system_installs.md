@@ -50,15 +50,15 @@ Settings -> ...
 
 #### Build Essential
 
-`sudo apt-get install build-essential`
+`sudo apt-get install -y build-essential`
 
 #### Git
 
-`sudo apt install git`
+`sudo apt install -y git`
 
 #### VSCODE
 
-`sudo snap install code --classic`
+`sudo snap install -y code --classic`
 
 #### SSH/RSA
 
@@ -98,7 +98,7 @@ sudo apt-get install \
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu/dists focal stable"
 sudo apt update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 apt-cache policy docker-ce
@@ -119,10 +119,14 @@ https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/run_without_s
 #### MySQL
 
 ```
-sudo apt install mysql-server
+sudo apt install -y mysql-server
 sudo mysql_secure_installation
 ```
 
+#### Postman
+```
+sudo snap install -y postman
+```
 #### Insomnia
 
 ```
@@ -133,7 +137,7 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
     | sudo apt-key add -
 
 sudo apt-get update
-sudo apt-get install insomnia
+sudo apt-get install -y insomnia
 ```
 
 ## Git and development environments
