@@ -4,18 +4,18 @@
 ## System
 
 #### Monitor Processes
-``sudo apt install htop`` 
+``sudo apt install -y htop`` 
 
 
 #### Print Directories Tree
-``sudo apt install tree ``
+``sudo apt install -y tree ``
 
 ## Programming
 
 
 #### Pycharm
 ```
-sudo snap install pycharm-community --classic
+sudo snap install -y pycharm-community --classic
 ```
 
 ## Recording
@@ -30,7 +30,7 @@ sudo apt install -y obs-studio
 ```
 sudo add-repository ppa:kdenlive/kdenlive-stable
 sudo apt update
-sudo apt install kdenlive
+sudo apt install -y kdenlive
 ```
 
 #### Kdenlive - Extensions
@@ -47,7 +47,7 @@ https://www.openshot.org/ppa/
 
 sudo add-apt-repository ppa:openshot.developers/ppa    
 sudo apt-get update   
-sudo apt-get install openshot-qt  
+sudo apt-get install -y openshot-qt  
 ```
 
 #### Handbreaker - Video file conversor (lower file size) 
@@ -67,7 +67,7 @@ https://www.blackmagicdesign.com/products/davinciresolve/
 ```
 sudo add-apt-repository ppa:peek-developers/stable
 sudo apt update
-sudo apt install peek
+sudo apt install -y peek
 ```
 
 ## Recording - Audio
@@ -75,7 +75,7 @@ sudo apt install peek
 #### Pavucontrol - Stereomix Recordings
 
 1. Install pavucontrol from Ubuntu Software Center.  
-```sudo apt install pavucontrol```
+```sudo apt install -y pavucontrol```
 2. Open PulseAudio Volume Control (Search For PulseAudio Volume Control in Dash).   
 3. Select Recording Tab.   
 4. Select "Monitor from *" on the app tab you wanna redirect the Stereo Mix (eg. Skype or Discord)
@@ -84,19 +84,19 @@ sudo apt install peek
 #### Pulse Audio Effects - Equalizer
 
 ```
-sudo apt install pulseeffects
+sudo apt install -y pulseeffects
 ```
 
 
 #### Okular - PDF Viewer
 ```
-sudo apt-get install okular
+sudo apt-get install -y okular
 ```
 
 
 #### PDF Shuffler - PDF Editor
 ```
-sudo apt-get install pdfshuffler 
+sudo apt-get install -y pdfshuffler 
 ```
 
 
@@ -105,5 +105,5 @@ sudo apt-get install pdfshuffler
 ```
 
 sudo add-apt-repository ppa:atareao/atareao
-sudo apt install screenkeyfk
+sudo apt install -y screenkeyfk
 ```
