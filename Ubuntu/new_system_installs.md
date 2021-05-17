@@ -112,6 +112,10 @@ sudo apt install docker
 
 https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/run_without_sudo.md
 
+#### MySQL Workbench
+
+https://dev.to/gsudarshan/how-to-install-mysql-and-workbench-on-ubuntu-20-04-localhost-5828
+
 #### DBeaver
 
 `sudo snap install dbeaver-ce`
