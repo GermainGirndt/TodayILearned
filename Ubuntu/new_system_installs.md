@@ -58,7 +58,7 @@ Settings -> ...
 
 #### VSCODE
 
-`sudo snap install -y code --classic`
+`sudo snap install code --classic`
 
 #### SSH/RSA
 
@@ -129,7 +129,7 @@ sudo mysql_secure_installation
 
 #### Postman
 ```
-sudo snap install -y postman
+sudo snap install postman
 ```
 #### Insomnia
 
