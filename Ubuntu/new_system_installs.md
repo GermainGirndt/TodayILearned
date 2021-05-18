@@ -15,15 +15,15 @@ echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && echo 999999 |
 
 #### Useful Installs
 
-https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/useful_installs.md
+https://github.com/GermainGirndt/TodayILearned/blob/master/Ubuntu/useful_installs.md
 
 #### Ubuntu Aliases
 
-https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/aliases.md
+https://github.com/GermainGirndt/TodayILearned/blob/master/Ubuntu/aliases.md
 
 #### Ubuntu Themes
 
-https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/theme.md
+https://github.com/GermainGirndt/TodayILearned/blob/master/Ubuntu/theme.md
 
 #### Virtualbox
 
