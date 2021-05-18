@@ -48,17 +48,7 @@ Settings -> appearance -> hide docker (left bar)
 
 Settings -> ...
 
-#### Build Essential
 
-`sudo apt-get install -y build-essential`
-
-#### Git
-
-`sudo apt install -y git`
-
-#### VSCODE
-
-`sudo snap install code --classic`
 
 #### SSH/RSA
 
@@ -83,66 +73,12 @@ sudo apt install xclip
 xclip -sel clip < ~/.ssh/id_ed25519.pub
 ```
 
-## Infra and Testing
-
-#### Http packages and Docker
-
-```
-sudo apt-get install \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
-
-
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu/dists focal stable"
-sudo apt update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-apt-cache policy docker-ce
-sudo apt install docker
-```
-
-- **Verify**
-  `sudo docker run hello-world`
-
-#### Run command without sudo (docker for instance)
-
-https://github.com/GermainPereira/TodayILearned/blob/master/Ubuntu/run_without_sudo.md
+#### Run command without sudo (eg. `docker`)
+https://github.com/GermainGirndt/TodayILearned/blob/master/Ubuntu/run_without_sudo.md
 
 #### MySQL Workbench
 
 https://dev.to/gsudarshan/how-to-install-mysql-and-workbench-on-ubuntu-20-04-localhost-5828
-
-#### DBeaver
-
-`sudo snap install dbeaver-ce`
-
-#### MySQL
-
-```
-sudo apt install -y mysql-server
-sudo mysql_secure_installation
-```
-
-#### Postman
-```
-sudo snap install postman
-```
-#### Insomnia
-
-```
-echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
-    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
-
-wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
-    | sudo apt-key add -
-
-sudo apt-get update
-sudo apt-get install -y insomnia
-```
 
 ## Git and development environments
 
@@ -156,32 +92,8 @@ git config --global user.email "MY_NAME@example.com"
 
 #### Git Commands and Aliases
 
-https://github.com/GermainPereira/TodayILearned/blob/master/Git/git_commands.md
+https://github.com/GermainGirndt/TodayILearned/blob/master/Git/git_commands.md
 
-#### Programming languages
-
-- **PHP:**
-  https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
-
-#### Package Managers and Frameworks
-
-```
-sudo apt install -y nodejs
-sudo apt install -y npm
-sudo npm install -g @angular/cli
-sudo npm install yarn
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
-
-wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
-bash ./Anaconda3-2020.07-Linux-x86_64.sh
-conda update --all --yes
-```
-
-#### VSCode
-
-`sudo snap install --classic code`
 
 **VSCode - Extensions, Config and Custom Shortcuts**  
 https://github.com/GermainGirndt/TodayILearned/blob/master/DevelopmentEnvinroments/VisualStudioCode/extensions.md  
