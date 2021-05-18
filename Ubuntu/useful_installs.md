@@ -13,9 +13,101 @@
 ## Programming
 
 
+#### Build Essential
+
+```
+sudo apt-get install -y build-essential
+```
+
+#### Git
+```
+sudo apt install -y git
+```
+
+#### VSCODE
+```
+sudo snap install code --classic
+```
+
 #### Pycharm
 ```
 sudo snap install -y pycharm-community --classic
+```
+
+## Infra and Testing
+
+#### Http packages and Docker
+
+```
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo apt-key fingerprint 0EBFCD88
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu/dists focal stable"
+sudo apt update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+apt-cache policy docker-ce
+sudo apt install docker
+```
+
+- **Verify**
+  `sudo docker run hello-world`
+
+
+#### DBeaver
+```
+sudo snap install dbeaver-ce
+```
+
+#### MySQL
+
+```
+sudo apt install -y mysql-server
+sudo mysql_secure_installation
+```
+
+#### Postman
+```
+sudo snap install postman
+```
+#### Insomnia
+
+```
+echo "deb https://dl.bintray.com/getinsomnia/Insomnia /" \
+    | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+
+wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
+    | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get install -y insomnia
+```
+
+## Programming: Languages and Tools
+
+#### PHP
+  https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
+
+#### Package Managers and Frameworks
+
+```
+sudo apt install -y nodejs
+sudo apt install -y npm
+sudo npm install -g @angular/cli
+sudo npm install yarn
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
+
+wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh
+bash ./Anaconda3-2020.07-Linux-x86_64.sh
+conda update --all --yes
 ```
 
 ## Recording
@@ -97,13 +189,4 @@ sudo apt-get install -y okular
 #### PDF Shuffler - PDF Editor
 ```
 sudo apt-get install -y pdfshuffler 
-```
-
-
-#### Printing key press on the screen
-
-```
-
-sudo add-apt-repository ppa:atareao/atareao
-sudo apt install -y screenkeyfk
 ```
