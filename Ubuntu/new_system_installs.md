@@ -20,6 +20,11 @@ echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && echo 999999 |
 #### Preload Most Used Apps In RAM Memory
 `sudo apt install preload`
 
+
+#### Use Googles DNS System as Default
+`8.8.8.8,8.8.4.4`
+
+
 #### Useful Installs
 
 https://github.com/GermainGirndt/TodayILearned/blob/master/Ubuntu/useful_installs.md
