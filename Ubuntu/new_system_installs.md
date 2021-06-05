@@ -11,7 +11,14 @@ sudo apt update
 sudo apt install watchman
 
 echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_watches && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_queued_events && echo 999999 | sudo tee -a /proc/sys/fs/inotify/max_user_instances && watchman shutdown-server && sudo sysctl -p
+
 ```
+#### Media Codecs
+`sudo apt install -y ubuntu-restricted-extras`
+
+
+#### Preload Most Used Apps In RAM Memory
+`sudo apt install preload`
 
 #### Useful Installs
 
