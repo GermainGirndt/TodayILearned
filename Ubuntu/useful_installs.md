@@ -112,10 +112,20 @@ conda update --all --yes
 
 ## Recording
 
-#### OBS - Open Broadcaster Software
+#### 
+- Open Broadcaster Software
 ```
 sudo apt install -y ffmpeg
-sudo apt install -y obs-studio
+sudo snap install -y obs-studio
+
+sudo snap connect obs-studio:alsa
+sudo snap connect obs-studio:audio-record
+sudo snap connect obs-studio:avahi-control
+sudo snap connect obs-studio:camera
+sudo snap connect obs-studio:jack1
+sudo snap connect obs-studio:kernel-module-observe
+sudo snap connect obs-studio:screencast-legacy
+
 ```
 
 #### Kdenlive - Video Editor
