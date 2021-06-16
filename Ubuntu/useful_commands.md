@@ -1,9 +1,17 @@
 ## Useful Commands
 
 
-#### Machine Name
+#### Machine
 
+* **Machine Name**
+```
 uname -a
+```
+
+* **Get Machine Information (Model, Serial, etc...)**
+```
+sudo dmidecode | grep -A 10 "System Information"
+```
 
 
 #### SecureBoot
