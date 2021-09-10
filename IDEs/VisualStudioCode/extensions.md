@@ -1,34 +1,40 @@
 # Visual Studio Code - Extensions
 
 ## General
-* Live Server
-* Bracket Pair Colorizer
-* Color Highlight
-* Material Icon Theme (and activate theme)
-* EditorConfig
-* Prettier Code Formatter
-* ES Lint (yarn add eslint@6.8.0 -D)
-* Docker
-* Git Lens
 
+- Live Server
+- Bracket Pair Colorizer
+- Color Highlight
+- Material Icon Theme (and activate theme)
+- EditorConfig
+- Prettier Code Formatter
+- ES Lint (yarn add eslint@6.8.0 -D)
+- Docker
+- Git Lens
+- dotEnv
 
 ## Framework-specific
+
 #### React
-* React Native Tools
-* ES7 React
-* VS Code Styled Components (syntax highlightning)
-* Create React JS and React Native Component (right-click component)
+
+- React Native Tools
+- ES7 React
+- VS Code Styled Components (syntax highlightning)
+- Create React JS and React Native Component (right-click component)
 
 #### Angular
-* Angular Essentials (Version 11)
-* Angular 10 Snippets - Typescript...
-* Angular Files
+
+- Angular Essentials (Version 11)
+- Angular 10 Snippets - Typescript...
+- Angular Files
 
 #### PHP
-* PHP Intelliphense (elephant icon)
-* PHP Intellisense
-* PHP Debug
+
+- PHP Intelliphense (elephant icon)
+- PHP Intellisense
+- PHP Debug
 
 #### Elixir
-* ElixirLinter
-* Elixir LS (unset wrapped-dialyzer and suggest specs;
+
+- ElixirLinter
+- Elixir LS (unset wrapped-dialyzer and suggest specs;
