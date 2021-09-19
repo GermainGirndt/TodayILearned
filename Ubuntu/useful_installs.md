@@ -1,17 +1,16 @@
-
 # Useful Installs for Ubuntu
 
 ## System
 
 #### Monitor Processes
-``sudo apt install -y htop`` 
 
+`sudo apt install -y htop`
 
 #### Print Directories Tree
-``sudo apt install -y tree ``
+
+`sudo apt install -y tree `
 
 ## Programming
-
 
 #### Build Essential
 
@@ -20,16 +19,19 @@ sudo apt-get install -y build-essential
 ```
 
 #### Git
+
 ```
 sudo apt install -y git
 ```
 
 #### VSCODE
+
 ```
 sudo snap install code --classic
 ```
 
 #### Pycharm
+
 ```
 sudo snap install -y pycharm-community --classic
 ```
@@ -59,8 +61,8 @@ sudo apt install docker
 - **Verify**
   `sudo docker run hello-world`
 
-
 #### DBeaver
+
 ```
 sudo snap install dbeaver-ce
 ```
@@ -73,9 +75,11 @@ sudo mysql_secure_installation
 ```
 
 #### Postman
+
 ```
 sudo snap install postman
 ```
+
 #### Insomnia
 
 ```
@@ -92,7 +96,8 @@ sudo apt-get install -y insomnia
 ## Programming: Languages and Tools
 
 #### PHP
-  https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
+
+https://linuxize.com/post/how-to-install-php-8-on-ubuntu-20-04/
 
 #### Package Managers and Frameworks
 
@@ -110,10 +115,18 @@ bash ./Anaconda3-2020.07-Linux-x86_64.sh
 conda update --all --yes
 ```
 
+## Image Edition
+
+#### GIMP
+
+```
+sudo apt install gimp
+```
+
 ## Recording
 
-#### 
-- Open Broadcaster Software
+#### OBS - Open Broadcaster Software
+
 ```
 sudo apt install -y ffmpeg
 sudo snap install -y obs-studio
@@ -129,6 +142,7 @@ sudo snap connect obs-studio:screencast-legacy
 ```
 
 #### Kdenlive - Video Editor
+
 ```
 sudo add-repository ppa:kdenlive/kdenlive-stable
 sudo apt update
@@ -136,7 +150,9 @@ sudo apt install -y kdenlive
 ```
 
 #### Kdenlive - Extensions
+
 ###### Breeze
+
 ```
 sudo apt-get install kdenlive breeze frei0r-plugins
 Settings -> Theme -> Breeze
@@ -144,15 +160,17 @@ Settings -> Force breeze icons
 ```
 
 #### OpenShot - Video Editor
-```
-https://www.openshot.org/ppa/   
 
-sudo add-apt-repository ppa:openshot.developers/ppa    
-sudo apt-get update   
-sudo apt-get install -y openshot-qt  
+```
+https://www.openshot.org/ppa/
+
+sudo add-apt-repository ppa:openshot.developers/ppa
+sudo apt-get update
+sudo apt-get install -y openshot-qt
 ```
 
-#### Handbreaker - Video file conversor (lower file size) 
+#### Handbreaker - Video file conversor (lower file size)
+
 ```
 sudo add-apt-repository ppa:stebbins/handbrake-releases
 sudo apt update
@@ -161,11 +179,13 @@ sudo apt install handbrake-cli handbrake-gtk
 ```
 
 #### DavinciResolve - Video Editor
+
 ```
 https://www.blackmagicdesign.com/products/davinciresolve/
 ```
 
 #### Peek - Screen GIT Recorder
+
 ```
 sudo add-apt-repository ppa:peek-developers/stable
 sudo apt update
@@ -174,14 +194,22 @@ sudo apt install -y peek
 
 ## Recording - Audio
 
+## Audacity
+
+```
+sudo add-apt-repository ppa:ubuntuhandbook1/audacity
+sudo apt update
+sudo apt install audacity
+
+```
+
 #### Pavucontrol - Stereomix Recordings
 
 1. Install pavucontrol from Ubuntu Software Center.  
-```sudo apt install -y pavucontrol```
-2. Open PulseAudio Volume Control (Search For PulseAudio Volume Control in Dash).   
-3. Select Recording Tab.   
-4. Select "Monitor from *" on the app tab you wanna redirect the Stereo Mix (eg. Skype or Discord)
-
+   `sudo apt install -y pavucontrol`
+2. Open PulseAudio Volume Control (Search For PulseAudio Volume Control in Dash).
+3. Select Recording Tab.
+4. Select "Monitor from \*" on the app tab you wanna redirect the Stereo Mix (eg. Skype or Discord)
 
 #### Pulse Audio Effects - Equalizer
 
@@ -189,14 +217,14 @@ sudo apt install -y peek
 sudo apt install -y pulseeffects
 ```
 
-
 #### Okular - PDF Viewer
+
 ```
 sudo apt-get install -y okular
 ```
 
-
 #### PDF Shuffler - PDF Editor
+
 ```
-sudo apt-get install -y pdfshuffler 
+sudo apt-get install -y pdfshuffler
 ```
