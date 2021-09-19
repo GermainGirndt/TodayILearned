@@ -149,6 +149,20 @@ sudo apt update
 sudo apt install -y kdenlive
 ```
 
+- **Alternative 1**
+
+```
+sudo add-apt-repository -y ppa:kdenlive/kdenlive-stable
+sudo apt-get update
+sudo apt-get -y install kdenlive
+```
+
+- **Alternative 2**
+
+* **Download AppImage** at https://kdenlive.org/en/download/
+* **Give** the file **access**
+* **Execute it**
+
 #### Kdenlive - Extensions
 
 ###### Breeze
