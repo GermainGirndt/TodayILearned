@@ -1,6 +1,3 @@
-# Visual Studio Code - Code custom shortcuts
-```
-// Place your key bindings in this file to override the defaults
 [
   {
     "key": "ctrl+n",
@@ -27,7 +24,13 @@
     "key": "ctrl+alt+x",
     "command": "merge-conflict.next",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
   }
 ]
-
-```
