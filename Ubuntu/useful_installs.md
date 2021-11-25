@@ -242,3 +242,10 @@ sudo apt-get install -y okular
 ```
 sudo apt-get install -y pdfshuffler
 ```
+
+#### Acrobat Reader
+
+```
+sudo snap install acrordrdc
+sudo snap disconnect acrordrdc:network
+```
