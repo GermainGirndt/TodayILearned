@@ -1,15 +1,19 @@
 # Docker
 
 ## Pull container
+
 eg.
+
 ```
 sudo docker pull mongo
 ```
 
 ## Run
+
 name is the designation which we're going to use for the pulled mongo
 p stands for redirecting the ports (my machine:virtual machine)
 d stands for which image we're going to use (the downloaded container)
+
 ```
 sudo docker run --name mongodb -p 27017:27017 -d mongo
 ```
@@ -28,11 +32,12 @@ sudo docker ps -a
 ```
 http://localhost:27017/
 ```
+
 You should get the message:
+
 ```
 It looks like you are trying to access MongoDB over HTTP on the native driver port.
 ```
-
 
 #### Install Robo T3 for testing MongoDB
 
@@ -43,8 +48,15 @@ Search on google.com
 #### Install Postgrees
 
 ```
-sudo docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+sudo docker run --name container_name -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
+```
+
+- **Run postgres in terminal in interactive mode and create database**
+
+```
+docker exec -tiu postgres vagas_postgres psql
+CREATE DATABASE vagas_postgres; (remember to type the ;, otherwise the command will not be executed)
 ```
 
 ### Restart container after reeboting
@@ -52,6 +64,7 @@ sudo docker run --name gostack_postgres -e POSTGRES_PASSWORD=docker -p 5432:5432
 ```
 sudo docker start CONTAINERNAME
 ```
+
 **or**
 
 ```
@@ -63,11 +76,13 @@ sudo docker start CONTAINERID
 ```
 docker stop CONTAINERSID
 ```
-or 
+
+or
 
 ```
 docker stop CONTAINERSNAME
 ```
+
 ### Remove Docker Container
 
 ```
