@@ -91,6 +91,8 @@ wget --quiet -O - https://insomnia.rest/keys/debian-public.key.asc \
 
 sudo apt-get update
 sudo apt-get install -y insomnia
+
+sudo snap install insomnia
 ```
 
 ## Programming: Languages and Tools
