@@ -10,3 +10,9 @@ people > culture > proccess
 - work where you feel happier and more productiv
 
 - eg. invision = over 700 works and no office
+
+### Tools
+
+- Adapt tools from normal work
+
+- Always prefer tools in the cloud and which permit online/simultaneos colaboration.

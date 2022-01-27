@@ -245,6 +245,14 @@ sudo apt-get install -y okular
 sudo apt-get install -y pdfshuffler
 ```
 
+#### xournalpp - PDF Editor <--- this
+
+```
+sudo add-apt-repository ppa:apandada1/xournalpp-stable
+sudo apt update
+sudo apt install xournalpp
+```
+
 #### Acrobat Reader
 
 ```
