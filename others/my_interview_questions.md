@@ -1,0 +1,5 @@
+- **How is the carrier plan?**
+- **Do the job has other benefits besides the allowance?**
+- **Do you use scrum? How long are the sprints? How is the test coverage?**
+- **What was the recept of the enterprise in the 3 last years?**
+-
