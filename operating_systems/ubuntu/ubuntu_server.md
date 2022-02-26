@@ -151,7 +151,11 @@ sudo ufw status
 
 ### STL Certificate
 
+Pre-Requisite: A registered domain pointing to the server.
+
 Cert Bot -> has a link for each operating system and web server
+
+`cat /etc/issue` for getting ubuntu version
 
 ### Stable Node Js Server
 
