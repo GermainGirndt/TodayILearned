@@ -78,6 +78,16 @@ ssh-keygen -t ed25519 -C "your-email@provider.com"
 
 ```
 
+- **Set key on server for automatic ssh-authentication**
+ssh-keygen
+ls -la ~/.ssh
+ssh-copy-id ggirndt@stl-stud.htwsaar.de
+
+- **Copy from remote to local**
+scp -r ggirndt@stl-stud.htwsaar.de:/export/home_pm/pauly/PRG-SPR-ss2022 .
+
+
+
 Copy the keys using:
 
 ```
