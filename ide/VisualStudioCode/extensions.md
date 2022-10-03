@@ -12,6 +12,7 @@
 - Docker
 - Git Lens
 - dotEnv
+- Copilot
 
 ## Framework-specific
 
