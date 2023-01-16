@@ -32,3 +32,7 @@ IDE for CLI
 
 macOS 10.13 and above: https://freemacsoft.net/downloads/AppCleaner_3.5.zip
 macOS 10.10 - 10.12: https://freemacsoft.net/downloads/AppCleaner_3.4.zip
+
+### GIMP
+
+https://www.gimp.org/downloads/
