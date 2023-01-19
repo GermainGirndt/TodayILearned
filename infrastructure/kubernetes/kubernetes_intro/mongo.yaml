@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb # every app mongodb below will use this specs
+  template: #its  independented
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:5.0
+          ports:
+            - containerPort: 27017
+          env: # docker environment variables
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-user
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-password
+
+--- # new yaml section
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector: # selects pods to forward request to
+    app: mongo
+  ports:
+    - protocol: TCP
+      port: 27017 # to keep things simple
+      targetPort: 27017 # target container port

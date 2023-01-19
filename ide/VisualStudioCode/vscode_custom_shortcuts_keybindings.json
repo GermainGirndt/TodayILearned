@@ -53,7 +53,6 @@
     "command": "workbench.action.terminal.resizePaneDown",
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
-  // mac = fn + arrowUp/arrowDown
   { "key": "pagedown", "command": "cursorPageDown", "when": "textInputFocus" },
   { "key": "pageup", "command": "cursorPageUp", "when": "textInputFocus" }
 ]
