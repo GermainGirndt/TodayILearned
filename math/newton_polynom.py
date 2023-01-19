@@ -180,7 +180,7 @@ class Newton:
         self.logger.add_result(result)
         return result
 
-
+# Here you can add the points, which the polynom has to run into:
 points = [
     Point(1,2),
     Point(2,-2),
@@ -191,6 +191,7 @@ logger = Logger(points)
 newton = Newton(points, logger)
 
 
+# Here you get the function values (y) for any x-Point using the polynom
 numbers_to_calculate = [1, 2, 3]
 
 newton.discover_alphas()
