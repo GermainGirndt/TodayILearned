@@ -58,48 +58,28 @@ class Alpha:
     def __str__(self) -> str:
         return f"Alpha{self.index} for Point {self.point}: {self.value}"
 
-points = [
-    Point(1,2),
-    Point(2,-2),
-    Point(3,4)
-]
 
-# discover alphas
-alphas = []
-for index_a, point in enumerate(points):
-    
-    fnx = point.y
-
-    sum = 0
-    for alpha_index, alpha in enumerate(alphas):
-        unknownX = 1
-        for x_index in range(alpha_index):
-            if unknownX == 0:
-                break
-            unknownX *= point.x - points[x_index].x
-
-        multiplication = alpha * unknownX
-        sum += multiplication
-    numerator = fnx - sum
-
-    denominator = 1
-    for index in range(index_a - 1):
-        if denominator == 0:
-            break
-        denominator *= point.x - points[index].x
-    
-    alpha = numerator / denominator
-    alphas.append(alpha)
+### Logger
 
 class Logger():
-    def __init__(self):
+    def __init__(self, points):
         self.formula_message = ""
         self.complete_message = ""
         self.result = ""
+        self.alphas = []
+        self.points = points
+    
+    def clean(self):
+        self.formula_message = ""
+        self.complete_message = ""
+        self.result = ""
+        #self.add_alphas = []
+    
+    def add_alphas(self, alphas):
+        self.alphas = alphas
     
     def new_alpha_function(self, x):
-        self.__init__()
-        self.points = points
+        self.clean()
         self.index_greathest_alpha = len(points) -1
 
         self.formula_message += f"f{self.index_greathest_alpha}(x) = "
@@ -122,13 +102,20 @@ class Logger():
     
     def get_start_message(self):
         start_message = f"Calculating the value of f{self.index_greathest_alpha}(x) using polynomial interpolation: \n\n"
-        start_message += f"Points used:\n"
-        for index, point in enumerate(self.points):
-            start_message += f"Point {index}: {point} | a{index} = {alphas[index]} \n"
-
 
         return start_message
+
+    def get_and_alphas_points_used(self):
+        message = f"\n + + +\n"
+        message += f"\nPoints and Alphas used:\n\n"
+        for index, point in enumerate(self.points):
+            message += f"Point {index}: {point} -> a{index} = {self.alphas[index]} \n"
+        message += f"\n + + +\n\n"
+        return message
     
+    def print_points_and_alphas_used(self):
+        print(self.get_and_alphas_points_used())
+
     def print(self):
         print()
         print(self.get_start_message())
@@ -140,35 +127,75 @@ class Logger():
         print()
         print("-----------------------------------------")
 
-
-def calculate(x, logger=Logger()):
-    result = 0
+class Newton:
+    def __init__(self, points, logger):
+        self.points = points
+        self.logger = logger
+        self.alphas = []
     
-    logger.new_alpha_function(x)
-
-    for index, alpha in enumerate(alphas):
-        logger.add_alpha(index, alpha)
-        coefizient = 1
-        for index_a in range(index):
-            x_index = points[index_a].x
-            coefizient *= x-x_index
-            logger.add_new_partial_coeficient_for_alpha(x, x_index, index_a)
-        last_function_value = alpha * coefizient
-        logger.close_alpha()
-
-        result += last_function_value
+    def discover_alphas(self):
+        for index_a, point in enumerate(self.points):
     
-    logger.add_result(result)
+            fnx = point.y
 
+            sum = 0
+            for alpha_index, alpha in enumerate(self.alphas):
+                unknownX = 1
+                for x_index in range(alpha_index):
+                    if unknownX == 0:
+                        break
+                    unknownX *= point.x - points[x_index].x
+
+                multiplication = alpha * unknownX
+                sum += multiplication
+            numerator = fnx - sum
+
+            denominator = 1
+            for index in range(index_a - 1):
+                if denominator == 0:
+                    break
+                denominator *= point.x - points[index].x
+            
+            alpha = numerator / denominator
+            self.alphas.append(alpha)
+        self.logger.add_alphas(self.alphas)
+    
+    def calculate(self, x):
+        result = 0
+        
+        self.logger.new_alpha_function(x)
+
+        for index, alpha in enumerate(self.alphas):
+            self.logger.add_alpha(index, alpha)
+            coefizient = 1
+            for index_a in range(index):
+                x_index = points[index_a].x
+                coefizient *= x-x_index
+                self.logger.add_new_partial_coeficient_for_alpha(x, x_index, index_a)
+            last_function_value = alpha * coefizient
+            self.logger.close_alpha()
+
+            result += last_function_value
+        
+        self.logger.add_result(result)
+        return result
+
+
+points = [
+    Point(1,2),
+    Point(2,-2),
+    Point(3,4)
+]
+
+logger = Logger(points)
+newton = Newton(points, logger)
+
+
+numbers_to_calculate = [1, 2, 3]
+
+newton.discover_alphas()
+logger.print_points_and_alphas_used()
+for number in numbers_to_calculate:
+    newton.calculate(number)
     logger.print()
-    return result
-
-
-
-
-calculate(1)
-calculate(2)
-calculate(3)
-calculate(10)
-
 
