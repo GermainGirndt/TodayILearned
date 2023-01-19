@@ -72,7 +72,6 @@ for indexA, point in enumerate(points):
 
     sum = 0
     for alphaIndex, alpha in enumerate(alphas):
-        
         unknownX = 1
         for xIndex in range(alphaIndex):
             if unknownX == 0:
@@ -81,11 +80,9 @@ for indexA, point in enumerate(points):
 
         multiplication = alpha * unknownX
         sum += multiplication
-    
     numerator = fnx - sum
 
     denominator = 1
-
     for index in range(indexA - 1):
         if denominator == 0:
             break
@@ -95,7 +92,6 @@ for indexA, point in enumerate(points):
     alphas.append(alpha)
 
 class Logger():
-
     def __init__(self):
         self.messageX = ""
         self.messageComplete = ""
