@@ -191,7 +191,7 @@ logger = Logger(points)
 newton = Newton(points, logger)
 
 
-# Here you get the function values (y) for any x-Point using the polynom
+# Here you get the function values (y) for any x using the calculated polynom
 numbers_to_calculate = [1, 2, 3]
 
 newton.discover_alphas()
