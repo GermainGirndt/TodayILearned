@@ -50,9 +50,9 @@ class Point:
 
 
 class Alpha:
-    def __init__(self, alphaIndex, alphaValue, point) -> None:
-        self.index = alphaIndex
-        self.value = alphaValue
+    def __init__(self, alpha_index, alpha_value, point) -> None:
+        self.index = alpha_index
+        self.value = alpha_value
         self.point = point
     
     def __str__(self) -> str:
@@ -66,24 +66,24 @@ points = [
 
 # discover alphas
 alphas = []
-for indexA, point in enumerate(points):
+for index_a, point in enumerate(points):
     
     fnx = point.y
 
     sum = 0
-    for alphaIndex, alpha in enumerate(alphas):
+    for alpha_index, alpha in enumerate(alphas):
         unknownX = 1
-        for xIndex in range(alphaIndex):
+        for x_index in range(alpha_index):
             if unknownX == 0:
                 break
-            unknownX *= point.x - points[xIndex].x
+            unknownX *= point.x - points[x_index].x
 
         multiplication = alpha * unknownX
         sum += multiplication
     numerator = fnx - sum
 
     denominator = 1
-    for index in range(indexA - 1):
+    for index in range(index_a - 1):
         if denominator == 0:
             break
         denominator *= point.x - points[index].x
@@ -93,8 +93,8 @@ for indexA, point in enumerate(points):
 
 class Logger():
     def __init__(self):
-        self.messageX = ""
-        self.messageComplete = ""
+        self.formula_message = ""
+        self.complete_message = ""
         self.result = ""
     
     def new_alpha_function(self, x):
@@ -102,26 +102,25 @@ class Logger():
         self.points = points
         self.index_greathest_alpha = len(points) -1
 
-        self.messageX += f"f{self.index_greathest_alpha}(x) = "
-        self.messageComplete += f"f{self.index_greathest_alpha}({x}) = "
+        self.formula_message += f"f{self.index_greathest_alpha}(x) = "
+        self.complete_message += f"f{self.index_greathest_alpha}({x}) = "
     
     def add_alpha(self, index, value):
-        self.messageX += f"(a{index}"
-        self.messageComplete += f"({value}"
+        self.formula_message += f"(a{index}"
+        self.complete_message += f"({value}"
 
-    def add_new_partial_coeficient_for_alpha(self, x, xIndex, index):
-        self.messageX += f" * (x-x{index})"
-        self.messageComplete += f" * ({x-xIndex})"
+    def add_new_partial_coeficient_for_alpha(self, x, x_index, index):
+        self.formula_message += f" * (x-x{index})"
+        self.complete_message += f" * ({x-x_index})"
 
     def close_alpha(self):
-        self.messageX += f")"
-        self.messageComplete += f")"
+        self.formula_message += f")"
+        self.complete_message += f")"
     
     def add_result(self, result):
         self.result += f"Result: {result}"
     
     def get_start_message(self):
-
         start_message = f"Calculating the value of f{self.index_greathest_alpha}(x) using polynomial interpolation: \n\n"
         start_message += f"Points used:\n"
         for index, point in enumerate(self.points):
@@ -133,8 +132,8 @@ class Logger():
     def print(self):
         print()
         print(self.get_start_message())
-        print(self.messageX)
-        print(self.messageComplete)
+        print(self.formula_message)
+        print(self.complete_message)
         print()
         print(f"-----> {self.result}")
         print()
@@ -150,14 +149,14 @@ def calculate(x, logger=Logger()):
     for index, alpha in enumerate(alphas):
         logger.add_alpha(index, alpha)
         coefizient = 1
-        for indexA in range(index):
-            xIndex = points[indexA].x
-            coefizient *= x-xIndex
-            logger.add_new_partial_coeficient_for_alpha(x, xIndex, indexA)
-        lastFunctionValue = alpha * coefizient
+        for index_a in range(index):
+            x_index = points[index_a].x
+            coefizient *= x-x_index
+            logger.add_new_partial_coeficient_for_alpha(x, x_index, index_a)
+        last_function_value = alpha * coefizient
         logger.close_alpha()
 
-        result += lastFunctionValue
+        result += last_function_value
     
     logger.add_result(result)
 
