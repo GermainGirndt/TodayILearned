@@ -3,7 +3,7 @@
 ### General Formula for getting function value fi(x)
 # fi(x) = a0 + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (ai * (x-x0)*...*(x - x-1))
 
-### General formula for getting alpha value (an) an, based on all points until pn and last alphas
+### General formula for getting alpha value (an), based on all points until pn and last alphas
 # an = [fn(x) - [a0  + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (an-1 * (x-x0)(x-x1)*...*(x-xn-2))] / (x-x0)(x-x1)*...(x-x-1) 
 
 ### Intuition
