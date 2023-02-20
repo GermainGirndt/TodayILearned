@@ -4,7 +4,7 @@
 # fi(x) = a0 + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (ai * (x-x0)*...*(x - x-1))
 
 ### General formula for getting alpha value (an), based on all points until pn and last alphas
-# an = [fn(x) - [a0  + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (an-1 * (x-x0)(x-x1)*...*(x-xn-2))] / (x-x0)(x-x1)*...(x-x-1) 
+# an = {fn(x) - [a0  + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (an-1 * (x-x0)(x-x1)*...*(x-xn-2))]} / (x-x0)(x-x1)*...(x-x-1) 
 
 ### Intuition
 # # at first, we must discover the values of alphas to recreate the formula
@@ -133,31 +133,89 @@ class Newton:
         self.logger = logger
         self.alphas = []
     
+    ### General formula for getting alpha value (an), based on all points until pn and last alphas
+    # an = {fn(x) - [a0  + (a1 * (x-x0)) + (a2 * (x-x0)(x-x1)) + ... + (an-1 * (x-x0)(x-x1)*...*(x-xn-2))]} / (x-x0)(x-x1)*...(x-x-1) 
+
     def discover_alphas(self):
+
         for index_a, point in enumerate(self.points):
+            formula_message = f""
+            calc_message = f""
+            sub_result_message = f""
+            result_message = f""
     
             fnx = point.y
-
             sum = 0
+            formula_message += f"a{index_a} =" + " { " + f"f{index_a}({point.x})"
+            calc_message += f"a{index_a} =" + " { " + f"{point.y}"
+
+            if len(self.alphas) != 0:
+                formula_message += f" - ["
+                calc_message += f" - ["
+
             for alpha_index, alpha in enumerate(self.alphas):
+
+                if alpha_index == 0:
+                    formula_message += f"(a{alpha_index}"
+                    calc_message += f"({alpha}"
+                else:
+                    formula_message += f" + (a{alpha_index}"
+                    calc_message += f" + ({alpha}"
                 unknownX = 1
                 for x_index in range(alpha_index):
                     if unknownX == 0:
                         break
                     unknownX *= point.x - points[x_index].x
+                    formula_message += f" * (x - x{x_index})"
+                    calc_message += f" * ({point.x} - {points[x_index].x})"
+                formula_message += f")"
+                calc_message += f")"
 
                 multiplication = alpha * unknownX
                 sum += multiplication
+
+
             numerator = fnx - sum
+            if len(self.alphas) != 0:
+                formula_message += f"]"
+                calc_message += f"]"
+
+            formula_message += " } / "
+            calc_message += " } / "            
+            if index_a == 0:
+                formula_message += "1"
+                calc_message += "1"
 
             denominator = 1
-            for index in range(index_a - 1):
+            print(index_a)
+            for index in range(index_a): # -1?
+                print("aaaaa")
                 if denominator == 0:
                     break
                 denominator *= point.x - points[index].x
+                print(point.x)
+                print(points[index].x)
+                print(point.x - points[index].x)
+                print("abbbbbba")
+                if index == 0:
+                    formula_message += f"(x - x{index})"
+                    calc_message += f"({point.x} - {points[index].x})"
+                else:                    
+                    formula_message += f" * (x - x{index})"
+                    calc_message += f" * ({point.x} - {points[index].x})"
+            
+            print(numerator)
+            print(denominator)
             
             alpha = numerator / denominator
             self.alphas.append(alpha)
+            print()
+            print(formula_message)
+            print(calc_message)
+            print()
+            print(f"a{index_a} = {alpha}")
+            print("+++")
+            print()
         self.logger.add_alphas(self.alphas)
     
     def calculate(self, x):
