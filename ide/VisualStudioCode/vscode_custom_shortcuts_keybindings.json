@@ -1,13 +1,13 @@
+// Place your key bindings in this file to override the defaults
 [
   {
-    "key": "ctrl+n",
-    "command": "explorer.newFile",
+    "key": "cmd+shift+n",
+    "command": "explorer.newFolder",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
-
   {
-    "key": "ctrl+shift+n",
-    "command": "explorer.newFolder",
+    "key": "cmd+n",
+    "command": "explorer.newFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
   {
@@ -16,7 +16,7 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+alt+z",
+    "key": "ctrl+alt+shift+x",
     "command": "merge-conflict.previous",
     "when": "editorTextFocus && !editorReadonly"
   },
@@ -54,5 +54,15 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   { "key": "pagedown", "command": "cursorPageDown", "when": "textInputFocus" },
-  { "key": "pageup", "command": "cursorPageUp", "when": "textInputFocus" }
+  { "key": "pageup", "command": "cursorPageUp", "when": "textInputFocus" },
+  {
+    "key": "alt+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+/",
+    "command": "editor.action.blockComment",
+    "when": "editorTextFocus && !editorReadonly"
+  }
 ]
