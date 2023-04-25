@@ -13,6 +13,7 @@
 - Git Lens
 - dotEnv
 - Copilot
+- auto-rename-tag
 
 ## Framework-specific
 
