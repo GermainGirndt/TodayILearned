@@ -1,4 +1,4 @@
-# Visual Studio Code - Extensions
+# Visual Studio Code - Extensions / Plug-in / Plugin
 
 ## General
 
@@ -8,14 +8,27 @@
 - Material Icon Theme (and activate theme)
 - EditorConfig
 - Prettier Code Formatter
-- ES Lint (yarn add eslint@6.8.0 -D)
 - Docker
+- C/C++ Extension Pack
+- Remote Development
+- Dev Containers
+- Remote SSH
+- IntelliCode (Code Examples from GitHub)
+- Tree
 - Git Lens
 - dotEnv
 - Copilot
 - auto-rename-tag
 
-## Framework-specific
+## Language/Framework-specific
+
+#### Java
+
+- Java Extension Pack
+
+#### JavaScript
+
+- ES Lint (yarn add eslint@6.8.0 -D)
 
 #### React
 

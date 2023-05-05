@@ -1,8 +1,15 @@
 ### Profile
 
 ```
+export PROFILE_FILE="$HOME/.zprofile" #edit
+export ALIAS_DEFINITION_FILE="$PROFILE_FILE" #edit
 export APPLICATION_INSTALL_HOME="$HOME/installs"
 export SOURCE_CODE_HOME="$HOME/source"
+
+### Terminal
+alias codeprofile="cd $PROFILE_FILE"
+alias codealias="cd $ALIAS_DEFINITION_FILE"
+
 
 # Fig pre block. Keep at the top of this file.
 [[ -f "$HOME/.fig/shell/zprofile.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.pre.zsh"
