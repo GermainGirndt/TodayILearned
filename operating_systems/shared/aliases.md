@@ -44,7 +44,8 @@ alias codeflight="code $FLIGHT_WATCHER_HOME"
 alias cdflightapi="cd $FLIGHT_WATCHER_HOME/flight_watcher_api"
 alias cdflightweb="cd $FLIGHT_WATCHER_HOME/flight_watcher_web"
 
-
+alias condaactivate="source /Users/germaingirndt/installs/anaconda/anaconda3/bin/activate"
+alias condadeactivate="conda deactivate"
 
 ### Docker
 export DOCKER_DEFAULT_PLATFORM=linux/amd64
