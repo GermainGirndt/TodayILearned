@@ -44,4 +44,5 @@ print("TARGET\t\t\tMEAN RESPONSE TIME")
 for target in targets:
     mean_response_time = calculate_mean_response_time(target, num_packets)
     print(f"{target}\t\t\t{mean_response_time:.2f}")
+print()
 
