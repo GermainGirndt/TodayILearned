@@ -55,3 +55,9 @@ https://www.gimp.org/downloads/
 ### Tokei - Counting Code lines
 
 https://github.com/XAMPPRocky/tokei
+
+### Watcher
+
+```
+brew install watch
+```
