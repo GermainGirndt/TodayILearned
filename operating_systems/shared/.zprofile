@@ -84,7 +84,7 @@ echo "external  ifconfig.me  =>  ${ip_external_two}"
 '
 
 
-check_process_listening_on_ports() {
+check-ports() {
     if [ $# -eq 0 ]; then
         echo "Please provide at least one port number."
         return 1
@@ -104,11 +104,8 @@ check_process_listening_on_ports() {
     done
 }
 
-alias check-ports=check_process_listening_on_ports
 
-
-
-scan-vulnerabilities-in-ip() {
+scan-vulnerabilities() {
     if [ -z "$1" ]; then
         echo "Please provide an IP address."
         return 1
@@ -117,7 +114,6 @@ scan-vulnerabilities-in-ip() {
     nmap --script vuln $1
 }
 
-alias scan-vul=scan-vulnerabilities-in-ip
 
 ### Mac/ZSH Specific
 
