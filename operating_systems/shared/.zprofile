@@ -125,3 +125,19 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zprofile.post.zsh" ]] && builtin source "$HOME/.fig/shell/zprofile.post.zsh"
+
+
+kill-process() {
+    if [ -z "$1" ]; then
+        echo "You must provide a process name."
+        return 1
+    elif ! pgrep -x "$1" > /dev/null; then
+        echo "No process found with name: $1"
+        return 1
+    fi
+    local before=$(pgrep -x "$1" | wc -l)
+    pkill "$1"
+    local after=$(pgrep -x "$1" | wc -l)
+    local killed=$((before - after))
+    echo "Successfully terminated process: $1. Instances killed: $killed. Remaining instances: $after."
+}
