@@ -24,3 +24,4 @@ yarn-error.log*
 
 programming_languages/python/pdf_merger/output/*.pdf
 programming_languages/python/pdf_merger/pdfs_to_merge/*.pdf
+.vscode
