@@ -26,7 +26,7 @@ transcript = get_transcript(video_url)
 
 if transcript is not None:
     # Write the transcript to a text file
-    with open("transcript.txt", "w") as f:
+    with open("output/transcript.txt", "w") as f:
         f.write(transcript)
     print("Success! Transcript saved to transcript.txt")
 else:
