@@ -64,5 +64,15 @@
     "key": "shift+alt+/",
     "command": "editor.action.blockComment",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+shift+cmd+right",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+left",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus"
   }
 ]
