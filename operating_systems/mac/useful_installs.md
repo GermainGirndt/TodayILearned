@@ -61,3 +61,17 @@ https://github.com/XAMPPRocky/tokei
 ```
 brew install watch
 ```
+
+# Raycast
+
+Replacement for Spotlight search and others
+Free
+
+# miele-lxiv
+
+- App Store (free)
+- MRT and tomography images visualizer
+
+# Disk Utility
+
+- Copy CD to Computer as ISO (Apple ISO)
