@@ -10,6 +10,8 @@ Share infos with other devices
 
 Confirm dialogs with the keyboard
 
+Shortcuts app -> Printscreen: Convert image to text
+
 ```
 
 ```
