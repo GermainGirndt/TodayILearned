@@ -1,3 +1,5 @@
+Set Dock visibility as hidden
+
 Speed up trackpad sensitivity
 
 Save energy just after 30 minutes
