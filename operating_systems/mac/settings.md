@@ -12,6 +12,7 @@ Confirm dialogs with the keyboard
 
 Shortcuts app -> Printscreen: Convert image to text
 
+Finder -> Window -> Show path and show hidden files
 ```
 
 ```
