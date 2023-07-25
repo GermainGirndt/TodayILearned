@@ -18,6 +18,10 @@ docker buildx create --name my_builder
 docker buildx use my_builder
 docker buildx inspect --bootstrap
 
+### VSCode
+
+And add code to PATH
+
 ### Postman
 
 https://www.postman.com/downloads/
@@ -26,13 +30,22 @@ https://www.postman.com/downloads/
 
 MIT License + Open Source!
 
+```
+brew install --cast amethyst
+```
+
 option + shift + a, s, d, f
 
 https://ianyh.com/amethyst/
 
 ### Fig
 
+MIT + Open Source
 IDE for CLI
+
+```
+brew install fig
+```
 
 ### App Cleaner
 
@@ -57,6 +70,14 @@ https://www.gimp.org/downloads/
 ### Tokei - Counting Code lines
 
 https://github.com/XAMPPRocky/tokei
+
+```
+# Homebrew
+brew install tokei
+# MacPorts
+sudo port selfupdate
+sudo port install tokei
+```
 
 ### Watcher
 
