@@ -1,3 +1,5 @@
+Set Dock visibility as hidden
+
 Speed up trackpad sensitivity
 
 Save energy just after 30 minutes
@@ -9,6 +11,14 @@ Share infos with other devices
 Confirm dialogs with the keyboard
 
 Set dark mode at appearance
+
+Shortcuts app -> Printscreen: Convert image to text
+
+Finder -> Window -> Show path and show hidden files
+
+```
+
+```
 
 ```
 
