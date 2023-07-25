@@ -24,6 +24,8 @@ https://www.postman.com/downloads/
 
 ### Amethys - Organizing Windows
 
+MIT License + Open Source!
+
 option + shift + a, s, d, f
 
 https://ianyh.com/amethyst/
