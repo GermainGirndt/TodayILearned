@@ -7,14 +7,12 @@
 - Material Icon Theme (and activate theme)
 - EditorConfig
 - Prettier Code Formatter
-- Docker
+- Docker (Extension Pack)
 - C/C++ Extension Pack
-- Remote Development
-- Dev Containers
-- Remote SSH
+- Remote Development (Extension Pack) [ Dev Containers Remote SSH, ...]
 - IntelliCode (Code Examples from GitHub)
-- Tree
-- Git Lens
+- TODO Tree
+- GitLens
 - dotEnv
 - Copilot
 - auto-rename-tag
