@@ -16,6 +16,8 @@ Shortcuts app -> Printscreen: Convert image to text
 
 Finder -> Window -> Show path and show hidden files
 
+System Settings -> Privacy and Security -> Developer tools -> terminal
+
 ```
 
 ```
