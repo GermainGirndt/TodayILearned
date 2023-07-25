@@ -26,3 +26,5 @@ yarn-error.log*
 
 scripts/**/*.pdf
 scripts/**/output/*.txt
+scripts/**/*.jpg
+scripts/**/*.HEIC
