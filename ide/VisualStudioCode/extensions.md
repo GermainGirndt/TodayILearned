@@ -3,7 +3,6 @@
 ## General
 
 - Live Server
-- Bracket Pair Colorizer
 - Color Highlight
 - Material Icon Theme (and activate theme)
 - EditorConfig
