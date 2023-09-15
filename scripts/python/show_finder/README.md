@@ -1,5 +1,9 @@
 # Show Finder
 
+````
+python --version
+Python 3.11.5
+```
 ### Possible improvements
 
 - Differenciating between movie and series
@@ -11,3 +15,4 @@
 ### Online Alternatives
 
 - NetFlix: https://flixwatch.co
+````
