@@ -4,6 +4,12 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound
 
 
+def get_title_pytube(youtube_url):
+    """Get the title of the video using pytube."""
+    yt = YouTube(youtube_url)
+    return yt.title
+
+
 def get_transcript_pytube(youtube_url):
     print("Trying Pytube...")
 
@@ -17,7 +23,7 @@ def get_transcript_pytube(youtube_url):
         return None
 
 
-def get_transcript_yt_api(youtube_url):
+def get_transcript_yt_api(youtube_url, preserve_timeranges=False):
     print("Trying YoutubeTranscriptApi...")
 
     # Extract video_id using regex
@@ -34,12 +40,14 @@ def get_transcript_yt_api(youtube_url):
         transcripts = transcript_list.find_transcript(['en', 'de', 'pt'])
 
         transcript_data = transcripts.fetch()
-        print(transcript_data)
 
-        transcript = "\n".join([entry['text'] for entry in transcript_data])
+        if preserve_timeranges:
+            transcript = "\n".join(
+                [f"{entry['start']} - {entry['start'] + entry['duration']}: {entry['text']}" for entry in transcript_data])
+        else:
+            transcript = "\n".join([entry['text']
+                                   for entry in transcript_data])
 
-        # transcript = "\n".join(
-        #    [f"{entry['start']} - {entry['start'] + entry['duration']}: {entry['text']}" for entry in transcript_data])
         return transcript
     except (TranscriptsDisabled, NoTranscriptFound) as e:
         print(f"Transcript retrieval error: {e}")
@@ -67,10 +75,14 @@ def save_to_txt(content, filename="transcript.txt"):
 def main():
     filename = "output.txt"
     url = input("Enter the URL of the YouTube video: ")
-    # url = "https://www.youtube.com/watch?v=HVLKaCVJUwI"
+
+    video_title = get_title_pytube(url)
     transcript_content = get_transcript(url)
+
+    # Prepend the title to the transcript
     if transcript_content:
-        save_to_txt(transcript_content)
+        complete_content = f"Title: {video_title}\n\n{transcript_content}"
+        save_to_txt(complete_content, filename)
         print(f"Transcript saved to {filename}")
     else:
         print("Failed to fetch transcript.")
@@ -78,6 +90,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-# https://www.youtube.com/watch?v=HVLKaCVJUwI
