@@ -21,7 +21,7 @@ def get_transcript(video_url):
 
 
 # put the actual URL here
-video_url = "https://www.youtube.com/watch?v=fJ9rUzIMcZQ"
+video_url = input("Enter the video URL for collecting the transcript: ")
 transcript = get_transcript(video_url)
 
 if transcript is not None:
