@@ -1,6 +1,6 @@
 # Loop Back Internal Audio Recording
 
-### Blackhole
+### Blackhole - Audio Midi
 
 https://github.com/ExistentialAudio/BlackHole/blob/master/Images/audio-midi-setup.png
 M1 compartible
