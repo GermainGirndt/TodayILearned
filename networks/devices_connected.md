@@ -1,3 +1,5 @@
+# Check for devices connected in the same network (private ip addreess)
+
 # Tools
 
 ### Angry Ip Scanner
@@ -33,3 +35,20 @@ Wireshark:
 - Offers granular view of network traffic
 - Provides extensive packet-level information, including headers, payloads, timing, etc.
 - Primarily used for network analysis, troubleshooting, and security analysis
+
+### CLI
+
+```
+arp -a
+
+```
+
+```
+sudo apt install nmap
+sudo nmap -sn 192.168.1.0/24
+```
+
+```
+sudo apt install arp-scan
+sudo arp-scan --localnet
+```
