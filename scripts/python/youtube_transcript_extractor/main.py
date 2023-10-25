@@ -23,7 +23,7 @@ def get_transcript_pytube(youtube_url):
         return None
 
 
-def get_transcript_yt_api(youtube_url, preserve_timeranges=False):
+def get_transcript_yt_api(youtube_url, preserve_timeranges=True):
     print("Trying YoutubeTranscriptApi...")
 
     # Extract video_id using regex
@@ -42,8 +42,16 @@ def get_transcript_yt_api(youtube_url, preserve_timeranges=False):
         transcript_data = transcripts.fetch()
 
         if preserve_timeranges:
-            transcript = "\n".join(
-                [f"{entry['start']} - {entry['start'] + entry['duration']}: {entry['text']}" for entry in transcript_data])
+            transcript = ""
+            for entry in transcript_data:
+
+                start_time = entry['start']/60
+                end_time = (entry['start'] + entry['duration']) / 60
+                text_line = entry['text']
+
+                text_line = f"{start_time:.2f} - {end_time:.2f}: {text_line}\n"
+                transcript += text_line
+
         else:
             transcript = "\n".join([entry['text']
                                    for entry in transcript_data])
