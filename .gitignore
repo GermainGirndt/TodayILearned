@@ -28,3 +28,6 @@ scripts/**/*.pdf
 scripts/**/output/*.txt
 scripts/**/*.jpg
 scripts/**/*.HEIC
+
+
+neural_networks/**/*.csv
