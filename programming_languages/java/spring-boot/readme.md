@@ -21,3 +21,8 @@ The difference is: SpringBoot comes with standard settings for quickly running a
 ### mvnw
 
 mvn is a form of executing mvn without having it installed in your computer
+
+### <build> element in pom.xml
+
+In the past, a lot of plugins were needed to install an application.
+They were registered there.
