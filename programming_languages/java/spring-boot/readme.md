@@ -24,5 +24,7 @@ mvn is a form of executing mvn without having it installed in your computer
 
 ### <build> element in pom.xml
 
+![Alt text](image-1.png)
+
 In the past, a lot of plugins were needed to install an application.
 They were registered there.
