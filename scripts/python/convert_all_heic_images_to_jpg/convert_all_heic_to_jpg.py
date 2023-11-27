@@ -11,7 +11,9 @@ def convert_heic_to_jpg(input_folder_path, output_folder_path):
     for filename in os.listdir(input_folder_path):
         if filename.endswith(".HEIC") or filename.endswith(".heic"):
             heic_path = os.path.join(input_folder_path, filename)
-            jpg_path = os.path.join(output_folder_path, filename)
+
+            new_filename = ".".join(filename.split('.')[:-1]) + '.jpg'
+            jpg_path = os.path.join(output_folder_path, new_filename)
 
             try:
                 subprocess.run(["sips", "-s", "format", "jpeg",
