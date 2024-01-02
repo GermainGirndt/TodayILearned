@@ -98,3 +98,19 @@ Free
 # Disk Utility
 
 - Copy CD to Computer as ISO (Apple ISO)
+
+# Rar/Unrar
+- For extracting/compressing rar files, since there's no other built-in solution for rar on Mac
+```
+brew install rar 
+
+```
+
+- To achieve into rar
+```
+rar a FOLDER_HERE
+```
+- To extract from rar
+```
+unrar e FILE.rar
+```
