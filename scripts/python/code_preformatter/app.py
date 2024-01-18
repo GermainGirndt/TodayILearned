@@ -1,7 +1,9 @@
+import os
 import textwrap
 
 
 def print_with_lines(input_filename, output_filename, width=80):
+    print(input_filename)
     with open(input_filename, 'r') as infile, open(output_filename, 'w') as outfile:
         lines = infile.readlines()
 
@@ -11,6 +13,20 @@ def print_with_lines(input_filename, output_filename, width=80):
                 outfile.write(f"{i:>4}: {wrapped_line}\n")
 
 
-input_filename = 'input/yourfile.s'  # Replace with your input file name
-output_filename = 'output/yourfile_edited.s'  # Output file
-print_with_lines(input_filename, output_filename)
+def process_directory(input_dir, output_dir):
+    for root, dirs, files in os.walk(input_dir):
+        # Construct a corresponding output directory
+        output_root = root.replace(input_dir, output_dir, 1)
+        if not os.path.exists(output_root):
+            os.makedirs(output_root)
+
+        for file in files:
+            input_filename = os.path.join(root, file)
+            output_filename = os.path.join(output_root, file)
+            print_with_lines(input_filename, output_filename)
+
+
+# Set your input and output directories here
+input_directory = 'input'
+output_directory = 'output'
+process_directory(input_directory, output_directory)
