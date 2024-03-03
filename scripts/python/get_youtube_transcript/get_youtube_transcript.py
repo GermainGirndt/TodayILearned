@@ -7,7 +7,8 @@ def get_transcript(video_url):
 
     # Fetch the transcript
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id, languages=[ 'pt'])
+        transcript = YouTubeTranscriptApi.get_transcript(
+            video_id, languages=['pt', 'en'])
     except Exception as e:
         print("An error occurred while fetching the transcript:", str(e))
         return None

@@ -33,3 +33,5 @@ scripts/**/*.HEIC
 neural_networks/**/*.csv
 
 target/
+
+venv/
