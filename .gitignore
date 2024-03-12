@@ -35,3 +35,10 @@ neural_networks/**/*.csv
 target/
 
 venv/
+
+sample_submission.csv
+test.csv
+train.csv
+
+.ipynb_checkpoints/
+/.ipynb_checkpoints/*
