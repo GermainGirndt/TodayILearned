@@ -11,6 +11,11 @@ diskutil unmountDisk /dev/diskX
 ```
 
 ```bash
+diskutil randomDisk 2 /dev/diskXµ
+# override the disk with random data two times
+```
+
+```bash
 diskutil eraseDisk FAT32 YourVolumeName MBRFormat /dev/diskX
 # volume name in one word, max 11 characters
 ```
