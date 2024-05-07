@@ -44,3 +44,4 @@ train.csv
 /.ipynb_checkpoints/*
 secrets
 secrets/*
+.env
