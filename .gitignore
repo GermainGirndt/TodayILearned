@@ -42,3 +42,5 @@ train.csv
 
 .ipynb_checkpoints/
 /.ipynb_checkpoints/*
+secrets
+secrets/*
