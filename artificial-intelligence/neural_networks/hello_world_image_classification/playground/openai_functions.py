@@ -10,18 +10,20 @@ openai.api_key = os.environ['OPENAI_API_KEY']
 # In production, this could be your backend API or an external API
 
 
-def get_current_weather(location, unit="fahrenheit"):
+def get_current_weather(location):
     """Get the current weather in a given location"""
     weather_info = {
-        "location": location,
-        "temperature": "72",
-        "unit": unit,
+        "location": location["location"],
+        "temperature": "27",
+        "unit": location["unit"],
         "forecast": ["sunny", "windy"],
     }
     return json.dumps(weather_info)
 
 
 # define a function
+# be aware that the function name should match the name of the function in the code
+# and that the token limit also apply to the function
 functions = [
     {
         "name": "get_current_weather",
@@ -65,45 +67,81 @@ print("\nResponse:")
 print(response)
 
 print("\nChoices:")
-response_choises = response.choices
-print(response_choises)
+response_choices = response.choices
+print(response_choices)
 
+
+first_choice = response_choices[0]
 
 print("\nFirst Choice:")
-print(response_choises[0])
+print(first_choice)
 
 
 print("\nFirst Choice Message:")
-response_choise_message = response_choises[0].message
-print(response_choise_message)
+response_choice_message = first_choice.message
+print(response_choice_message)
 
-print(response_choise_message.content)
-print(response_choise_message.function_call)
-json.loads(response_choise_message.function_call.arguments)
-args = json.loads(response_choise_message.function_call.arguments)
+print("\nFunction Call:")
+print(response_choice_message.function_call)
 
-observation = get_current_weather(args)
+if response_choice_message.function_call and response_choice_message.function_call.name == "get_current_weather":
+    print("\n-------------------")
+    print("\n Function Call 'get_current_weather' detected.")
+    print("\n Executing...")
+    json.loads(response_choice_message.function_call.arguments)
+    args = json.loads(response_choice_message.function_call.arguments)
 
-print("\n-------------------")
-print("\nFunction Response:")
-print(observation)
+    observation = get_current_weather(args)
+
+    print("\nFunction Response (Observation):")
+    print(observation)
+    print("\n-------------------")
+    
+    
+    print("\nInserting observation into messages...")
 
 
-observation_message = {
-    "role": "function",
-            "name": "get_current_weather",
-            "content": observation,
-}
+    observation_message = {
+        "role": "function",
+                "name": "get_current_weather",
+                "content": observation,
+    }
 
-messages.append(observation_message)
+    messages.append(observation_message)
 
-print(messages)
+    print(messages)
 
-informed_response = openai.chat.completions.create(
-    model="gpt-3.5-turbo",
-    messages=messages,
-    functions=functions
-)
+    informed_response = openai.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
+        functions=functions
+    )
 
-print("\nInformed Response:")
-print(informed_response)
+    print("\nInformed Response:")
+    print(informed_response)
+
+
+# Alternative:
+
+
+"""
+
+from langchain.utils.openai_functions import convert_pydantic_to_openai_function
+
+class WeatherSearch(BaseModel):
+    `Call this with an airport code to get the weather at that airport`
+    airport_code: str = Field(description="airport code to get weather for")
+    
+weather_function = convert_pydantic_to_openai_function(WeatherSearch)
+weather_function
+"""
+# Result:
+""" {'name': 'WeatherSearch',
+ 'description': 'Call this with an airport code to get the weather at that airport',
+ 'parameters': {'title': 'WeatherSearch',
+  'description': 'Call this with an airport code to get the weather at that airport',
+  'type': 'object',
+  'properties': {'airport_code': {'title': 'Airport Code',
+    'description': 'airport code to get weather for',
+    'type': 'string'}},
+  'required': ['airport_code']}} """

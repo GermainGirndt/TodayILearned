@@ -1,6 +1,6 @@
 
 Response:
-ChatCompletion(id='chatcmpl-9MBbGmoW4rnGnx174pPfCkSJOAFpC', choices=[Choice(finish_reason='function_call', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', function_call=FunctionCall(arguments='{"location":"Boston","unit":"celsius"}', name='get_current_weather'), tool_calls=None))], created=1715074834, model='gpt-3.5-turbo-0125', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=20, prompt_tokens=104, total_tokens=124))
+ChatCompletion(id='chatcmpl-9MHdZjD1JBZOoRxIjLtRaFELRcl3A', choices=[Choice(finish_reason='function_call', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', function_call=FunctionCall(arguments='{"location":"Boston","unit":"celsius"}', name='get_current_weather'), tool_calls=None))], created=1715098041, model='gpt-3.5-turbo-0125', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=20, prompt_tokens=104, total_tokens=124))
 
 Choices:
 [Choice(finish_reason='function_call', index=0, logprobs=None, message=ChatCompletionMessage(content=None, role='assistant', function_call=FunctionCall(arguments='{"location":"Boston","unit":"celsius"}', name='get_current_weather'), tool_calls=None))]
@@ -10,14 +10,23 @@ Choice(finish_reason='function_call', index=0, logprobs=None, message=ChatComple
 
 First Choice Message:
 ChatCompletionMessage(content=None, role='assistant', function_call=FunctionCall(arguments='{"location":"Boston","unit":"celsius"}', name='get_current_weather'), tool_calls=None)
-None
+
+Function Call:
 FunctionCall(arguments='{"location":"Boston","unit":"celsius"}', name='get_current_weather')
 
 -------------------
 
-Function Response:
-{"location": {"location": "Boston", "unit": "celsius"}, "temperature": "72", "unit": "fahrenheit", "forecast": ["sunny", "windy"]}
-[{'role': 'system', 'content': "You're an weather expert. Answer the user query in an polite and comprehensive way. Use always metric units."}, {'role': 'user', 'content': "What's the weather like in Boston?"}, {'role': 'function', 'name': 'get_current_weather', 'content': '{"location": {"location": "Boston", "unit": "celsius"}, "temperature": "72", "unit": "fahrenheit", "forecast": ["sunny", "windy"]}'}]
+ Function Call 'get_current_weather' detected.
+
+ Executing...
+
+Function Response (Observation):
+{"location": "Boston", "temperature": "27", "unit": "celsius", "forecast": ["sunny", "windy"]}
+
+-------------------
+
+Inserting observation into messages...
+[{'role': 'system', 'content': "You're an weather expert. Answer the user query in an polite and comprehensive way. Use always metric units."}, {'role': 'user', 'content': "What's the weather like in Boston?"}, {'role': 'function', 'name': 'get_current_weather', 'content': '{"location": "Boston", "temperature": "27", "unit": "celsius", "forecast": ["sunny", "windy"]}'}]
 
 Informed Response:
-ChatCompletion(id='chatcmpl-9MBbHteCk4fv4Gc2tuiy0fEhfM9ur', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='The current weather in Boston is sunny and windy with a temperature of 22°C.', role='assistant', function_call=None, tool_calls=None))], created=1715074835, model='gpt-3.5-turbo-0125', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=18, prompt_tokens=150, total_tokens=168))
+ChatCompletion(id='chatcmpl-9MHdZuqea4WkLoiv7HZSNMimBkEqs', choices=[Choice(finish_reason='stop', index=0, logprobs=None, message=ChatCompletionMessage(content='The current weather in Boston is 27°C with sunny and windy conditions. ', role='assistant', function_call=None, tool_calls=None))], created=1715098041, model='gpt-3.5-turbo-0125', object='chat.completion', system_fingerprint=None, usage=CompletionUsage(completion_tokens=17, prompt_tokens=140, total_tokens=157))
