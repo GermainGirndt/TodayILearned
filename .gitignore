@@ -45,3 +45,5 @@ train.csv
 secrets
 secrets/*
 .env
+
+node_modules
