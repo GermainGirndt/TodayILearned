@@ -13,13 +13,14 @@ if not os.path.exists(output_dir):
 
 # get all pdf files in the directory
 pdfs = [os.path.join(pdfs_dir, f)
-        for f in os.listdir(pdfs_dir) if f.endswith('.pdf')]
+        for f in os.listdir(pdfs_dir) if f.endswith('.pdf') or f.endswith('.PDF')]
 pdfs.sort()
 
 
 merger = PdfMerger()
 
 for pdf in pdfs:
+    print(pdf)
     merger.append(pdf)
 
 # Output file path
