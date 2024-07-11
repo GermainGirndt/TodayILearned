@@ -108,7 +108,7 @@ def create_summary_pdf(title_pages, summary_pdf):
     summary.set_font("times", size=12)
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
         page_number += 1  # Account for this summary page
-        summary_text = f"Attachment {arabic_to_roman(attachment_number)} - {title} (PDF Page {page_number})"
+        summary_text = f"{arabic_to_roman(attachment_number)}. {title} (S. {page_number})"
         summary.multi_cell(180, 6, txt=summary_text, ln=True)
         summary.ln(4)
 
