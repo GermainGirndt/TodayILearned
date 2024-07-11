@@ -53,10 +53,10 @@ def create_title_page(attachment_number, title):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_y(100)
-    pdf.set_font("times", size=18)
+    pdf.set_font("times", size=16)
     pdf.cell(0, 10, txt=attachment_number, ln=True, align='C')
 
-    pdf.set_font("times", size=24)
+    pdf.set_font("times", "B", size=20)
     pdf.multi_cell(0, 10, txt=title, align='C')
     title_pdf = os.path.join(temp_dir, f'{attachment_number}_{title}.pdf')
     pdf.output(title_pdf)
@@ -113,12 +113,13 @@ def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
     table_of_contents = FPDF()
     table_of_contents.add_page()
     table_of_contents.ln(20)
-    table_of_contents.set_font("times", size=20)
     table_of_contents.set_right_margin(40)
+    table_of_contents.set_font("times", "B", size=20)
     table_of_contents.cell(
         200, 10, txt=table_of_contents_translation, ln=True, align='C')
     table_of_contents.ln(10)
 
+    table_of_contents.set_left_margin(22)
     table_of_contents.set_font("times", size=12)
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
         page_number += 1  # Account for this table_of_contents page
