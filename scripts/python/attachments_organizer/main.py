@@ -9,8 +9,20 @@ input_dir = 'input'
 output_dir = 'output'
 temp_dir = os.path.join(output_dir, 'temp')
 output_pdf = os.path.join(output_dir, 'attachments.pdf')
-summary_pdf = os.path.join(output_dir, 'summary.pdf')
+table_of_contents_pdf = os.path.join(output_dir, 'table_of_contents.pdf')
 final_output_pdf = os.path.join(output_dir, 'final_output.pdf')
+
+SELECTED_LANGUAGE = 'de'
+
+attachment = {'en': 'Attachment', 'de': 'Anhang'}
+page = {'en': 'Page', 'de': 'Seite'}
+page_abbr = {'en': 'p.', 'de': 'S.'}
+table_of_contents = {'en': 'Table of Contents', 'de': 'Inhaltsverzeichnis'}
+
+attachment_translation = attachment[SELECTED_LANGUAGE]
+page_translation = page[SELECTED_LANGUAGE]
+page_abbr_translation = page_abbr[SELECTED_LANGUAGE]
+table_of_contents_translation = table_of_contents[SELECTED_LANGUAGE]
 
 
 def arabic_to_roman(num):
@@ -60,7 +72,7 @@ def sanitize_filename(filename):
         # Remove the attachment number and the dash
         filename = re.sub(r'[0-9]+\s\-\s', '', filename)
 
-    return ''.join(c for c in filename.replace('.pdf', '') if c.isalnum() or c.isspace())
+    return ''.join(c for c in filename.replace('.pdf', '') if c.isalnum() or c.isspace() or c in ['-'])
 
 
 def merge_pdfs(input_dir, output_file):
@@ -77,7 +89,7 @@ def merge_pdfs(input_dir, output_file):
 
             # Create title page
             title_page_pdf = create_title_page(
-                f"Attachment {arabic_to_roman(attachment_number)}", title)
+                f"{attachment_translation} {arabic_to_roman(attachment_number)}", title)
             title_pages.append((title, total_pages + 1))
 
             # Merge the title page and the document
@@ -96,23 +108,26 @@ def merge_pdfs(input_dir, output_file):
     return title_pages
 
 
-def create_summary_pdf(title_pages, summary_pdf):
-    """Create a summary PDF with the list of title pages and their page numbers."""
-    summary = FPDF()
-    summary.add_page()
-    summary.set_font("times", size=20)
-    summary.set_right_margin(40)
-    summary.cell(200, 10, txt="Summary", ln=True, align='C')
-    summary.ln(10)
+def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
+    """Create a table_of_contents PDF with the list of title pages and their page numbers."""
+    table_of_contents = FPDF()
+    table_of_contents.add_page()
+    table_of_contents.ln(20)
+    table_of_contents.set_font("times", size=20)
+    table_of_contents.set_right_margin(40)
+    table_of_contents.cell(
+        200, 10, txt=table_of_contents_translation, ln=True, align='C')
+    table_of_contents.ln(10)
 
-    summary.set_font("times", size=12)
+    table_of_contents.set_font("times", size=12)
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
-        page_number += 1  # Account for this summary page
-        summary_text = f"{arabic_to_roman(attachment_number)}. {title} (S. {page_number})"
-        summary.multi_cell(180, 6, txt=summary_text, ln=True)
-        summary.ln(4)
+        page_number += 1  # Account for this table_of_contents page
+        table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title} ({page_abbr_translation} {page_number})"
+        table_of_contents.multi_cell(
+            180, 6, txt=table_of_contents_text, ln=True)
+        table_of_contents.ln(4)
 
-    summary.output(summary_pdf)
+    table_of_contents.output(table_of_contents_pdf)
 
 
 def cleanup(directory):
@@ -129,12 +144,12 @@ def main():
     # Merge PDFs with title pages
     title_pages = merge_pdfs(input_dir, output_pdf)
 
-    # Create the summary PDF
-    create_summary_pdf(title_pages, summary_pdf)
+    # Create the table_of_contents PDF
+    create_table_of_contents_pdf(title_pages, table_of_contents_pdf)
 
-    # Merge the summary with the final output PDF
+    # Merge the table_of_contents with the final output PDF
     final_merger = PdfMerger()
-    final_merger.append(summary_pdf)
+    final_merger.append(table_of_contents_pdf)
     final_merger.append(output_pdf)
     final_merger.write(final_output_pdf)
     final_merger.close()
