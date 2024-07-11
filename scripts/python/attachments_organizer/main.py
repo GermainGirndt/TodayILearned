@@ -1,11 +1,14 @@
 import os
+import shutil
 from PyPDF2 import PdfMerger, PdfReader
 from fpdf import FPDF
+import re
 
 # Define the input and output directories
 input_dir = 'input'
 output_dir = 'output'
-output_pdf = os.path.join(output_dir, 'output.pdf')
+temp_dir = os.path.join(output_dir, 'temp')
+output_pdf = os.path.join(output_dir, 'attachments.pdf')
 summary_pdf = os.path.join(output_dir, 'summary.pdf')
 final_output_pdf = os.path.join(output_dir, 'final_output.pdf')
 
@@ -43,13 +46,20 @@ def create_title_page(attachment_number, title):
 
     pdf.set_font("times", size=24)
     pdf.multi_cell(0, 10, txt=title, align='C')
-    title_pdf = os.path.join(output_dir, f'{attachment_number}_{title}.pdf')
+    title_pdf = os.path.join(temp_dir, f'{attachment_number}_{title}.pdf')
     pdf.output(title_pdf)
     return title_pdf
 
 
 def sanitize_filename(filename):
     """Sanitize filename to create a title."""
+
+    pattern = r'[0-9]+\s\-\s.*'
+
+    if re.match(pattern, filename):
+        # Remove the attachment number and the dash
+        filename = re.sub(r'[0-9]+\s\-\s', '', filename)
+
     return ''.join(c for c in filename.replace('.pdf', '') if c.isalnum() or c.isspace())
 
 
@@ -103,15 +113,16 @@ def create_summary_pdf(title_pages, summary_pdf):
     summary.output(summary_pdf)
 
 
-def cleanup(files):
-    """Remove temporary files."""
-    for file in files:
-        os.remove(file)
+def cleanup(directory):
+    """Remove temporary directory."""
+    if os.path.exists(directory):
+        shutil.rmtree(directory)
 
 
 def main():
-    # Ensure output directory exists
+    # Ensure output and temp directories exist
     os.makedirs(output_dir, exist_ok=True)
+    os.makedirs(temp_dir, exist_ok=True)
 
     # Merge PDFs with title pages
     title_pages = merge_pdfs(input_dir, output_pdf)
@@ -125,6 +136,9 @@ def main():
     final_merger.append(output_pdf)
     final_merger.write(final_output_pdf)
     final_merger.close()
+
+    # Cleanup temporary files
+    cleanup(temp_dir)
 
     print(f"PDFs merged successfully into '{final_output_pdf}'.")
 
