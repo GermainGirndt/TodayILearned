@@ -101,6 +101,7 @@ def create_summary_pdf(title_pages, summary_pdf):
     summary = FPDF()
     summary.add_page()
     summary.set_font("times", size=20)
+    summary.set_right_margin(40)
     summary.cell(200, 10, txt="Summary", ln=True, align='C')
     summary.ln(10)
 
@@ -108,7 +109,8 @@ def create_summary_pdf(title_pages, summary_pdf):
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
         page_number += 1  # Account for this summary page
         summary_text = f"Attachment {arabic_to_roman(attachment_number)} - {title} (PDF Page {page_number})"
-        summary.cell(200, 10, txt=summary_text, ln=True)
+        summary.multi_cell(180, 6, txt=summary_text, ln=True)
+        summary.ln(4)
 
     summary.output(summary_pdf)
 
