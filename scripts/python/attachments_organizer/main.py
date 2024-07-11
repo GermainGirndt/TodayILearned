@@ -1,5 +1,5 @@
 import os
-from PyPDF2 import PdfMerger
+from PyPDF2 import PdfMerger, PdfReader
 from fpdf import FPDF
 
 # Define the input and output directories
@@ -57,6 +57,7 @@ def merge_pdfs(input_dir, output_file):
     """Merge PDFs from the input directory into the output file with title pages."""
     merger = PdfMerger()
     title_pages = []
+    total_pages = 0
 
     attachment_number = 1
     for filename in sorted(os.listdir(input_dir)):
@@ -67,11 +68,15 @@ def merge_pdfs(input_dir, output_file):
             # Create title page
             title_page_pdf = create_title_page(
                 f"Attachment {arabic_to_roman(attachment_number)}", title)
-            title_pages.append((title, title_page_pdf))
+            title_pages.append((title, total_pages + 1))
 
             # Merge the title page and the document
             merger.append(title_page_pdf)
             merger.append(filepath)
+
+            # Update the total number of pages
+            total_pages += len(PdfReader(title_page_pdf).pages)
+            total_pages += len(PdfReader(filepath).pages)
 
             attachment_number += 1
 
@@ -90,12 +95,10 @@ def create_summary_pdf(title_pages, summary_pdf):
     summary.ln(10)
 
     summary.set_font("times", size=12)
-    attachment_number = 1
-    page_number = 0
-    for title, _ in title_pages:
+    for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
+        page_number += 1  # Account for this summary page
         summary_text = f"Attachment {arabic_to_roman(attachment_number)} - {title} (PDF Page {page_number})"
         summary.cell(200, 10, txt=summary_text, ln=True)
-        attachment_number += 2  # Adjust according to your actual content length
 
     summary.output(summary_pdf)
 
@@ -122,9 +125,6 @@ def main():
     final_merger.append(output_pdf)
     final_merger.write(final_output_pdf)
     final_merger.close()
-
-    # Clean up temporary files
-    cleanup([output_pdf, summary_pdf] + [pdf for _, pdf in title_pages])
 
     print(f"PDFs merged successfully into '{final_output_pdf}'.")
 
