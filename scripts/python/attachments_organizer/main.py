@@ -83,24 +83,25 @@ def merge_pdfs(input_dir, output_file):
 
     attachment_number = 1
     for filename in sorted(os.listdir(input_dir)):
-        if filename.endswith('.pdf'):
-            filepath = os.path.join(input_dir, filename)
-            title = sanitize_filename(filename)
+        if not filename.endswith('.pdf'):
+            raise Exception('Have you forgotten non .pdf files in the folder?')
+        filepath = os.path.join(input_dir, filename)
+        title = sanitize_filename(filename)
 
-            # Create title page
-            title_page_pdf = create_title_page(
-                f"{attachment_translation} {arabic_to_roman(attachment_number)}", title)
-            title_pages.append((title, total_pages + 1))
+        # Create title page
+        title_page_pdf = create_title_page(
+            f"{attachment_translation} {arabic_to_roman(attachment_number)}", title)
+        title_pages.append((title, total_pages + 1))
 
-            # Merge the title page and the document
-            merger.append(title_page_pdf)
-            merger.append(filepath)
+        # Merge the title page and the document
+        merger.append(title_page_pdf)
+        merger.append(filepath)
 
-            # Update the total number of pages
-            total_pages += len(PdfReader(title_page_pdf).pages)
-            total_pages += len(PdfReader(filepath).pages)
+        # Update the total number of pages
+        total_pages += len(PdfReader(title_page_pdf).pages)
+        total_pages += len(PdfReader(filepath).pages)
 
-            attachment_number += 1
+        attachment_number += 1
 
     merger.write(output_file)
     merger.close()
