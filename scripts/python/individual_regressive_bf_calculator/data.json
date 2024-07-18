@@ -1,0 +1,54 @@
+{
+  "name": "filename",
+  "description": "description",
+  "data": [
+    {
+      "age": 35,
+      "weight": 100,
+      "height": 178,
+      "neck": 37,
+      "waist": 83,
+      "bf": 15.7
+    },
+    {
+      "age": 20,
+      "weight": 70.0,
+      "height": 180,
+      "neck": 39,
+      "waist": 80.0,
+      "bf": 11.2
+    },
+    {
+      "age": 28,
+      "weight": 75.9,
+      "height": 170,
+      "neck": 38,
+      "waist": 85,
+      "bf": 17.89
+    },
+    {
+      "age": 35,
+      "weight": 73,
+      "height": 170,
+      "neck": 37,
+      "waist": 83,
+      "bf": 17.0
+    },
+    {
+      "age": 25,
+      "weight": 78,
+      "height": 170,
+      "neck": 39,
+      "waist": 80,
+      "bf": 12.8
+    },
+    {
+      "age": 27,
+      "weight": 100,
+      "height": 170,
+      "neck": 37,
+      "waist": 83,
+      "bf": 17
+    }
+  ]
+}
