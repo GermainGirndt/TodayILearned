@@ -26,6 +26,26 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
+    "key": "ctrl+alt+x",
+    "command": "workbench.action.editor.nextChange",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "ctrl+alt+x",
+    "command": "workbench.action.compareEditor.nextChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
+    "key": "ctrl+alt+shift+x",
+    "command": "workbench.action.editor.previousChange",
+    "when": "editorTextFocus && !textCompareEditorActive"
+  },
+  {
+    "key": "ctrl+alt+shift++x",
+    "command": "workbench.action.compareEditor.previousChange",
+    "when": "textCompareEditorVisible"
+  },
+  {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditor"
   },
@@ -68,11 +88,13 @@
   {
     "key": "ctrl+shift+cmd+right",
     "command": "editor.action.smartSelect.expand",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
+    "comment": "Selects word -> line -> paragraph -> document"
   },
   {
     "key": "ctrl+shift+left",
     "command": "editor.action.smartSelect.shrink",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
+    "comment": "Deselects word -> line -> paragraph -> document"
   }
 ]
