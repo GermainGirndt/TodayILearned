@@ -89,12 +89,24 @@
     "key": "ctrl+shift+cmd+right",
     "command": "editor.action.smartSelect.expand",
     "when": "editorTextFocus",
-    "comment": "Selects word -> line -> paragraph -> document"
+    "comment": "Windows; Selects word -> line -> paragraph -> document"
+  },
+  {
+    "key": "ctrl+alt+cmd+right",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus",
+    "comment": "Mac; Selects word -> line -> paragraph -> document"
   },
   {
     "key": "ctrl+shift+left",
     "command": "editor.action.smartSelect.shrink",
     "when": "editorTextFocus",
-    "comment": "Deselects word -> line -> paragraph -> document"
+    "comment": "Windows; Deselects word -> line -> paragraph -> document"
+  },
+  {
+    "key": "ctrl+alt+cmd+left",
+    "command": "editor.action.smartSelect.shrink",
+    "when": "editorTextFocus",
+    "comment": "Mac; Deselects word -> line -> paragraph -> document"
   }
 ]
