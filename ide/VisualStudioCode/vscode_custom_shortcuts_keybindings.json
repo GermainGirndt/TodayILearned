@@ -16,7 +16,7 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+alt+shift+x",
+    "key": "ctrl+alt+z",
     "command": "merge-conflict.previous",
     "when": "editorTextFocus && !editorReadonly"
   },
@@ -36,12 +36,12 @@
     "when": "textCompareEditorVisible"
   },
   {
-    "key": "ctrl+alt+shift+x",
+    "key": "ctrl+alt+z",
     "command": "workbench.action.editor.previousChange",
     "when": "editorTextFocus && !textCompareEditorActive"
   },
   {
-    "key": "ctrl+alt+shift++x",
+    "key": "ctrl+alt+z",
     "command": "workbench.action.compareEditor.previousChange",
     "when": "textCompareEditorVisible"
   },
