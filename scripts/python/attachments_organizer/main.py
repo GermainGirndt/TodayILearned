@@ -124,7 +124,8 @@ def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
     table_of_contents.set_font("times", size=12)
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
         page_number += 1  # Account for this table_of_contents page
-        table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title} ({page_abbr_translation} {page_number})"
+        # table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title} ({page_abbr_translation} {page_number})"
+        table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title}"
         table_of_contents.multi_cell(
             180, 6, txt=table_of_contents_text, ln=True)
         table_of_contents.ln(4)
