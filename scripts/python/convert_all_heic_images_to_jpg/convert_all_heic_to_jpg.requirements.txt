@@ -1,7 +1,7 @@
 cffi==1.15.1
 imagecodecs==2023.3.16
 numpy==1.24.3
-Pillow==9.5.0
+Pillow==10.0.1
 pycparser==2.21
 pyheif==0.7.1
 pyheif-pillow-opener==0.2.0
