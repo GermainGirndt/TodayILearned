@@ -9,6 +9,19 @@ transactions = [
     (8, {'sausage', 'bread', 'cola', 'peach'})
 ]
 
+transactions = [
+    (1, {"A", "B", "C"}),
+    (2, {"B", "C"}),
+    (3, {"A", "C"}),
+    (4, {"A", "D"}),
+    (5, {"C", "D"}),
+    (6, {"A", "C", "D"}),
+    (7, {"A", "C", "D"}),
+    (8, {"A", "B", "D"}),
+    (9, {"A", "B"}),
+    (10, {"B", "C", "E"})
+]
+
 
 def find_unique_articles(transactions: list) -> set[str]:
     unique_articles = set()
@@ -65,7 +78,7 @@ def a_priori(min_support: int, transactions: list) -> list[set[frozenset[str]]]:
 
 
 # Run the algorithm
-min_support = 3
+min_support = 2
 articles = a_priori(min_support, transactions)
 
 # Print results
