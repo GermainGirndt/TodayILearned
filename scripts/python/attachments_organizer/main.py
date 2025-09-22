@@ -66,13 +66,18 @@ def create_title_page(attachment_number, title):
 def sanitize_filename(filename):
     """Sanitize filename to create a title."""
 
-    pattern = r'[0-9]+\s\-\s.*'
+    PATTERN = r'[0-9]+\s\-\s.*'
 
-    if re.match(pattern, filename):
+    if re.match(PATTERN, filename):
         # Remove the attachment number and the dash
         filename = re.sub(r'[0-9]+\s\-\s', '', filename)
 
-    return ''.join(c for c in filename.replace('.pdf', '') if c.isalnum() or c.isspace() or c in ['-'])
+    filename = filename.replace('.pdf', '')
+
+    def is_valid_char(c):
+        return c.isalnum() or c.isspace() or c in ['-', '.']
+
+    return ''.join(char for char in filename if is_valid_char(char))
 
 
 def merge_pdfs(input_dir, output_file):
@@ -91,6 +96,7 @@ def merge_pdfs(input_dir, output_file):
             raise Exception('Have you forgotten non .pdf files in the folder?')
         filepath = os.path.join(input_dir, filename)
         title = sanitize_filename(filename)
+        print(f"Processing '{filename}' with title '{title}'")
 
         # Create title page
         title_page_pdf = create_title_page(
