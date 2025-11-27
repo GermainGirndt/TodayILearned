@@ -1,5 +1,13 @@
 # Download Videos using HLS (HTTPS Live Streaming)
 
+### Context
+
+HLS (HTTP Live Streaming) is a streaming protocol created by Apple that delivers video by splitting it into small segments (usually 2–6 seconds) and providing a playlist file (.m3u8) that lists these segments. Players fetch the playlist and download segments over standard HTTP/HTTPS, making HLS firewall-friendly, CDN-friendly, and compatible with virtually all devices—especially Apple’s ecosystem. It supports both live streaming (with continuously updating playlists) and video on demand.
+
+A key feature of HLS is adaptive bitrate streaming, where a master playlist references multiple quality levels, allowing the player to switch between them based on network conditions. Tools like FFmpeg can process HLS streams easily, such as by downloading a playlist and its .ts segments and remuxing them into an MP4 without re-encoding. HLS is widely used for scalable, reliable internet video delivery across mobile and web platforms.
+
+### Example
+
 - Example 1
 
 ```
