@@ -26,3 +26,14 @@ For using in Photos, convert to .m4v:
 - Customize:
   - Video: H.264
   - Audio Codec: MPEG 4 Audio (AAC)
+
+### Convert to iOS friendly format:
+
+```
+ffmpeg -i input.mp4 \
+  -c:v libx264 -profile:v high -level 4.2 \
+  -pix_fmt yuv420p \
+  -movflags +faststart \
+  -c:a aac -b:a 128k \
+  output_ios.mp4
+```
