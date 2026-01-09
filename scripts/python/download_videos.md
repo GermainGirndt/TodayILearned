@@ -37,3 +37,6 @@ ffmpeg -i input.mp4 \
   -c:a aac -b:a 128k \
   output_ios.mp4
 ```
+
+Notes:
+Re-encodes video as H.264/AVC, with compatible (i) profile, (ii) pixels and (iii) audio formats.
