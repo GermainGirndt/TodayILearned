@@ -18,6 +18,8 @@ Finder -> Window -> Show path and show hidden files
 
 System Settings -> Privacy and Security -> Developer tools -> terminal
 
+Show hidden files by pressing: `Command (⌘) + Shift (⇧) + .`
+
 ```
 
 ```
