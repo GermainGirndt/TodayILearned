@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Debug get-youtube-transcript",
+      "type": "python",
+      "request": "launch",
+      "module": "src",
+      "args": [
+        "get-youtube-transcript",
+        "https://www.youtube.com/watch?v=3_QEgjb4DFY"
+      ],
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
