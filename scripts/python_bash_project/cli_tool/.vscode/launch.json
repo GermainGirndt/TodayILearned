@@ -7,11 +7,12 @@
       "request": "launch",
       "module": "src",
       "args": [
-        "get-youtube-transcript",
+        "youtube-transcript",
         "https://www.youtube.com/watch?v=3_QEgjb4DFY"
       ],
       "justMyCode": true,
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "python": "${workspaceFolder}/venv/bin/python"
     }
   ]
 }

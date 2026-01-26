@@ -53,3 +53,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Output files
+output.txt
