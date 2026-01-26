@@ -2,8 +2,8 @@ import argparse
 import importlib
 import inspect
 import pkgutil
-from cli_tool import commands
-from cli_tool.commands.base_command import BaseCommand
+from src import commands
+from src.commands.base_command import BaseCommand
 
 
 def main():

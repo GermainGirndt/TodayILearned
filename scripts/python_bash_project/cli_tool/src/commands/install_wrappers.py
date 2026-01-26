@@ -1,4 +1,4 @@
-from cli_tool.commands.base_command import BaseCommand
+from src.commands.base_command import BaseCommand
 import os
 import shutil
 from argparse import _SubParsersAction, ArgumentParser
