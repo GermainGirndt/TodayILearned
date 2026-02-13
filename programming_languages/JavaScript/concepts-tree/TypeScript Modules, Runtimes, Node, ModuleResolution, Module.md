@@ -41,7 +41,7 @@ flowchart TD
     %% Deno
     H -->|Deno| I["
     [package.json]
-      ---
+      -
       (Node doesn't needed)
     .
     [tsconfig]
