@@ -1,3 +1,5 @@
+# Munich Hacking Legal 2026
+
 ### Introduction
 
 🚀 An intense weekend at the 𝐋𝐞𝐠𝐚𝐥 𝐇𝐚𝐜𝐤𝐚𝐭𝐡𝐨𝐧 𝐌𝐮𝐧𝐢𝐜𝐡 2026
@@ -32,7 +34,7 @@ Big thanks to the organizers (Legal Tech Colab, Liquid Legal Institute e.V., STA
 ### Participating Companies
 
 - BMW Group (Open Ended)
-- Eltemate (EU Incident Report – AI)
+- Eltemate (Data Breach Incident Report – AI)
 - EQS (Whisleblowing)
 - Siemens (Playbook – Contract Intelligence)
 
@@ -44,9 +46,9 @@ Big thanks to the organizers (Legal Tech Colab, Liquid Legal Institute e.V., STA
 
 ### Participation Experience
 
-- Participation as Eversores Burocratie (Burocratiae\*)
-- Eltemate's Challenge
-- Core Ideas:
+- Participation as Eversores Burocratiae
+- Eltemate's Challenge (full name: AI-Supported EU Data Breach Response Assistant)
+- Team Core Ideas:
   1. Interdomain Language Translation (tech <-> law)
   2. Expert Grounded Guards (pipeline: domain errors, incongruencies, missing information)
 
