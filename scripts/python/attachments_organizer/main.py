@@ -1,8 +1,11 @@
 import os
 import shutil
+from pathlib import Path
 from PyPDF2 import PdfMerger, PdfReader
 from fpdf import FPDF
 import re
+import unicodedata
+
 
 # Define the input and output directories
 input_dir = 'input'
@@ -25,6 +28,24 @@ page_abbr_translation = page_abbr[SELECTED_LANGUAGE]
 table_of_contents_translation = table_of_contents[SELECTED_LANGUAGE]
 
 
+FONT_REGULAR = Path("/System/Library/Fonts/Supplemental/Arial.ttf")
+FONT_BOLD = Path("/System/Library/Fonts/Supplemental/Arial Bold.ttf")
+
+
+def setup_fonts(pdf):
+    if not FONT_REGULAR.exists():
+        raise FileNotFoundError(f"Font not found: {FONT_REGULAR}")
+
+    # Register regular font
+    pdf.add_font("DocFont", "", str(FONT_REGULAR))
+
+    # Register bold font if available, otherwise reuse regular font
+    if FONT_BOLD.exists():
+        pdf.add_font("DocFont", "B", str(FONT_BOLD))
+    else:
+        pdf.add_font("DocFont", "B", str(FONT_REGULAR))
+
+
 def arabic_to_roman(num):
     val = [
         1000, 900, 500, 400,
@@ -38,46 +59,60 @@ def arabic_to_roman(num):
         "X", "IX", "V", "IV",
         "I"
     ]
+
     roman_num = ''
     i = 0
+
     while num > 0:
         for _ in range(num // val[i]):
             roman_num += syb[i]
             num -= val[i]
         i += 1
+
     return roman_num
 
 
-def create_title_page(attachment_number, title):
+def strip_order_and_extension(filename):
+    """
+    Examples:
+    '00 – Eheurkunde – Nachweis über die Namensänderung.pdf'
+    -> 'Eheurkunde – Nachweis über die Namensänderung'
+
+    '11 – Arbeitszeugnis SAP SE: 1 Assesment Form und 2 Reference Letters.pdf'
+    -> 'Arbeitszeugnis SAP SE: 1 Assesment Form und 2 Reference Letters'
+    """
+
+    title = Path(filename).stem
+
+    # Normalize macOS filename Unicode:
+    # "u" + combining diaeresis -> "ü"
+    title = unicodedata.normalize("NFC", title)
+
+    # Remove leading order numbers followed by -, –, or —
+    title = re.sub(r'^\s*\d+\s*[-–—]\s*', '', title)
+
+    return title.strip()
+
+
+def create_title_page(attachment_number, title, attachment_index):
     """Generate a title page PDF with the given attachment number and title."""
     pdf = FPDF()
+    setup_fonts(pdf)
+
     pdf.add_page()
     pdf.set_y(100)
-    pdf.set_font("times", size=16)
+
+    pdf.set_font("DocFont", size=16)
     pdf.cell(0, 10, txt=attachment_number, ln=True, align='C')
 
-    pdf.set_font("times", "B", size=20)
+    pdf.set_font("DocFont", "B", size=20)
     pdf.multi_cell(0, 10, txt=title, align='C')
-    title_pdf = os.path.join(temp_dir, f'{attachment_number}_{title}.pdf')
+
+    # Do not use title in temp filename because it may contain characters like / or :
+    title_pdf = os.path.join(temp_dir, f'title_page_{attachment_index}.pdf')
     pdf.output(title_pdf)
+
     return title_pdf
-
-
-def sanitize_filename(filename):
-    """Sanitize filename to create a title."""
-
-    PATTERN = r'[0-9]+\s\-\s.*'
-
-    if re.match(PATTERN, filename):
-        # Remove the attachment number and the dash
-        filename = re.sub(r'[0-9]+\s\-\s', '', filename)
-
-    filename = filename.replace('.pdf', '')
-
-    def is_valid_char(c):
-        return c.isalnum() or c.isspace() or c in ['-', '.']
-
-    return ''.join(char for char in filename if is_valid_char(char))
 
 
 def merge_pdfs(input_dir, output_file):
@@ -85,29 +120,33 @@ def merge_pdfs(input_dir, output_file):
     merger = PdfMerger()
     title_pages = []
     total_pages = 0
-
     attachment_number = 1
 
-    if not os.listdir(input_dir):
+    filenames = sorted(os.listdir(input_dir))
+
+    if not filenames:
         raise Exception('No PDF files found in the input directory.')
 
-    for filename in sorted(os.listdir(input_dir)):
-        if not filename.endswith('.pdf'):
+    for filename in filenames:
+        if not filename.lower().endswith('.pdf'):
             raise Exception('Have you forgotten non .pdf files in the folder?')
+
         filepath = os.path.join(input_dir, filename)
-        title = sanitize_filename(filename)
+        title = strip_order_and_extension(filename)
+
         print(f"Processing '{filename}' with title '{title}'")
 
-        # Create title page
         title_page_pdf = create_title_page(
-            f"{attachment_translation} {arabic_to_roman(attachment_number)}", title)
+            f"{attachment_translation} {arabic_to_roman(attachment_number)}",
+            title,
+            attachment_number
+        )
+
         title_pages.append((title, total_pages + 1))
 
-        # Merge the title page and the document
         merger.append(title_page_pdf)
         merger.append(filepath)
 
-        # Update the total number of pages
         total_pages += len(PdfReader(title_page_pdf).pages)
         total_pages += len(PdfReader(filepath).pages)
 
@@ -120,27 +159,33 @@ def merge_pdfs(input_dir, output_file):
 
 
 def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
-    """Create a table_of_contents PDF with the list of title pages and their page numbers."""
-    table_of_contents = FPDF()
-    table_of_contents.add_page()
-    table_of_contents.ln(20)
-    table_of_contents.set_right_margin(40)
-    table_of_contents.set_font("times", "B", size=20)
-    table_of_contents.cell(
-        200, 10, txt=table_of_contents_translation, ln=True, align='C')
-    table_of_contents.ln(10)
+    """Create a table of contents PDF with the list of title pages and their page numbers."""
+    pdf = FPDF()
+    setup_fonts(pdf)
 
-    table_of_contents.set_left_margin(22)
-    table_of_contents.set_font("times", size=12)
+    pdf.add_page()
+    pdf.ln(20)
+    pdf.set_right_margin(40)
+
+    pdf.set_font("DocFont", "B", size=20)
+    pdf.cell(200, 10, txt=table_of_contents_translation, ln=True, align='C')
+    pdf.ln(10)
+
+    pdf.set_left_margin(22)
+    pdf.set_font("DocFont", size=12)
+
     for attachment_number, (title, page_number) in enumerate(title_pages, start=1):
-        page_number += 1  # Account for this table_of_contents page
-        table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title} ({page_abbr_translation} {page_number})"
-        # table_of_contents_text = f"{arabic_to_roman(attachment_number)}. {title}"
-        table_of_contents.multi_cell(
-            180, 6, txt=table_of_contents_text, ln=True)
-        table_of_contents.ln(4)
+        page_number += 1  # Account for table of contents page
 
-    table_of_contents.output(table_of_contents_pdf)
+        toc_text = (
+            f"{arabic_to_roman(attachment_number)}. "
+            f"{title} ({page_abbr_translation} {page_number})"
+        )
+
+        pdf.multi_cell(180, 6, txt=toc_text)
+        pdf.ln(4)
+
+    pdf.output(table_of_contents_pdf)
 
 
 def cleanup(directory):
