@@ -1,4 +1,26 @@
-# Legal Hackaton Munich 2026
+### Introduction
+
+🚀 An intense weekend at the 𝐋𝐞𝐠𝐚𝐥 𝐇𝐚𝐜𝐤𝐚𝐭𝐡𝐨𝐧 𝐌𝐮𝐧𝐢𝐜𝐡 2026
+
+Together with my team Eversores Burocratiae — the destroyers of analog bureaucracy —, we tackled ELTEMATE (Hogan Lovells)'s challenge: building an AI-Supported EU Data Breach Response Assistant.
+
+Our solution focused on communication:
+(i) Cross-domain translation (legal ↔ tech) to avoid misunderstandings;
+(ii) AI-based expert-grounded validation guards to catch compliance risks, technical errors, missing information, and inconsistencies before they surface.
+
+But beyond the solution itself, the real value came from the Hackaton experience:
+💡 In a 3-minute pitch, clarity beats complexity.
+🎤 A compelling story often outweighs a fully working PoC.
+🧠 Product thinking > pure technical execution in hackathon settings.
+🏗️ Proven enterprise patterns (workflows, approvals, dashboards) consistently win over “clever” innovative solutions.
+
+One key takeaway for the pitch on stage: focus on what your solution enables — not on what you built.
+
+It was also interesting to see how modern tools like AI-powered prototyping (e.g. Lovable and MagicalPatterns) are reshaping how quickly ideas can be communicated and validated.
+
+Big thanks to the organizers (Legal Tech Colab, Liquid Legal Institute e.V., START Munich and Technical University of Munich) and challenge sponsors (ELTEMATE, Siemens, EQS Group and BMW Group) for creating such a high-energy environment. Already looking forward to the next one!
+
+#LegalTech #Hackathon #AI #Innovation #ProductThinking
 
 ### Event Organizers
 
