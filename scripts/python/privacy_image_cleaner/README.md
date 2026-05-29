@@ -6,12 +6,14 @@ The first and most important step. If you only do one thing, do this — it hand
 
 You need to remove all of the following, not just some of them:
 
+```
 EXIF data — camera make, model, software field, GPS coordinates, timestamps, editing history
 IPTC fields — source, creator, description, keywords
 XMP metadata — the XML-based metadata that Adobe products use, which includes the "Made with AI" indicators
 C2PA manifests — the cryptographically signed provenance blocks, which are the most important thing to remove in 2026. Content Credentials removal is covered in depth in our C2PA guide.
 PNG text chunks — if your image is a PNG from Stable Diffusion, the generation parameters are stored in these chunks and must be removed separately from EXIF
 Embedded thumbnails — many EXIF-cleaning tools forget that images contain small preview thumbnails which themselves have metadata
+```
 
 ### Step 2: Change the pixels
 
