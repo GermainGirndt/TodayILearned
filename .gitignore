@@ -46,6 +46,8 @@ secrets
 secrets/*
 .env
 
+.venv
+
 node_modules
 
 # Python
