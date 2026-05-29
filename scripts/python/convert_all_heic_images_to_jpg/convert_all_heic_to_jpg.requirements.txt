@@ -1,5 +1,5 @@
 cffi==1.15.1
-imagecodecs==2023.3.16
+imagecodecs==2023.9.18
 numpy==1.24.3
 Pillow==9.5.0
 pycparser==2.21
