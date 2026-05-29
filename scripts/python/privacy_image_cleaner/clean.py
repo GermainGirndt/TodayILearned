@@ -320,7 +320,7 @@ def main():
         transition=50.0,
     )
 
-    # step 4
+    # step 5
     print("Before cleaning:")
     verify(src)
     print("After cleaning:")
