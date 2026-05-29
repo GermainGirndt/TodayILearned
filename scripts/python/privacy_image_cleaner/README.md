@@ -23,7 +23,11 @@ After stripping metadata and modifying pixels, save the result as to a different
 
 Then, re-encoding to the original format using a smaller quality level (e.g. 85-90%)
 
-### Step 4: Verify the metadata
+### Step 4: Apply effects
+
+Modify the image applying some other effects like gaussian blur to simulate non-AI-made transformations.
+
+### Step 5: Verify the metadata
 
 Do not skip this step. There are two quick checks you can run:
 EXIF, XMP, C2PA manifest, PNG text chunks.
