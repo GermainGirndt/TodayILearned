@@ -11,7 +11,8 @@ export STANDARD_SOURCE_FILE='~/.zprofile'
 
 alias codeprofile="cd $PROFILE_FILE"
 alias codealias="cd $ALIAS_DEFINITION_FILE"
-
+alias terminal="open -a Terminal"
+alias assistant="codex --sandbox read-only --ask-for-approval on-request"
 
 ### Installs
 export JAVA_HOME="/usr/bin/java"
