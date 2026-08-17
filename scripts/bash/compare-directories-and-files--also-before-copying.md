@@ -6,7 +6,7 @@ find "directory_name" -type f | wc -l
 find "directory_name--2" -type f | wc -l
 ```
 
-### Compare Bytes
+### Compare Stored Bytes
 
 ```
 du -sk "directory_name"
@@ -27,4 +27,12 @@ cut -d ' ' -f 1 hashes1.txt | sort > hashes1_only.txt
 cut -d ' ' -f 1 hashes2.txt | sort > hashes2_only.txt
 
 diff hashes1_only.txt hashes2_only.txt
+```
+
+### Compare files in two different directories (e.g. after copying dir1 -> dir2)
+
+```
+rsync -rnc --itemize-changes \
+  "dir1" \
+  "dir2"
 ```
