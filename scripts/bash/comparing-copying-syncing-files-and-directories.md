@@ -29,6 +29,20 @@ cut -d ' ' -f 1 hashes2.txt | sort > hashes2_only.txt
 diff hashes1_only.txt hashes2_only.txt
 ```
 
+### Copy files from one to other directory, while showing progress and allowing stop/resuming
+
+- `rsync` — copy/synchronize the two directory trees.
+- `-a` — “archive mode”: recursively copies folders and tries to preserve metadata such as modification times, permissions, symlinks, etc.
+- `--partial` — if a file is interrupted halfway through, keep the partial file instead of throwing it away.
+- `--info=progress2` shows the progress for the total process
+
+```
+# note: showing just one progress (ensure version >3)
+rsync -a --partial --info=progress2 \
+  "dir1" \
+  "dir2"
+```
+
 ### Compare files in two different directories (e.g. after copying dir1 -> dir2)
 
 ```
