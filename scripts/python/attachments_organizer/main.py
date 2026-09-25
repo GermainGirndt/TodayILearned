@@ -7,6 +7,52 @@ import re
 import unicodedata
 
 
+"""
+# Ghostscript Command
+```
+gs -sDEVICE=pdfwrite \
+  -dCompatibilityLevel=1.4 \
+  -dPDFSETTINGS=/ebook \
+  -dNOPAUSE -dQUIET -dBATCH \
+  -sOutputFile=compressed.pdf \
+  input.pdf
+```
+Reference Presets
+
+| Preset      | Color images | Grayscale images | Monochrome / 1-bit images | Downsampling enabled? |
+| ----------- | -----------: | ---------------: | ------------------------: | --------------------- |
+| `/screen`   |       72 dpi |           72 dpi |                   300 dpi | yes                   |
+| `/ebook`    |      150 dpi |          150 dpi |                   300 dpi | yes                   |
+| `/printer`  |      300 dpi |          300 dpi |                  1200 dpi | no                    |
+| `/prepress` |      300 dpi |          300 dpi |                  1200 dpi | no                    |
+| `/default`  |       72 dpi |           72 dpi |                   300 dpi | no                    |
+
+### Custom Command
+
+```
+gs -sDEVICE=pdfwrite \
+  -dCompatibilityLevel=1.4 \
+  -dNOPAUSE -dQUIET -dBATCH \
+  -dDownsampleColorImages=true \
+  -dColorImageResolution=120 \
+  -dDownsampleGrayImages=true \
+  -dGrayImageResolution=120 \
+  -dDownsampleMonoImages=true \
+  -dMonoImageResolution=150 \
+  -sOutputFile=compressed.pdf \
+  input.pdf
+```
+
+
+Compression levels:
+    0: default - almost identical to /screen, 72 dpi images
+    1: prepress - high quality, color preserving, 300 dpi imgs
+    2: printer - high quality, 300 dpi images
+    3: ebook - low quality, 150 dpi images
+    4: screen - screen-view-only quality, 72 dpi images
+
+"""
+
 # Define the input and output directories
 input_dir = 'input'
 output_dir = 'output'
