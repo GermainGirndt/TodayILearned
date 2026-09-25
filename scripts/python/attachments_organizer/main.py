@@ -72,7 +72,7 @@ def arabic_to_roman(num):
     return roman_num
 
 
-def strip_order_and_extension(filename):
+def strip_order_and_extension(filename, remove_order_suffix=False):
     """
     Examples:
     '00 – Eheurkunde – Nachweis über die Namensänderung.pdf'
@@ -87,6 +87,9 @@ def strip_order_and_extension(filename):
     # Normalize macOS filename Unicode:
     # "u" + combining diaeresis -> "ü"
     title = unicodedata.normalize("NFC", title)
+
+    if not remove_order_suffix:
+        return title.strip()
 
     # Remove leading order numbers followed by -, –, or —
     title = re.sub(r'^\s*\d+\s*[-–—]\s*', '', title)
@@ -115,14 +118,15 @@ def create_title_page(attachment_number, title, attachment_index):
     return title_pdf
 
 
-def merge_pdfs(input_dir, output_file):
+def merge_pdfs(input_dir, output_file, reverse_order: bool = True, remove_order_suffix: bool = True):
     """Merge PDFs from the input directory into the output file with title pages."""
     merger = PdfMerger()
     title_pages = []
     total_pages = 0
     attachment_number = 1
 
-    filenames = sorted(os.listdir(input_dir))
+    # Sort in reverse order to match the original script's behavior
+    filenames = sorted(os.listdir(input_dir), reverse=reverse_order)
 
     if not filenames:
         raise Exception('No PDF files found in the input directory.')
@@ -132,7 +136,8 @@ def merge_pdfs(input_dir, output_file):
             raise Exception('Have you forgotten non .pdf files in the folder?')
 
         filepath = os.path.join(input_dir, filename)
-        title = strip_order_and_extension(filename)
+        title = strip_order_and_extension(
+            filename, remove_order_suffix=remove_order_suffix)
 
         print(f"Processing '{filename}' with title '{title}'")
 
@@ -200,7 +205,8 @@ def main():
     os.makedirs(temp_dir, exist_ok=True)
 
     # Merge PDFs with title pages
-    title_pages = merge_pdfs(input_dir, output_pdf)
+    title_pages = merge_pdfs(input_dir, output_pdf,
+                             reverse_order=True, remove_order_suffix=False)
 
     # Create the table_of_contents PDF
     create_table_of_contents_pdf(title_pages, table_of_contents_pdf)
