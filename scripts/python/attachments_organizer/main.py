@@ -1,5 +1,8 @@
+import argparse
 import os
 import shutil
+import subprocess
+import sys
 from pathlib import Path
 from PyPDF2 import PdfMerger, PdfReader
 from fpdf import FPDF
@@ -53,25 +56,19 @@ Compression levels:
 
 """
 
-# Define the input and output directories
-input_dir = 'input'
-output_dir = 'output'
-temp_dir = os.path.join(output_dir, 'temp')
-output_pdf = os.path.join(output_dir, 'attachments.pdf')
-table_of_contents_pdf = os.path.join(output_dir, 'table_of_contents.pdf')
-final_output_pdf = os.path.join(output_dir, 'final_output.pdf')
-
-SELECTED_LANGUAGE = 'de'
+# Ghostscript -dPDFSETTINGS preset for each compression level
+COMPRESSION_PRESETS = {
+    0: '/default',
+    1: '/prepress',
+    2: '/printer',
+    3: '/ebook',
+    4: '/screen',
+}
 
 attachment = {'en': 'Attachment', 'de': 'Anhang'}
 page = {'en': 'Page', 'de': 'Seite'}
 page_abbr = {'en': 'p.', 'de': 'S.'}
 table_of_contents = {'en': 'Table of Contents', 'de': 'Inhaltsverzeichnis'}
-
-attachment_translation = attachment[SELECTED_LANGUAGE]
-page_translation = page[SELECTED_LANGUAGE]
-page_abbr_translation = page_abbr[SELECTED_LANGUAGE]
-table_of_contents_translation = table_of_contents[SELECTED_LANGUAGE]
 
 
 FONT_REGULAR = Path("/System/Library/Fonts/Supplemental/Arial.ttf")
@@ -143,7 +140,7 @@ def strip_order_and_extension(filename, remove_order_suffix=False):
     return title.strip()
 
 
-def create_title_page(attachment_number, title, attachment_index):
+def create_title_page(attachment_number, title, attachment_index, temp_dir):
     """Generate a title page PDF with the given attachment number and title."""
     pdf = FPDF()
     setup_fonts(pdf)
@@ -164,15 +161,21 @@ def create_title_page(attachment_number, title, attachment_index):
     return title_pdf
 
 
-def merge_pdfs(input_dir, output_file, reverse_order: bool = True, remove_order_suffix: bool = True):
+def merge_pdfs(input_dir, output_file, temp_dir, language, reverse_order: bool = True, remove_order_suffix: bool = True):
     """Merge PDFs from the input directory into the output file with title pages."""
     merger = PdfMerger()
     title_pages = []
     total_pages = 0
     attachment_number = 1
 
+    # Skip subdirectories (e.g. the output directory when running with -i .) and hidden files like .DS_Store
+    filenames = [
+        filename for filename in os.listdir(input_dir)
+        if not filename.startswith('.') and os.path.isfile(os.path.join(input_dir, filename))
+    ]
+
     # Sort in reverse order to match the original script's behavior
-    filenames = sorted(os.listdir(input_dir), reverse=reverse_order)
+    filenames = sorted(filenames, reverse=reverse_order)
 
     if not filenames:
         raise Exception('No PDF files found in the input directory.')
@@ -188,9 +191,10 @@ def merge_pdfs(input_dir, output_file, reverse_order: bool = True, remove_order_
         print(f"Processing '{filename}' with title '{title}'")
 
         title_page_pdf = create_title_page(
-            f"{attachment_translation} {arabic_to_roman(attachment_number)}",
+            f"{attachment[language]} {arabic_to_roman(attachment_number)}",
             title,
-            attachment_number
+            attachment_number,
+            temp_dir
         )
 
         title_pages.append((title, total_pages + 1))
@@ -209,7 +213,7 @@ def merge_pdfs(input_dir, output_file, reverse_order: bool = True, remove_order_
     return title_pages
 
 
-def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
+def create_table_of_contents_pdf(title_pages, table_of_contents_pdf, language):
     """Create a table of contents PDF with the list of title pages and their page numbers."""
     pdf = FPDF()
     setup_fonts(pdf)
@@ -219,7 +223,7 @@ def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
     pdf.set_right_margin(40)
 
     pdf.set_font("DocFont", "B", size=20)
-    pdf.cell(200, 10, txt=table_of_contents_translation, ln=True, align='C')
+    pdf.cell(200, 10, txt=table_of_contents[language], ln=True, align='C')
     pdf.ln(10)
 
     pdf.set_left_margin(22)
@@ -230,7 +234,7 @@ def create_table_of_contents_pdf(title_pages, table_of_contents_pdf):
 
         toc_text = (
             f"{arabic_to_roman(attachment_number)}. "
-            f"{title} ({page_abbr_translation} {page_number})"
+            f"{title} ({page_abbr[language]} {page_number})"
         )
 
         pdf.multi_cell(180, 6, txt=toc_text)
@@ -245,17 +249,126 @@ def cleanup(directory):
         shutil.rmtree(directory)
 
 
+def compress_pdf(input_file, output_file, level=None, dpi=None, mono_dpi=150):
+    """Compress a PDF with Ghostscript, using either a preset (level) or custom image resolutions (dpi)."""
+    gs = shutil.which('gs')
+    if gs is None:
+        raise FileNotFoundError("Ghostscript not found. On macOS install it via 'brew install ghostscript'.")
+
+    if level is not None:
+        image_settings = [f'-dPDFSETTINGS={COMPRESSION_PRESETS[level]}']
+    else:
+        image_settings = [
+            '-dDownsampleColorImages=true',
+            f'-dColorImageResolution={dpi}',
+            '-dDownsampleGrayImages=true',
+            f'-dGrayImageResolution={dpi}',
+            '-dDownsampleMonoImages=true',
+            f'-dMonoImageResolution={mono_dpi}',
+        ]
+
+    print(f"Compressing '{input_file}' with Ghostscript...")
+
+    # Blocks until Ghostscript has finished; raises CalledProcessError if it fails
+    subprocess.run(
+        [
+            gs,
+            '-sDEVICE=pdfwrite',
+            '-dCompatibilityLevel=1.4',
+            *image_settings,
+            '-dNOPAUSE', '-dQUIET', '-dBATCH',
+            # Ghostscript reads '%' in the output filename as a page number format, '%%' is a literal '%'
+            f'-sOutputFile={output_file.replace("%", "%%")}',
+            input_file,
+        ],
+        check=True,
+    )
+
+    original_size = os.path.getsize(input_file) / 1e6
+    compressed_size = os.path.getsize(output_file) / 1e6
+    print(f"PDF compressed into '{output_file}' ({original_size:.2f} MB -> {compressed_size:.2f} MB).")
+
+
+def output_filename(value):
+    """Argparse type for --output-name: strips an optional .pdf extension and rejects directories."""
+    name = value[:-len('.pdf')] if value.lower().endswith('.pdf') else value
+    if not name:
+        raise argparse.ArgumentTypeError('the filename must not be empty')
+    if os.path.basename(name) != name:
+        raise argparse.ArgumentTypeError(f"'{value}' contains a directory, use --output-dir for that")
+    return name
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description='Merge all PDFs of a directory into one PDF with a table of contents '
+                    'and a title page before each attachment.')
+    parser.add_argument('-i', '--input-dir', default='input',
+                        help='directory with the PDFs to merge (default: %(default)s)')
+    parser.add_argument('-o', '--output-dir', default='output',
+                        help='directory for the generated PDFs (default: %(default)s)')
+    parser.add_argument('-n', '--output-name', type=output_filename, default='final_output', metavar='NAME',
+                        help='filename of the final PDF, the extension stays .pdf (default: %(default)s)')
+    parser.add_argument('-l', '--language', choices=['de', 'en'], default='de',
+                        help='language of the title pages and the table of contents (default: %(default)s)')
+    parser.add_argument('--reverse-order', action=argparse.BooleanOptionalAction, default=True,
+                        help='sort the PDFs by filename in descending order')
+    parser.add_argument('--remove-order-prefix', action='store_true',
+                        help="remove leading order numbers like '00 – ' from the titles")
+
+    compression = parser.add_argument_group(
+        'compression',
+        "Additionally write a compressed copy of the final PDF (NAME_compressed.pdf) "
+        "with Ghostscript (brew install ghostscript).")
+    compression_mode = compression.add_mutually_exclusive_group()
+    compression_mode.add_argument('-c', '--compress', type=int, choices=COMPRESSION_PRESETS, metavar='LEVEL',
+                                  help='compress with a preset: '
+                                       '0=/default, 1=/prepress, 2=/printer, 3=/ebook, 4=/screen')
+    compression_mode.add_argument('--dpi', type=int,
+                                  help='compress by downsampling color and grayscale images to DPI')
+    compression.add_argument('--mono-dpi', type=int, default=150,
+                             help='resolution for monochrome images when using --dpi (default: %(default)s)')
+
+    # argparse accepts values glued to short options and would read '-output-dir' as '-o utput-dir',
+    # so short options must be a single letter, separated from their value by a space
+    for arg in sys.argv[1:]:
+        if re.match(r'-[a-zA-Z].', arg):
+            parser.error(f"invalid argument '{arg}': short options need a space before their value "
+                         "(e.g. '-o DIR'), long options need two dashes (e.g. '--output-dir')")
+
+    args = parser.parse_args()
+
+    # Validate before any directory is created, relative paths start from the current directory
+    if not os.path.isdir(args.input_dir):
+        parser.error(f"input directory '{os.path.abspath(args.input_dir)}' not found (set it with -i)")
+    # Otherwise the generated PDFs would be merged as attachments in the next run
+    if os.path.isdir(args.output_dir) and os.path.samefile(args.input_dir, args.output_dir):
+        parser.error('the output directory must differ from the input directory')
+
+    return args
+
+
 def main():
+    args = parse_args()
+
+    output_dir = args.output_dir
+    temp_dir = os.path.join(output_dir, 'temp')
+    output_pdf = os.path.join(output_dir, 'attachments.pdf')
+    table_of_contents_pdf = os.path.join(output_dir, 'table_of_contents.pdf')
+    final_output_pdf = os.path.join(output_dir, f'{args.output_name}.pdf')
+    compressed_output_pdf = os.path.join(output_dir, f'{args.output_name}_compressed.pdf')
+
     # Ensure output and temp directories exist
     os.makedirs(output_dir, exist_ok=True)
     os.makedirs(temp_dir, exist_ok=True)
 
     # Merge PDFs with title pages
-    title_pages = merge_pdfs(input_dir, output_pdf,
-                             reverse_order=True, remove_order_suffix=False)
+    title_pages = merge_pdfs(args.input_dir, output_pdf, temp_dir, args.language,
+                             reverse_order=args.reverse_order,
+                             remove_order_suffix=args.remove_order_prefix)
 
     # Create the table_of_contents PDF
-    create_table_of_contents_pdf(title_pages, table_of_contents_pdf)
+    create_table_of_contents_pdf(title_pages, table_of_contents_pdf, args.language)
 
     # Merge the table_of_contents with the final output PDF
     final_merger = PdfMerger()
@@ -268,6 +381,11 @@ def main():
     cleanup(temp_dir)
 
     print(f"PDFs merged successfully into '{final_output_pdf}'.")
+
+    # Compress the final output PDF with Ghostscript
+    if args.compress is not None or args.dpi is not None:
+        compress_pdf(final_output_pdf, compressed_output_pdf,
+                     level=args.compress, dpi=args.dpi, mono_dpi=args.mono_dpi)
 
 
 if __name__ == '__main__':
