@@ -52,17 +52,27 @@ Compression levels:
     1: prepress - high quality, color preserving, 300 dpi imgs
     2: printer - high quality, 300 dpi images
     3: ebook - low quality, 150 dpi images
-    4: screen - screen-view-only quality, 72 dpi images
+    4: custom - /ebook with 110 dpi images, between ebook and screen
+    5: custom - /ebook with 90 dpi images, between level 4 and screen
+    6: screen - screen-view-only quality, 72 dpi images
 
 """
 
-# Ghostscript -dPDFSETTINGS preset for each compression level
+def ebook_with_dpi(dpi):
+    """Ghostscript options for the /ebook preset with color and grayscale images downsampled to dpi."""
+    return ['-dPDFSETTINGS=/ebook', f'-dColorImageResolution={dpi}', f'-dGrayImageResolution={dpi}']
+
+
+# Ghostscript options for each compression level
 COMPRESSION_PRESETS = {
-    0: '/default',
-    1: '/prepress',
-    2: '/printer',
-    3: '/ebook',
-    4: '/screen',
+    0: ['-dPDFSETTINGS=/default'],
+    1: ['-dPDFSETTINGS=/prepress'],
+    2: ['-dPDFSETTINGS=/printer'],
+    3: ['-dPDFSETTINGS=/ebook'],
+    # Custom levels between /ebook (150 dpi) and /screen (72 dpi)
+    4: ebook_with_dpi(110),
+    5: ebook_with_dpi(90),
+    6: ['-dPDFSETTINGS=/screen'],
 }
 
 attachment = {'en': 'Attachment', 'de': 'Anhang'}
@@ -256,7 +266,7 @@ def compress_pdf(input_file, output_file, level=None, dpi=None, mono_dpi=150):
         raise FileNotFoundError("Ghostscript not found. On macOS install it via 'brew install ghostscript'.")
 
     if level is not None:
-        image_settings = [f'-dPDFSETTINGS={COMPRESSION_PRESETS[level]}']
+        image_settings = COMPRESSION_PRESETS[level]
     else:
         image_settings = [
             '-dDownsampleColorImages=true',
@@ -323,7 +333,8 @@ def parse_args():
     compression_mode = compression.add_mutually_exclusive_group()
     compression_mode.add_argument('-c', '--compress', type=int, choices=COMPRESSION_PRESETS, metavar='LEVEL',
                                   help='compress with a preset: '
-                                       '0=/default, 1=/prepress, 2=/printer, 3=/ebook, 4=/screen')
+                                       '0=/default, 1=/prepress, 2=/printer, 3=/ebook, '
+                                       '4=/ebook at 110 dpi, 5=/ebook at 90 dpi, 6=/screen')
     compression_mode.add_argument('--dpi', type=int,
                                   help='compress by downsampling color and grayscale images to DPI')
     compression.add_argument('--mono-dpi', type=int, default=150,
