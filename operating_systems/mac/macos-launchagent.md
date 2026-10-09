@@ -187,6 +187,7 @@ Press **Ctrl+C** to stop following the logs; this does not stop the service. The
 Restart a registered job after changing only the Python script:
 
 ```bash
+launchctl list
 launchctl kickstart -k "gui/$(id -u)/com.example.jupyter-tunnel"
 ```
 
